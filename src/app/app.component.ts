@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { EarthquakeService } from './earthquake.service';
-import { Earthquake } from './earthquake'
-
-
 
 @Component({
   selector: 'app-root',
@@ -12,17 +8,12 @@ import { Earthquake } from './earthquake'
 })
 export class AppComponent {
   title = 'Ed\'s Web Site';
-  earthquakes: Earthquake[];
-
-  constructor(private service: EarthquakeService) {
-  }
-
-  getEarthquakes(): void {
-    this.earthquakes = this.service.getEarthquakes();
+ 
+  constructor() {
   }
 
   ngOnInit() {
-    this.getEarthquakes();
+   
   }
 
   handleClick() {
