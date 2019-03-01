@@ -4,6 +4,6 @@
 <h2>Earthquakes</h2>
 <ul class="earthquakes">
   <li *ngFor="let earthquake of earthquakes">
-    <span class="badge">{{earthquake.magnitude}}</span> {{earthquake.location}}
+    <span class="badge">{{earthquake.properties.place}}</span><b>   {{earthquake.properties.mag}}</b>
   </li>
 </ul>

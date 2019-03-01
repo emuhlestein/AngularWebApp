@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Earthquake } from '../earthquake'
+import { EarthquakeData } from '../earthquakedata'
+import { Feature } from '../earthquakedata'
 import { EarthquakeService } from '../earthquake.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { EarthquakeService } from '../earthquake.service';
 export class EarthquakesComponent implements OnInit {
 
   earthquake: Earthquake = new Earthquake(8.0, 'New York');
-  earthquakes: Earthquake[];
+  earthquakes: Feature[];
 
   constructor(private earthquakeService: EarthquakeService) { }
 
@@ -19,6 +21,9 @@ export class EarthquakesComponent implements OnInit {
   }
 
   getEarthquakes(): void {
-    this.earthquakeService.getEarthquakes().subscribe(earthquakes => console.log(earthquakes))
+    this.earthquakeService.getEarthquakes().subscribe(response => {
+      //console.log(response);
+      this.earthquakes = response.features;
+    });
   }
 }

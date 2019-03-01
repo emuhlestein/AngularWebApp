@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Earthquake } from './earthquake'
-import { Observable, of } from 'rxjs'
+import { EarthquakeData } from './earthquakedata'
+import { Observable } from 'rxjs'
+import { map } from 'rxjs/operators';
 import { MessageService } from './message.service'
 import { HttpClient } from '@angular/common/http'
 
@@ -11,7 +13,7 @@ export class EarthquakeService {
 
   constructor(private messageService: MessageService, private http: HttpClient) { }
 
-  getEarthquakes(): Observable<Earthquake[]> {
+  getEarthquakes() {
     // TODO: send message _after_ fetching the earthquakes
     this.messageService.add('EarthquakeService: fetched earthquakes')
     let list: Array<Earthquake> = new Array()
@@ -22,6 +24,8 @@ export class EarthquakeService {
     earthquake = new Earthquake(8.2, "Salt Lake City")
     list.push(earthquake)
     //return of(list)
-    return this.http.get<Earthquake[]>("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2016-01-02&minmagnitude=6");
+    let obs: Observable<string> = new Observable<string>();
+    let url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2016-01-02&minmagnitude=6';
+    return this.http.get<EarthquakeData>(url);
   }
 }
