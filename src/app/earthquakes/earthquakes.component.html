@@ -1,6 +1,9 @@
+<h2>
+    <p-button label="Click" (onClick)="handleClick()"></p-button>
+</h2>
 <h2>Earthquakes</h2>
 <ul class="earthquakes">
   <li *ngFor="let earthquake of earthquakes">
-    <span class="badge">{{earthquake.properties.place}}</span><b>   {{earthquake.properties.mag}}</b>
+    <span class="badge">{{earthquake.properties.place}}</span><b>   {{earthquake.properties.mag}}</b> <a href={{earthquake.properties.url}}> More Info</a>
   </li>
 </ul>

@@ -16,7 +16,5 @@ export class AppComponent {
    
   }
 
-  handleClick() {
-    console.log("In click listener")
-  }
+
 }

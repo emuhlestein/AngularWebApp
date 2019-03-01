@@ -3,6 +3,7 @@ import { Earthquake } from '../earthquake'
 import { EarthquakeData } from '../earthquakedata'
 import { Feature } from '../earthquakedata'
 import { EarthquakeService } from '../earthquake.service';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-earthquakes',
@@ -25,5 +26,9 @@ export class EarthquakesComponent implements OnInit {
       //console.log(response);
       this.earthquakes = response.features;
     });
+  }
+
+    handleClick() {
+    console.log("Earthquake Component: In click listener")
   }
 }
