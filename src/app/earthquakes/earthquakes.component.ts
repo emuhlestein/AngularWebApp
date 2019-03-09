@@ -18,11 +18,14 @@ export class EarthquakesComponent implements OnInit {
 
   ngOnInit() {
     this.getEarthquakes();
+    this.earthquakeService.search.subscribe(event => {
+      this.getEarthquakes();
+    });
   }
 
   getEarthquakes(): void {
     this.earthquakeService.getEarthquakes().subscribe(response => {
-      //console.log(response);
+      console.log(response);
       this.earthquakes = response.features;
     });
   }

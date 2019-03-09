@@ -1,9 +1,16 @@
 <h2>{{earthquake.magnitude}} Details</h2>
 <div><span>location: </span>{{earthquake.location | uppercase}}</div>
 <div><span>magnitude: </span>{{earthquake.magnitude}}</div>
-<h2>Earthquakes</h2>
-<ul class="earthquakes">
-  <li *ngFor="let earthquake of earthquakes">
-    <span class="badge">{{earthquake.properties.place}}</span><b>   {{earthquake.properties.mag}}</b>
-  </li>
-</ul>
+<table>
+  <caption>Earthquakes</caption>
+  <tr>
+    <th scope="col">Location</th>
+    <th scope="col">Magnitude</th>
+    <th scope="col">More</th>
+  </tr>
+  <tr *ngFor="let earthquake of earthquakes">
+    <td>{{earthquake.properties.place}}</td>
+    <td>{{earthquake.properties.mag}}</td>
+    <td><a href={{earthquake.properties.url}}>More</a></td>
+  </tr>
+</table>
