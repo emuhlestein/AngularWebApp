@@ -3,7 +3,6 @@ import { Earthquake } from '../earthquake'
 import { EarthquakeData } from '../earthquakedata'
 import { Feature } from '../earthquakedata'
 import { EarthquakeService } from '../earthquake.service';
-import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-earthquakes',
@@ -19,16 +18,15 @@ export class EarthquakesComponent implements OnInit {
 
   ngOnInit() {
     this.getEarthquakes();
+    this.earthquakeService.search.subscribe(event => {
+      this.getEarthquakes();
+    });
   }
 
   getEarthquakes(): void {
     this.earthquakeService.getEarthquakes().subscribe(response => {
-      //console.log(response);
+      console.log(response);
       this.earthquakes = response.features;
     });
-  }
-
-    handleClick() {
-    console.log("Earthquake Component: In click listener")
   }
 }

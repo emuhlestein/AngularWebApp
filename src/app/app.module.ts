@@ -6,13 +6,17 @@ import { ButtonModule } from 'primeng/button';
 import { EarthquakeService } from './earthquake.service';
 import { EarthquakesComponent } from './earthquakes/earthquakes.component';
 import { MessagesComponent } from './messages/messages.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { InputFieldComponent } from './input-field/input-field.component';
+import { ParametersComponent } from './parameters/parameters.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     EarthquakesComponent,
-    MessagesComponent
+    MessagesComponent,
+    InputFieldComponent,
+    ParametersComponent
   ],
   imports: [
     BrowserModule,
