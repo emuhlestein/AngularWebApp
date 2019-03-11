@@ -8,6 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class InputFieldComponent implements OnInit {
   @Input() public label;
   @Input() public value;
+  @Input() public min;
+  @Input() public max;
   @Output() public childEvent = new EventEmitter();
  
   constructor() { }

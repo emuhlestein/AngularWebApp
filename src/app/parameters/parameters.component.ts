@@ -9,6 +9,8 @@ import { EarthquakeService } from '../earthquake.service';
 export class ParametersComponent implements OnInit {
   public minMagnitudeLabel = "Minimum Magnitude";
   public maxMagnitudeLabel = "Maximum Magnitude";
+  public minMagnitudeLimit = 3;
+  public maxMagnitudeLimit = 16;
   public minMagnitudeValue = 6;
   public maxMagnitudeValue = 8;
   @Output() public childEvent = new EventEmitter();
