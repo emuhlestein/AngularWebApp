@@ -1,7 +1,7 @@
 <div>
 <app-input-field [label]="minMagnitudeLabel" [value]="minMagnitudeValue" (childEvent)="minMagnitudeValue=$event" [min]="minMagnitudeLimit" [max]="maxMagnitudeLimit"></app-input-field>
 <app-input-field [label]="maxMagnitudeLabel" [value]="maxMagnitudeValue" (childEvent)="maxMagnitudeValue=$event" [min]="minMagnitudeLimit" [max]="maxMagnitudeLimit"></app-input-field>
-<div>{{minMagnitudeValue}}</div>
-<div>{{maxMagnitudeValue}}</div>
-<button (click)="search()">Search</button>
+<div>
+    <p-button label="Search" (onClick)="search()"></p-button>
+</div>
 </div>
