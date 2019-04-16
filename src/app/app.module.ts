@@ -10,8 +10,6 @@ import { MessagesComponent } from './messages/messages.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InputFieldComponent } from './input-field/input-field.component';
 import { ParametersComponent } from './parameters/parameters.component'
-
-
 @NgModule({
   declarations: [
     AppComponent,
