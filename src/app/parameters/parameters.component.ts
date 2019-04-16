@@ -11,6 +11,8 @@ export class ParametersComponent implements OnInit {
   public maxMagnitudeLabel = "Maximum Magnitude";
   public minMagnitudeValue = 6;
   public maxMagnitudeValue = 8;
+  public minMagnitudeLimit = 6;
+  public maxMagnitudeLimit = 10;
   @Output() public childEvent = new EventEmitter();
 
   constructor(private earthquakeService: EarthquakeService) { }

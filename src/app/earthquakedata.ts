@@ -39,7 +39,7 @@ export interface Feature {
     };
     id: string;
     properties: {
-        alert: string;
+        alert: string; 
         cid: number;
         code: string;
         detail: string;

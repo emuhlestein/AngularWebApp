@@ -1,16 +1,23 @@
-<h2>{{earthquake.magnitude}} Details</h2>
-<div><span>location: </span>{{earthquake.location | uppercase}}</div>
-<div><span>magnitude: </span>{{earthquake.magnitude}}</div>
-<table>
-  <caption>Earthquakes</caption>
-  <tr>
-    <th scope="col">Location</th>
-    <th scope="col">Magnitude</th>
-    <th scope="col">More</th>
-  </tr>
-  <tr *ngFor="let earthquake of earthquakes">
-    <td>{{earthquake.properties.place}}</td>
-    <td>{{earthquake.properties.mag}}</td>
-    <td><a href={{earthquake.properties.url}}>More</a></td>
-  </tr>
-</table>
+<caption>Earthquakes</caption>
+<p-table [columns]="cols" [value]="earthquakes">
+
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns"  [style.width]="col.width">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns" let-ri="rowIndex">
+      <tr>
+        <td *ngFor="let col of columns"  [style.width]="col.width">
+          <div *ngIf="col.field=='url'">
+            <a href={{rowData[col.field]}} style='display:block'>{{rowData[col.field]}}</a>
+          </div>
+          <div *ngIf="col.field!='url'">
+              {{rowData[col.field]}}
+            </div>
+        </td>
+      </tr>
+    </ng-template>
+</p-table>

@@ -1,3 +1,5 @@
-export class Earthquake{
-    constructor(private magnitude: number, private location: String) {}
+export interface Earthquake{
+    location: string;
+    magnitude: number;
+    url: string;
 }
