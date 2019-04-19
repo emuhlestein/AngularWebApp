@@ -1,10 +1,11 @@
 <caption>Earthquakes</caption>
-<p-table [columns]="cols" [value]="earthquakes">
+<p-table [columns]="cols" [value]="earthquakes" [sortOrder]="-1">
 
     <ng-template pTemplate="header" let-columns>
       <tr>
-        <th *ngFor="let col of columns"  [style.width]="col.width">
+        <th *ngFor="let col of columns"  [style.width]="col.width" [pSortableColumn]="col.field" pResizableColumn>
           {{col.header}}
+          <p-sortIcon [field]="col.field"></p-sortIcon>
         </th>
       </tr>
     </ng-template>

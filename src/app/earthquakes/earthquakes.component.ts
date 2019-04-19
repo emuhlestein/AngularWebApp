@@ -27,8 +27,8 @@ export class EarthquakesComponent implements OnInit {
 
     this.cols = [
       {field: 'location', header: 'Location', type: 'string', width: '30%'},
-      {field: 'magnitude', header: 'Magnitude', type: 'number', width: '10%'},
-      {field: 'url', header: 'More', type: 'string', width: '60%'}
+      {field: 'magnitude', header: 'Magnitude', type: 'number', width: '15%'},
+      {field: 'url', header: 'More', type: 'string', width: '55%'}
     ];   
   }
 
