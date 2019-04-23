@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { ButtonModule } from 'primeng/button';
@@ -25,7 +26,8 @@ import { ParametersComponent } from './parameters/parameters.component'
     HttpClientModule
   ],
   providers: [
-    EarthquakeService
+    EarthquakeService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { Earthquake } from '../earthquake'
 import { Feature } from '../earthquakedata'
 import { EarthquakeService } from '../earthquake.service';
@@ -17,7 +18,9 @@ export class EarthquakesComponent implements OnInit {
   cols: any[];
   rowData: Earthquake;
 
-  constructor(private earthquakeService: EarthquakeService) { }
+  constructor(
+    private earthquakeService: EarthquakeService,
+    private datePipe: DatePipe) { }
 
   ngOnInit() {
     this.getEarthquakes();
@@ -28,7 +31,8 @@ export class EarthquakesComponent implements OnInit {
     this.cols = [
       {field: 'location', header: 'Location', type: 'string', width: '30%'},
       {field: 'magnitude', header: 'Magnitude', type: 'number', width: '15%'},
-      {field: 'url', header: 'More', type: 'string', width: '55%'}
+      {field: 'date', header: 'Date', type: 'number', width: '15%'},
+      {field: 'url', header: 'More', type: 'string', width: '40%'}
     ];   
   }
 
@@ -41,11 +45,17 @@ export class EarthquakesComponent implements OnInit {
         let earthquake = {
           location: props.place,
           magnitude: props.mag,
+          date: this.getFormattedDate(props.time),
           url: props.url
         };
         console.log(earthquake.url);
         this.earthquakes[index] = earthquake;
       }
     });
+  }
+
+  getFormattedDate(numSeconds: number): string {
+    var date = new Date(numSeconds);
+    return this.datePipe.transform(date, "MM-dd-yyyy")
   }
 }
