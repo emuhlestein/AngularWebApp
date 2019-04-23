@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 })
 export class AppComponent {
   title = 'Ed\'s Web Site';
+  date3: Date;
  
   constructor() {
   }

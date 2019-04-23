@@ -9,6 +9,10 @@
 <h2>
     <p-button label="Click" (onClick)="handleClick()"></p-button>
 </h2>
+<div class="ui-g-12 ui-md-4">
+  <h3>Test Date</h3>
+  <p-calendar [(ngModel)]="date3" [showIcon]="true"></p-calendar>
+</div>
 <app-parameters></app-parameters>
 <app-earthquakes></app-earthquakes>
 <app-messages></app-messages>
