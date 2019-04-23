@@ -1,5 +1,5 @@
 <caption>Earthquakes</caption>
-<p-table [columns]="cols" [value]="earthquakes" [sortOrder]="-1">
+<p-table [columns]="cols" [value]="earthquakes" [paginator]="true" [rows]="pageSize" [sortOrder]="-1">
 
     <ng-template pTemplate="header" let-columns>
       <tr>

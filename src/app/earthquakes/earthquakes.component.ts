@@ -14,6 +14,7 @@ import { timingSafeEqual } from 'crypto';
 })
 export class EarthquakesComponent implements OnInit {
 
+  pageSize: number = 16;
   earthquakes: Earthquake[];
   cols: any[];
   rowData: Earthquake;
