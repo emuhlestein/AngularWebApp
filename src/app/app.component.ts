@@ -19,6 +19,6 @@ export class AppComponent {
   }
 
   handleClick() {
-    console.log("In click listener")
+    console.log("In click listener: " + this.date3.toLocaleDateString())
   }
 }
