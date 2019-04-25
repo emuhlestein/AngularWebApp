@@ -14,6 +14,7 @@ import { InputFieldComponent } from './input-field/input-field.component';
 import { ParametersComponent } from './parameters/parameters.component'
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EarthquakesComponent,
     MessagesComponent,
     InputFieldComponent,
-    ParametersComponent
+    ParametersComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

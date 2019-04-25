@@ -10,7 +10,7 @@ export class InputFieldComponent implements OnInit {
   @Input() public value;
   @Input() public min;
   @Input() public max;
-  @Output() public childEvent = new EventEmitter();
+  @Output() public dataChangeEvent = new EventEmitter();
  
   constructor() { }
 
@@ -18,8 +18,6 @@ export class InputFieldComponent implements OnInit {
   }
 
   onChange(value: any) {
-    this.childEvent.emit(value);
-    console.log("In onChange() " + value);
+    this.dataChangeEvent.emit(value);
   }
-
 }

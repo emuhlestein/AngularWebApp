@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Earthquake } from '../earthquake'
-import { Feature } from '../earthquakedata'
 import { EarthquakeService } from '../earthquake.service';
-import { PromiseType } from 'protractor/built/plugins';
-import { fillProperties } from '@angular/core/src/util/property';
-import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-earthquakes',
@@ -39,7 +35,6 @@ export class EarthquakesComponent implements OnInit {
 
   getEarthquakes(): void {
     this.earthquakeService.getEarthquakes().subscribe(response => {
-      console.log(response);
       this.earthquakes = new Array<Earthquake>();
       for(let index in response.features) {
         let props = response.features[index].properties;
@@ -49,7 +44,6 @@ export class EarthquakesComponent implements OnInit {
           date: this.getFormattedDate(props.time),
           url: props.url
         };
-        console.log(earthquake.url);
         this.earthquakes[index] = earthquake;
       }
     });
@@ -57,6 +51,6 @@ export class EarthquakesComponent implements OnInit {
 
   getFormattedDate(numSeconds: number): string {
     var date = new Date(numSeconds);
-    return this.datePipe.transform(date, "MM-dd-yyyy")
+    return this.datePipe.transform(date, "MM-dd-yyyy");
   }
 }

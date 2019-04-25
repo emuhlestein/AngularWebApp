@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { EarthquakeService } from '../earthquake.service';
 
 @Component({
@@ -14,17 +15,47 @@ export class ParametersComponent implements OnInit {
   public minMagnitudeLimit = 6;
   public maxMagnitudeLimit = 10;
   @Output() public childEvent = new EventEmitter();
+  public calendarStartLabel = "Start Date";
+  public calendarStopLabel = "Stop Date";
+  public startDateValue;
+  public stopDateValue;
 
-  constructor(private earthquakeService: EarthquakeService) { }
+  constructor(
+    private earthquakeService: EarthquakeService,
+    private datePipe: DatePipe) { }
 
   ngOnInit() {
+    this.startDateValue = new Date('04/17/2019');
   }
 
   search() {
-    //this.childEvent.emit();
-    console.log(this.minMagnitudeValue + " " + this.maxMagnitudeValue);
+    console.log("Searching...");
+    console.log('Min Magnitude: ' + this.minMagnitudeValue);
+    console.log('Max Magnitude: ' + this.maxMagnitudeValue);
+    console.log('Start Date: ' + this.formatDate(this.startDateValue));
+    console.log('Stop Date: ' + this.formatDate(this.stopDateValue));
     this.earthquakeService.setMinMagnitude(String(this.minMagnitudeValue));
     this.earthquakeService.setMaxMagnitude(String(this.maxMagnitudeValue));
     this.earthquakeService.onSearch();
+  }
+
+  private formatDate(date: Date): string {
+    return this.datePipe.transform(date, "yyyy-MM-dd")
+  }
+
+  onStartDateChanged($event) {
+    this.startDateValue = $event;
+  }
+
+  onStopDateChanged($event) {
+    this.stopDateValue = $event;
+  }
+
+  onMinMagChanged($event) {
+    this.minMagnitudeValue = $event;
+  }
+
+  onMaxMagChanged($event) {
+    this.maxMagnitudeValue = $event;
   }
 }
