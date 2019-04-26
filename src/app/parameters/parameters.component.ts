@@ -29,14 +29,11 @@ export class ParametersComponent implements OnInit {
   }
 
   search() {
-    console.log("Searching...");
-    console.log('Min Magnitude: ' + this.minMagnitudeValue);
-    console.log('Max Magnitude: ' + this.maxMagnitudeValue);
-    console.log('Start Date: ' + this.formatDate(this.startDateValue));
-    console.log('Stop Date: ' + this.formatDate(this.stopDateValue));
-    this.earthquakeService.setMinMagnitude(String(this.minMagnitudeValue));
-    this.earthquakeService.setMaxMagnitude(String(this.maxMagnitudeValue));
-    this.earthquakeService.onSearch();
+    this.earthquakeService.onSearch(
+      this.minMagnitudeValue,
+      this.maxMagnitudeValue,
+      this.formatDate(this.startDateValue),
+      this.formatDate(this.stopDateValue));
   }
 
   private formatDate(date: Date): string {

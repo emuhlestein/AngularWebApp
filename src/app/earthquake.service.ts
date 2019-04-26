@@ -1,43 +1,48 @@
-import { EventEmitter, Injectable, Output } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { Earthquake } from './earthquake'
 import { EarthquakeData } from './earthquakedata'
-import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators';
-import { MessageService } from './message.service'
+import { BehaviorSubject, Subject } from 'rxjs'
 import { HttpClient } from '@angular/common/http'
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class EarthquakeService {
-  minMagnitude = 6;
-  maxMagnitude = 8;
-  @Output() earthquakes: EventEmitter<Event> = new EventEmitter();
-  @Output() search: EventEmitter<Event> = new EventEmitter();
 
-  constructor(private messageService: MessageService, private http: HttpClient) { }
+  private earthquakes: Subject<Earthquake[]> = new BehaviorSubject<Earthquake[]>(null);
 
-  onSearch() {
-    this.search.emit();
-  }     
+  constructor(
+    private http: HttpClient,
+    private datePipe: DatePipe) { }
 
-  getEarthquakes() {
+  getEarthquakes(): Subject<Earthquake[]> {
+    return this.earthquakes;
+  }
+
+  onSearch(minMag: number, maxMag: number, stateDate: string, endDate: string) {
     let baseUrl: string = 'https://earthquake.usgs.gov/fdsnws/event/1/query?';
     let format: string = 'format=geojson';
     let url: string = `${baseUrl}${format}`;
-    url = `${url}&starttime=2014-01-01&endtime=2016-01-02`;
-    url = `${url}&minmagnitude=${this.minMagnitude}`;
-    url = `${url}&maxmagnitude=${this.maxMagnitude}`;
-   
-    console.log(`Searching: ${url}`);
-    return this.http.get<EarthquakeData>(url);
+    url = `${url}&starttime=${stateDate}&endtime=${endDate}`;
+    url = `${url}&minmagnitude=${minMag}`;
+    url = `${url}&maxmagnitude=${maxMag}`;
+    this.http.get<EarthquakeData>(url).subscribe(response => {
+      let earthquakes = new Array<Earthquake>();
+      for(let index in response.features) {
+        let props = response.features[index].properties;
+        let earthquake = {
+          location: props.place,
+          magnitude: props.mag,
+          date: this.getFormattedDate(props.time),
+          url: props.url
+        };
+        earthquakes[index] = earthquake;
+      }
+      this.earthquakes.next(earthquakes);
+    });
   }
 
-  setMinMagnitude(minMagnitude) {
-    this.minMagnitude = minMagnitude;
-  }
-
-  setMaxMagnitude(maxMagnitude) {
-    this.maxMagnitude = maxMagnitude;
+  getFormattedDate(numSeconds: number): string {
+    var date = new Date(numSeconds);
+    return this.datePipe.transform(date, "MM-dd-yyyy");
   }
 }

@@ -20,10 +20,10 @@ export class EarthquakesComponent implements OnInit {
     private datePipe: DatePipe) { }
 
   ngOnInit() {
-    this.getEarthquakes();
-    // this.earthquakeService.search.subscribe(event => {
-    //   this.getEarthquakes();
-    // });
+    this.earthquakeService.onSearch(6, 7, '2014-01-01', '2016-01-02');
+    this.earthquakeService.getEarthquakes().subscribe(result => {
+      this.earthquakes = result;
+    });
 
     this.cols = [
       {field: 'location', header: 'Location', type: 'string', width: '30%'},
@@ -31,22 +31,6 @@ export class EarthquakesComponent implements OnInit {
       {field: 'date', header: 'Date', type: 'number', width: '15%'},
       {field: 'url', header: 'More', type: 'string', width: '40%'}
     ];   
-  }
-
-  getEarthquakes(): void {
-    this.earthquakeService.getEarthquakes().subscribe(response => {
-      this.earthquakes = new Array<Earthquake>();
-      for(let index in response.features) {
-        let props = response.features[index].properties;
-        let earthquake = {
-          location: props.place,
-          magnitude: props.mag,
-          date: this.getFormattedDate(props.time),
-          url: props.url
-        };
-        this.earthquakes[index] = earthquake;
-      }
-    });
   }
 
   getFormattedDate(numSeconds: number): string {
