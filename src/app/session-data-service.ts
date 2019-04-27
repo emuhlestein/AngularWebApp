@@ -5,6 +5,7 @@ export class SessionDataService {
     private sessionMap = new Map<string, any>();
 
     putSessionData(key: string, data: any) {
+        localStorage.setItem(key, data);
         this.sessionMap.set(key, data);
     }
 
