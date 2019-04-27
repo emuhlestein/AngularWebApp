@@ -15,6 +15,7 @@ import { ParametersComponent } from './parameters/parameters.component'
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarComponent } from './calendar/calendar.component';
+import { SessionDataService } from './session-data-service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CalendarComponent } from './calendar/calendar.component';
   ],
   providers: [
     EarthquakeService,
-    DatePipe
+    DatePipe,
+    SessionDataService
   ],
   bootstrap: [AppComponent]
 })
