@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { EarthquakeService } from '../earthquake.service';
+import { SessionDataService, START_DATE_KEY, STOP_DATE_KEY } from '../session-data-service';
 
 @Component({
   selector: 'app-parameters',
@@ -22,10 +23,15 @@ export class ParametersComponent implements OnInit {
 
   constructor(
     private earthquakeService: EarthquakeService,
-    private datePipe: DatePipe) { }
+    private datePipe: DatePipe,
+    private sessionDataService: SessionDataService) { }
 
   ngOnInit() {
-    this.startDateValue = new Date('04/17/2019');
+    this.startDateValue = new Date(this.sessionDataService.getSessionData(START_DATE_KEY));
+    this.stopDateValue = new Date(this.sessionDataService.getSessionData(STOP_DATE_KEY));
+    console.log('After');
+    console.log(this.startDateValue);
+    console.log(this.stopDateValue);
   }
 
   search() {
