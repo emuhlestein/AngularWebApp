@@ -27,11 +27,8 @@ export class ParametersComponent implements OnInit {
     private sessionDataService: SessionDataService) { }
 
   ngOnInit() {
-    this.startDateValue = new Date(this.sessionDataService.getSessionData(START_DATE_KEY));
-    this.stopDateValue = new Date(this.sessionDataService.getSessionData(STOP_DATE_KEY));
-    console.log('After');
-    console.log(this.startDateValue);
-    console.log(this.stopDateValue);
+    this.startDateValue = new Date(this.sessionDataService.getItem(START_DATE_KEY));
+    this.stopDateValue = new Date(this.sessionDataService.getItem(STOP_DATE_KEY));
   }
 
   search() {

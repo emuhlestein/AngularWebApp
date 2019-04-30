@@ -3,41 +3,39 @@ import { DatePipe } from '@angular/common';
 
 export const START_DATE_KEY: string = 'start_date';
 export const STOP_DATE_KEY: string = 'stop_date';
+export const MIN_MAG_KEY: string = 'min_mag';
+export const MAX_MAG_KEY: string = 'max_mag';
 
 @Injectable()
 export class SessionDataService {
-    private sessionMap = new Map<string, any>();
-
     constructor(private datePipe: DatePipe) {}
 
     init() {
-        for (let i = 0; i < localStorage.length; i++){
-            let key = localStorage.key(i);
-            let value = localStorage.getItem(key);
-            this.sessionMap.set(key, value);
-        }
-
-        let startDate = this.sessionMap.get(START_DATE_KEY);
-        let stopDate = this.sessionMap.get(STOP_DATE_KEY);
-        if(startDate == undefined || stopDate == undefined) {
-            this.sessionMap.set(START_DATE_KEY, this.formatDate(new Date()));
-            this.sessionMap.set(STOP_DATE_KEY, this.formatDate(new Date()));
+        let startDate = this.getItem(START_DATE_KEY);
+        let stopDate = this.getItem(STOP_DATE_KEY);
+        if(startDate === null || stopDate === null) {
+            this.setItem(START_DATE_KEY, this.formatDate(new Date()));
+            this.setItem(STOP_DATE_KEY, this.formatDate(new Date()));
         }
     }
 
-    putSessionData(key: string, data: any) {
-        localStorage.setItem(key, data);
-        this.sessionMap.set(key, data);
+    setItem(key: string, data: any) {
+        if(data && data !== null) {
+            let value = JSON.stringify(data);
+            localStorage.setItem(key, value);
+        }
     }
 
-    getSessionData(key: string): any {
-        console.log('HERE????????????????? ' + key);
-        return this.sessionMap.get(key);
+    getItem(key: string): any {
+        const data = localStorage.getItem(key);
+        if(data && data !== null) {
+            return JSON.parse(data);
+        }
+        return null;
     }
-
     
-  // TODO make a utility function
-  private formatDate(date: Date): string {
-    return this.datePipe.transform(date, "yyyy-MM-dd")
-  }
+    // TODO make a utility function
+    private formatDate(date: Date): string {
+        return this.datePipe.transform(date, "yyyy-MM-dd")
+    }
 }
