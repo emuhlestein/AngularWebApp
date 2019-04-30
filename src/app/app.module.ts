@@ -16,6 +16,9 @@ import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarComponent } from './calendar/calendar.component';
 import { SessionDataService } from './session-data-service';
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -31,14 +34,18 @@ import { SessionDataService } from './session-data-service';
     BrowserAnimationsModule,
     ButtonModule,
     CalendarModule,
+    DialogModule,
+    ConfirmDialogModule,
     FormsModule,
     TableModule,
-    HttpClientModule
+    HttpClientModule,
+    ConfirmDialogModule
   ],
   providers: [
     EarthquakeService,
     DatePipe,
-    SessionDataService
+    SessionDataService,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })

@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { EarthquakeService } from '../earthquake.service';
 import { SessionDataService, START_DATE_KEY, STOP_DATE_KEY } from '../session-data-service';
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { Message } from '../common/message';
 
 @Component({
   selector: 'app-parameters',
@@ -20,11 +22,13 @@ export class ParametersComponent implements OnInit {
   public calendarStopLabel = "Stop Date";
   public startDateValue;
   public stopDateValue;
+  rejectVisible: boolean = false;
 
   constructor(
     private earthquakeService: EarthquakeService,
     private datePipe: DatePipe,
-    private sessionDataService: SessionDataService) { }
+    private sessionDataService: SessionDataService,
+    private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     this.startDateValue = new Date(this.sessionDataService.getItem(START_DATE_KEY));
@@ -32,11 +36,12 @@ export class ParametersComponent implements OnInit {
   }
 
   search() {
-    this.earthquakeService.onSearch(
-      this.minMagnitudeValue,
-      this.maxMagnitudeValue,
-      this.formatDate(this.startDateValue),
-      this.formatDate(this.stopDateValue));
+    this.showDialog();
+    // this.earthquakeService.onSearch(
+    //   this.minMagnitudeValue,
+    //   this.maxMagnitudeValue,
+    //   this.formatDate(this.startDateValue),
+    //   this.formatDate(this.stopDateValue));
   }
 
   private formatDate(date: Date): string {
@@ -57,5 +62,16 @@ export class ParametersComponent implements OnInit {
 
   onMaxMagChanged($event) {
     this.maxMagnitudeValue = $event;
+  }
+
+  showDialog() {
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to proceed?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+          console.log("HERE")
+      },
+  });
   }
 }
