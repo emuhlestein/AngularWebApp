@@ -19,6 +19,7 @@ import { SessionDataService } from './session-data-service';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import { SpinnerModule } from 'primeng/spinner';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ConfirmationService } from 'primeng/api';
     FormsModule,
     TableModule,
     HttpClientModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    SpinnerModule
   ],
   providers: [
     EarthquakeService,

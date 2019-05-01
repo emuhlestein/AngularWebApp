@@ -1,8 +1,8 @@
 <div>
     <app-calendar [label]="calendarStartLabel" [value]="startDateValue" (dataChangeEvent)="onStartDateChanged($event)"></app-calendar>
     <app-calendar [label]="calendarStopLabel"  [value]="stopDateValue" (dataChangeEvent)="onStopDateChanged($event)"></app-calendar>
-    <app-input-field [label]="minMagnitudeLabel" [value]="minMagnitudeValue" (dataChangeEvent)="onMinMagChanged($event)" [min]="minMagnitudeLimit" [max]="maxMagnitudeLimit"></app-input-field>
     <app-input-field [label]="maxMagnitudeLabel" [value]="maxMagnitudeValue" (dataChangeEvent)="onMaxMagChanged($event)" [min]="minMagnitudeLimit" [max]="maxMagnitudeLimit"></app-input-field>
+    <app-input-field [label]="minMagnitudeLabel" [value]="minMagnitudeValue" (dataChangeEvent)="onMinMagChanged($event)" [min]="minMagnitudeLimit" [max]="maxMagnitudeLimit"></app-input-field>
     <div>[min]="minMagnitudeLimit"</div>
     <div>[max]="maxMagnitudeLimit"</div>
     <button (click)="search()">Search</button>

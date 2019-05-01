@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { EarthquakeService } from '../earthquake.service';
-import { SessionDataService, START_DATE_KEY, STOP_DATE_KEY } from '../session-data-service';
+import { SessionDataService, START_DATE_KEY, STOP_DATE_KEY, MIN_MAG_KEY, MAX_MAG_KEY } from '../session-data-service';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { Message } from '../common/message';
 
@@ -23,6 +23,7 @@ export class ParametersComponent implements OnInit {
   public startDateValue;
   public stopDateValue;
   rejectVisible: boolean = false;
+  msg: string;
 
   constructor(
     private earthquakeService: EarthquakeService,
@@ -33,10 +34,17 @@ export class ParametersComponent implements OnInit {
   ngOnInit() {
     this.startDateValue = new Date(this.sessionDataService.getItem(START_DATE_KEY));
     this.stopDateValue = new Date(this.sessionDataService.getItem(STOP_DATE_KEY));
+    this.minMagnitudeValue = this.sessionDataService.getItem(MIN_MAG_KEY);
+    this.maxMagnitudeValue = this.sessionDataService.getItem(MAX_MAG_KEY);
   }
 
   search() {
-    this.showDialog();
+   
+    if(this.minMagnitudeValue > this.maxMagnitudeValue) {
+      this.showDialog('Maximum magnitude must be greater than or equal to Minimum magnitude.');
+    } else {
+
+    }
     // this.earthquakeService.onSearch(
     //   this.minMagnitudeValue,
     //   this.maxMagnitudeValue,
@@ -57,20 +65,34 @@ export class ParametersComponent implements OnInit {
   }
 
   onMinMagChanged($event) {
-    this.minMagnitudeValue = $event;
+    if($event.value > this.maxMagnitudeValue) {
+      $event.value = this.maxMagnitudeValue;
+      this.minMagnitudeValue = this.maxMagnitudeValue;
+      this.showDialog('Maximum magnitude must be greater than or equal to Minimum magnitude.');
+    } else {
+      this.minMagnitudeValue = $event.value;
+    }
+    this.sessionDataService.setItem(MIN_MAG_KEY, this.minMagnitudeValue);
   }
 
   onMaxMagChanged($event) {
-    this.maxMagnitudeValue = $event;
+    if($event.value < this.minMagnitudeValue) {
+      $event.value = this.minMagnitudeValue;
+      this.maxMagnitudeValue = this.minMagnitudeValue;
+      this.showDialog('Maximum magnitude must be greater than or equal to Minimum magnitude.');
+    } else {
+      this.maxMagnitudeValue = $event.value;
+    }
+    this.sessionDataService.setItem(MAX_MAG_KEY, this.maxMagnitudeValue);
   }
 
-  showDialog() {
+  showDialog(message) {
     this.confirmationService.confirm({
-      message: 'Are you sure that you want to proceed?',
+      message: message,
       header: 'Confirmation',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-          console.log("HERE")
+          console.log("HERE!!!!!")
       },
   });
   }
