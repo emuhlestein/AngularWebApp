@@ -45,11 +45,11 @@ export class ParametersComponent implements OnInit {
     } else {
 
     }
-    // this.earthquakeService.onSearch(
-    //   this.minMagnitudeValue,
-    //   this.maxMagnitudeValue,
-    //   this.formatDate(this.startDateValue),
-    //   this.formatDate(this.stopDateValue));
+    this.earthquakeService.onSearch(
+      this.minMagnitudeValue,
+      this.maxMagnitudeValue,
+      this.formatDate(this.startDateValue),
+      this.formatDate(this.stopDateValue));
   }
 
   private formatDate(date: Date): string {
@@ -57,11 +57,25 @@ export class ParametersComponent implements OnInit {
   }
 
   onStartDateChanged($event) {
-    this.startDateValue = $event;
+    if($event.value.getTime() > this.stopDateValue.getTime()) {
+      $event.value = this.stopDateValue;
+      this.startDateValue = this.stopDateValue;
+      this.showDialog('Stop date must be greater than or equal to start date.');
+    } else {
+      this.startDateValue = $event.value;
+    }
+    this.sessionDataService.setItem(START_DATE_KEY, this.startDateValue);
   }
 
   onStopDateChanged($event) {
-    this.stopDateValue = $event;
+    if($event.value.getTime() < this.startDateValue.getTime()) {
+      $event.value = this.startDateValue;
+      this.stopDateValue = this.startDateValue;
+      this.showDialog('Stop date must be greater than or equal to start date.');
+    } else {
+      this.stopDateValue = $event.value;
+    }
+    this.sessionDataService.setItem(STOP_DATE_KEY, this.stopDateValue);
   }
 
   onMinMagChanged($event) {
