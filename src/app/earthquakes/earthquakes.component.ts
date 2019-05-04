@@ -28,7 +28,7 @@ export class EarthquakesComponent implements OnInit {
     this.cols = [
       {field: 'location', header: 'Location', type: 'string', width: '30%'},
       {field: 'magnitude', header: 'Magnitude', type: 'number', width: '15%'},
-      {field: 'date', header: 'Date', type: 'number', width: '15%'},
+      {field: 'date', header: 'Date', type: 'date', width: '15%'},
       {field: 'url', header: 'More', type: 'string', width: '40%'}
     ];   
   }
@@ -37,4 +37,32 @@ export class EarthquakesComponent implements OnInit {
     var date = new Date(numSeconds);
     return this.datePipe.transform(date, "MM-dd-yyyy");
   }
+
+  customSort(event) {
+    event.data.sort((data1, data2) => {
+      let value1 = data1[event.field];
+      let value2 = data2[event.field];
+      let result = null;
+
+      if (value1 == null && value2 != null)
+          result = -1;
+      else if (value1 != null && value2 == null)
+          result = 1;
+      else if (value1 == null && value2 == null) {
+          result = 0;
+      } else if (event.field === 'date') {
+        let date1 = new Date(value1).getTime();
+        let date2 = new Date(value2).getTime();
+        result = (date1 < date2) ? -1 : (date1 > date2) ? 1 : 0;
+     }
+      else if (typeof value1 === 'string' && typeof value2 === 'string') {
+        result = value1.localeCompare(value2);
+      } else {
+        result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+      }
+
+      return (event.order * result);
+    });
+  }
+
 }
