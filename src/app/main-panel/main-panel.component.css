@@ -1,0 +1,13 @@
+#parent {
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+#child1 {
+    display: inline-block;
+    width: 200px;
+}
+
+#child2 {
+    display: inline-block;
+}

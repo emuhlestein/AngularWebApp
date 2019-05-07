@@ -21,6 +21,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { SpinnerModule } from 'primeng/spinner';
 import { CardModule } from 'primeng/card';
+import { SummaryPanelComponent } from './summary-panel/summary-panel.component';
+import { MainPanelComponent } from './main-panel/main-panel.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { CardModule } from 'primeng/card';
     MessagesComponent,
     InputFieldComponent,
     ParametersComponent,
-    CalendarComponent
+    CalendarComponent,
+    SummaryPanelComponent,
+    MainPanelComponent
   ],
   imports: [
     BrowserModule,

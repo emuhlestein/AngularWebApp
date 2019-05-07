@@ -1,4 +1,9 @@
-<p-card class="panel" >
+<p-card class="panel">
+    <p-header>
+        <div style="text-align: center">
+        <label>Search Parameters</label>
+        </div>
+    </p-header>
     <div class="subpanel">
     <div>
     <app-calendar [label]="calendarEndLabel"  [value]="endDateValue" (dataChangeEvent)="onEndDateChanged($event)"></app-calendar>
@@ -10,9 +15,9 @@
     <div>
     <app-input-field [label]="minMagnitudeLabel" [value]="minMagnitudeValue" (dataChangeEvent)="onMinMagChanged($event)" [min]="minMagnitudeLimit" [max]="maxMagnitudeLimit"></app-input-field>
     </div>
-    <div>
-    <p-button label="Search" (onClick)="search()"></p-button>
-    </div>
+    <p-footer>
+        <p-button label="Search" (onClick)="search()"></p-button>
+    </p-footer>
 </div>
 </p-card>
 <p-confirmDialog #confirmation>

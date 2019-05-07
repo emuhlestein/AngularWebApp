@@ -1,5 +1,5 @@
 :host >>> 
     ::ng-deep .ui-card {
-        background-color: lightblue !important;
+        background-color: lightgreen !important;
         display: inline-block;
     }
