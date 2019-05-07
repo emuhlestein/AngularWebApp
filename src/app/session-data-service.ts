@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 export const START_DATE_KEY: string = 'start_date';
-export const STOP_DATE_KEY: string = 'stop_date';
+export const END_DATE_KEY: string = 'stop_date';
 export const MIN_MAG_KEY: string = 'min_mag';
 export const MAX_MAG_KEY: string = 'max_mag';
 
@@ -12,10 +12,10 @@ export class SessionDataService {
 
     init() {
         let startDate = this.getItem(START_DATE_KEY);
-        let stopDate = this.getItem(STOP_DATE_KEY);
+        let stopDate = this.getItem(END_DATE_KEY);
         if(startDate === null || stopDate === null) {
             this.setItem(START_DATE_KEY, this.formatDate(new Date()));
-            this.setItem(STOP_DATE_KEY, this.formatDate(new Date()));
+            this.setItem(END_DATE_KEY, this.formatDate(new Date()));
         }
     }
 
