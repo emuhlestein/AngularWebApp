@@ -20,6 +20,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { SpinnerModule } from 'primeng/spinner';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { SpinnerModule } from 'primeng/spinner';
     BrowserAnimationsModule,
     ButtonModule,
     CalendarModule,
+    CardModule,
     DialogModule,
     ConfirmDialogModule,
     FormsModule,

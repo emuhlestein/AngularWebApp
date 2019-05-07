@@ -1,4 +1,5 @@
-<caption>Earthquakes</caption>
+<p-card header="Earthquakes" styleClass="ui-card-shadow">
+  
 <p-table [columns]="cols" [value]="earthquakes" [paginator]="true" [rows]="pageSize" [sortOrder]="-1"
 (sortFunction)="customSort($event)" [customSort]="true">
 
@@ -23,3 +24,4 @@
       </tr>
     </ng-template>
 </p-table>
+</p-card>

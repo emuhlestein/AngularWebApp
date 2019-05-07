@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { EarthquakeService } from '../earthquake.service';
-import { SessionDataService, START_DATE_KEY, STOP_DATE_KEY, MIN_MAG_KEY, MAX_MAG_KEY } from '../session-data-service';
+import { SessionDataService, START_DATE_KEY, END_DATE_KEY, MIN_MAG_KEY, MAX_MAG_KEY } from '../session-data-service';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { Message } from '../common/message';
 
@@ -19,9 +19,9 @@ export class ParametersComponent implements OnInit {
   public maxMagnitudeLimit = 10;
   @Output() public childEvent = new EventEmitter();
   public calendarStartLabel = "Start Date";
-  public calendarStopLabel = "Stop Date";
+  public calendarEndLabel = "End Date";
   public startDateValue;
-  public stopDateValue;
+  public endDateValue;
   rejectVisible: boolean = false;
   msg: string;
 
@@ -33,7 +33,7 @@ export class ParametersComponent implements OnInit {
 
   ngOnInit() {
     this.startDateValue = new Date(this.sessionDataService.getItem(START_DATE_KEY));
-    this.stopDateValue = new Date(this.sessionDataService.getItem(STOP_DATE_KEY));
+    this.endDateValue = new Date(this.sessionDataService.getItem(END_DATE_KEY));
     this.minMagnitudeValue = this.sessionDataService.getItem(MIN_MAG_KEY);
     this.maxMagnitudeValue = this.sessionDataService.getItem(MAX_MAG_KEY);
   }
@@ -49,7 +49,7 @@ export class ParametersComponent implements OnInit {
       this.minMagnitudeValue,
       this.maxMagnitudeValue,
       this.formatDate(this.startDateValue),
-      this.formatDate(this.stopDateValue));
+      this.formatDate(this.endDateValue));
   }
 
   private formatDate(date: Date): string {
@@ -57,9 +57,9 @@ export class ParametersComponent implements OnInit {
   }
 
   onStartDateChanged($event) {
-    if($event.value.getTime() > this.stopDateValue.getTime()) {
-      $event.value = this.stopDateValue;
-      this.startDateValue = this.stopDateValue;
+    if($event.value.getTime() > this.endDateValue.getTime()) {
+      $event.value = this.endDateValue;
+      this.startDateValue = this.endDateValue;
       this.showDialog('Stop date must be greater than or equal to start date.');
     } else {
       this.startDateValue = $event.value;
@@ -67,15 +67,15 @@ export class ParametersComponent implements OnInit {
     this.sessionDataService.setItem(START_DATE_KEY, this.startDateValue);
   }
 
-  onStopDateChanged($event) {
+  onEndDateChanged($event) {
     if($event.value.getTime() < this.startDateValue.getTime()) {
       $event.value = this.startDateValue;
-      this.stopDateValue = this.startDateValue;
+      this.endDateValue = this.startDateValue;
       this.showDialog('Stop date must be greater than or equal to start date.');
     } else {
-      this.stopDateValue = $event.value;
+      this.endDateValue = $event.value;
     }
-    this.sessionDataService.setItem(STOP_DATE_KEY, this.stopDateValue);
+    this.sessionDataService.setItem(END_DATE_KEY, this.endDateValue);
   }
 
   onMinMagChanged($event) {
