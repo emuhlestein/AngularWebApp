@@ -37,6 +37,7 @@ export class EarthquakeService {
         };
         earthquakes[index] = earthquake;
       }
+      console.log(earthquakes.length);
       this.earthquakes.next(earthquakes);
     });
   }
