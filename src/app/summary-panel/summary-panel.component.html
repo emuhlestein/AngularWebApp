@@ -5,7 +5,9 @@
         </div>
     </p-header>
   <ul class="quakes">
-    <li *ngFor="let quake of quakes">
+    <li *ngFor="let quake of quakes"
+      [class.selected]="quake.selected"
+      (click)="onSelect(quake)">
       <span class="magnitude">{{quake.label}}</span> {{quake.count}}
     </li>
   </ul>

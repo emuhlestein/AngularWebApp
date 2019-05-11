@@ -8,6 +8,11 @@
         border-radius: 6px;
     }
 
+.selected {
+    background-color: #CFD8DC !important;
+    color: white;
+}
+
 .quakes {
     margin: 0 0 2em 0;
     list-style-type: none;

@@ -41,7 +41,8 @@ export class SummaryPanelComponent implements OnInit, OnDestroy {
       Array.from(this.earthquakeMap.keys()).forEach(key => {
         let quakes: MagnitudeDetails = {
           label: String(key),
-          count: this.earthquakeMap.get(key)
+          count: this.earthquakeMap.get(key),
+          selected: false
         };
         this.quakes.push(quakes);
       });
@@ -53,9 +54,14 @@ export class SummaryPanelComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
     }
   }
+
+  onSelect(quake: MagnitudeDetails) {
+    quake.selected = !quake.selected;
+  }
 }
 
 interface MagnitudeDetails {
   label: string,
-  count: number   
+  count: number,
+  selected: boolean
 }
