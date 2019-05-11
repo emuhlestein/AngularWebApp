@@ -1,0 +1,5 @@
+:host
+    ::ng-deep .ui-card {
+        background-color: lightgray !important;
+        height: 100%;
+    }

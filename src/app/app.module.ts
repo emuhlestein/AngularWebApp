@@ -23,6 +23,7 @@ import { SpinnerModule } from 'primeng/spinner';
 import { CardModule } from 'primeng/card';
 import { SummaryPanelComponent } from './summary-panel/summary-panel.component';
 import { MainPanelComponent } from './main-panel/main-panel.component';
+import { TrendsPanelComponent } from './trends-panel/trends-panel.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MainPanelComponent } from './main-panel/main-panel.component';
     ParametersComponent,
     CalendarComponent,
     SummaryPanelComponent,
-    MainPanelComponent
+    MainPanelComponent,
+    TrendsPanelComponent
   ],
   imports: [
     BrowserModule,

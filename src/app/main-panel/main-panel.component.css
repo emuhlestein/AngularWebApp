@@ -14,3 +14,9 @@
 #child2, body {
     height: 100%;
 }
+
+:host
+::ng-deep
+#child3, body {
+    height: 100%;
+}
