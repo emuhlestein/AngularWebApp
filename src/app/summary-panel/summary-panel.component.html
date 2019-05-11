@@ -4,9 +4,9 @@
         <label style="margin: 10px">Earthquake Summary</label>
         </div>
     </p-header>
-  <ul>
-    <li *ngFor="let detail of details">
-      <span>{{detail.label}}</span>      {{detail.count}}
+  <ul class="quakes">
+    <li *ngFor="let quake of quakes">
+      <span class="magnitude">{{quake.label}}</span> {{quake.count}}
     </li>
   </ul>
 </p-card>

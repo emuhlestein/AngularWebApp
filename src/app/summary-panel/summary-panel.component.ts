@@ -12,7 +12,7 @@ export class SummaryPanelComponent implements OnInit, OnDestroy {
   private magDetails: MagnitudeDetails;
   subscription: Subscription;
   earthquakes: Earthquake[];
-  details: MagnitudeDetails[] = [];
+  quakes: MagnitudeDetails[] = [];
   earthquakeMap: Map<number, number> = new Map<number, number>();
 
   constructor(private earthquakeService: EarthquakeService) { }
@@ -24,7 +24,7 @@ export class SummaryPanelComponent implements OnInit, OnDestroy {
         console.log('result is null');
         return;
       }
-      this.details = [];
+      this.quakes = [];
       this.earthquakeMap.clear();
       this.earthquakes = result;
       console.log('Count: ' + this.earthquakes.length);
@@ -39,11 +39,11 @@ export class SummaryPanelComponent implements OnInit, OnDestroy {
         }
       });
       Array.from(this.earthquakeMap.keys()).forEach(key => {
-        let details: MagnitudeDetails = {
+        let quakes: MagnitudeDetails = {
           label: String(key),
           count: this.earthquakeMap.get(key)
         };
-        this.details.push(details);
+        this.quakes.push(quakes);
       });
     });
   }
