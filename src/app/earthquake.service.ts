@@ -19,6 +19,7 @@ export class EarthquakeService {
   }
 
   onSearch(minMag: number, maxMag: number, stateDate: string, endDate: string) {
+    maxMag = maxMag + 0.999;
     let baseUrl: string = 'https://earthquake.usgs.gov/fdsnws/event/1/query?';
     let format: string = 'format=geojson';
     let url: string = `${baseUrl}${format}`;
@@ -37,6 +38,7 @@ export class EarthquakeService {
         };
         earthquakes[index] = earthquake;
       }
+      console.log(earthquakes.length);
       this.earthquakes.next(earthquakes);
     });
   }

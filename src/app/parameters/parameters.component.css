@@ -1,8 +1,9 @@
-button {
-    margin: 10px;
-}
-
-.subpanel {
-    width: 500px;
-}
-
+:host
+    ::ng-deep .ui-card {
+        background-color: lightblue !important;
+        display: inline-block;
+    }
+:host
+    ::ng-deep .ui-corner-all {
+        border-radius: 6px;
+    }
