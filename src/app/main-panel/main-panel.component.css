@@ -1,13 +1,18 @@
-#parent {
-    white-space: nowrap;
-    overflow-x: auto;
+:host
+.main-panel {
+   display: flex;
+   background-color: blueviolet;
+  
 }
 
-#child1 {
-    display: inline-block;
-    width: 200px;
+:host
+::ng-deep
+#child1, body {
+    height: 100%;
 }
 
-#child2 {
-    display: inline-block;
+:host
+::ng-deep
+#child2, body {
+    height: 100%;
 }

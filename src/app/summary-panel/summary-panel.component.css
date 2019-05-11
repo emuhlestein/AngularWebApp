@@ -1,5 +1,9 @@
-:host >>> 
+:host
     ::ng-deep .ui-card {
         background-color: lightgreen !important;
-        display: inline-block;
+        height: 100%;
+    }
+:host
+    ::ng-deep .ui-corner-all {
+        border-radius: 6px;
     }
