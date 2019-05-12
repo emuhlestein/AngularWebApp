@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { EarthquakeService } from '../earthquake.service';
 import { SummaryPanelComponent } from './summary-panel.component';
+import { CardModule } from 'primeng/card';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { DatePipe } from '@angular/common';
 
 describe('SummaryPanelComponent', () => {
   let component: SummaryPanelComponent;
@@ -8,7 +11,9 @@ describe('SummaryPanelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SummaryPanelComponent ]
+      declarations: [ SummaryPanelComponent ],
+      imports: [ CardModule, HttpClientTestingModule ],
+      providers: [ EarthquakeService, DatePipe ]
     })
     .compileComponents();
   }));
