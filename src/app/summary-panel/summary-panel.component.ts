@@ -21,13 +21,11 @@ export class SummaryPanelComponent implements OnInit, OnDestroy {
     this.subscription = this.earthquakeService.getEarthquakes().subscribe( result => {
      
       if(result == null) {
-        console.log('result is null');
         return;
       }
       this.quakes = [];
       this.earthquakeMap.clear();
       this.earthquakes = result;
-      console.log('Count: ' + this.earthquakes.length);
       this.earthquakes.forEach(quake => {
         let mag = Math.trunc(quake.magnitude);
         let count = this.earthquakeMap.get(mag);

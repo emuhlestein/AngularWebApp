@@ -28,34 +28,31 @@ export class TrendsPanelComponent implements OnInit {
       if(earthquakes == null) {
         return;
       }
-
-      console.log('Trends: ' + earthquakes.length);
+      let magMap;
       let earthquakeMap = new Map<number, Map<string, number>>();
+      let decadeSet = new Set<string>();
       earthquakes.forEach(quake => {
         let year = new Date(quake.date).getFullYear();
         let syear = year.toString();
         let decade = syear.substr(0, 3) + '0';
-        console.log(decade);
+        decadeSet.add(decade);
         let mag = Math.trunc(quake.magnitude);
-        let magMap = earthquakeMap.get(mag);
-        if(magMap == null) {
+        magMap = earthquakeMap.get(mag);
+;
+        if(magMap) {
+          let count = magMap.get(decade);
+          if(count) {
+            count++;
+            magMap.set(decade, count);
+          } else {
+            magMap.set(decade, 1);
+          }
+        } else {
           magMap = new Map<string, number>();
           magMap.set(decade, 1);
           earthquakeMap.set(mag, magMap);
-        } else {
-          let count = magMap.get(decade);
-          count++;
-          magMap.set(decade, count);
         }
       })
-
-      // extract decades (labels)
-      let decadeSet = new Set<string>();
-      Array.from(earthquakeMap.values()).forEach(entry => {
-        Array.from(entry.keys()).forEach(key => {
-          decadeSet.add(key);
-        });
-      });
 
       let labels = Array.from(decadeSet).sort();
       let datasets = [];
@@ -70,6 +67,7 @@ export class TrendsPanelComponent implements OnInit {
         let dataset = [];
         labels.forEach(label => {
           // get quake count for specified decade
+          //console.log(key + '  '  + label + '   ' + magMap.get(label));
           dataset.push(magMap.get(label));
         });
 
