@@ -1,22 +1,7 @@
 :host
 .main-panel {
-   display: flex;
-}
-
-:host
-::ng-deep
-#child1, body {
-    height: 100%;
-}
-
-:host
-::ng-deep
-#child2, body {
-    height: 100%;
-}
-
-:host
-::ng-deep
-#child3, body {
-    height: 100%;
+   width: 100%;
+   height: 350px;
+   display: inline-block;
+   background-color: aquamarine
 }

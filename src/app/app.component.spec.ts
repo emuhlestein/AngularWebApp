@@ -10,6 +10,7 @@ import { TrendsPanelComponent } from './trends-panel/trends-panel.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
+import { ChartModule } from 'primeng/chart';
 import { CalendarModule } from 'primeng/calendar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
@@ -41,7 +42,8 @@ describe('AppComponent', () => {
         FormsModule,
         SpinnerModule,
         TableModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        ChartModule
       ],
       providers: [
         ConfirmationService,

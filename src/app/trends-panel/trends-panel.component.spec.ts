@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CardModule } from 'primeng/card';
+import { ChartModule } from 'primeng/chart';
 import { TrendsPanelComponent } from './trends-panel.component';
 
 describe('TrendsPanelComponent', () => {
@@ -9,7 +10,7 @@ describe('TrendsPanelComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ TrendsPanelComponent ],
-      imports: [ CardModule ]
+      imports: [ CardModule, ChartModule ]
     })
     .compileComponents();
   }));

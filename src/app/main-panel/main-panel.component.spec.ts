@@ -6,6 +6,7 @@ import { MainPanelComponent } from './main-panel.component';
 import { CalendarComponent } from '../calendar/calendar.component';
 import { InputFieldComponent } from '../input-field/input-field.component';
 import { CardModule } from 'primeng/card';
+import { ChartModule } from 'primeng/chart';
 import { CalendarModule } from 'primeng/calendar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { FormsModule } from '@angular/forms';
@@ -25,7 +26,8 @@ describe('MainPanelComponent', () => {
       declarations: [ MainPanelComponent,
          ParametersComponent, SummaryPanelComponent,
          TrendsPanelComponent, CalendarComponent, InputFieldComponent ],
-      imports: [ FormsModule, CardModule, CalendarModule, ConfirmDialogModule, SpinnerModule, HttpClientTestingModule ],
+      imports: [ FormsModule, CardModule, CalendarModule, ConfirmDialogModule,
+         SpinnerModule, HttpClientTestingModule, ChartModule ],
       providers: [ EarthquakeService, DatePipe, SessionDataService, ConfirmationService ]
     })
     .compileComponents();
