@@ -1,3 +1,3 @@
 <p>
-  <label>{{label}}</label><p-calendar #inputValue [(ngModel)]="value"  [minDate]="minDate" [maxDate]="maxDate" [showIcon]="true" (onSelect)="onSelect(inputValue)"></p-calendar>
+  <label>{{label}}</label><p-calendar #inputValue [(ngModel)]="value"  [minDate]="minDate" [maxDate]="maxDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" (onSelect)="onSelect(inputValue)"></p-calendar>
 </p>
