@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { EarthquakeService } from '../earthquake.service';
+import { Earthquake } from '../earthquake';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-trends-panel',
@@ -6,101 +9,90 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trends-panel.component.css']
 })
 export class TrendsPanelComponent implements OnInit {
-
+  subscription: Subscription;
   data: any;
 
-  constructor() {
-    // let decades = [1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020];
-    // let dataset1 = [10, 45, 23, 34, 45, 76, 45, 75, 8, 56, 22, 44, 55];
-    // let dataset2 = [20, 54, 20, 40, 50, 80, 60, 54, 15, 34, 65, 98, 78];
-    // let label1 = 'Magnitude 7';
-    // let label2 = 'Magnitude 6';
-    // let backgroundColor1: '#FF0000';
-    // let borderColor1: '#1E88E5';
-    // let backgroundColor2: '#9CCC65';
-    // let borderColor2: '#7CB342';
-    // this.data = {
-    //   labels: decades,
-    //   datasets: [
-    //     {
-    //       label: label1,
-    //       backgroundColor: backgroundColor1,
-    //       borderColor: borderColor1,
-    //       data: dataset1
-    //     },
-    //     {
-    //       label: label2,
-    //       backgroundColor: backgroundColor2,
-    //       borderColor: borderColor2,
-    //       data: dataset2
-    //     }
-    //   ]
-    // }
+  colors = new Map<number, string>();
 
-    // this.data.datasets[0].backgroundColor = '#FF0000';
-    // this.data.datasets[1].backgroundColor = '#00FF00';
-    // this.data = {
-    //   labels: [1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020],
-    //   datasets: [
-    //     {
-    //       label: "Magnitude 7",
-    //       backgroundColor: '#42A5F5',
-    //       borderColor: '#1E88E5',
-    //       data: [10, 45, 23, 34, 45, 76, 45, 75, 8, 56, 22, 44, 55 ]
-    //     }
-    //   ]
-    // }
+  constructor(private earthquakeService: EarthquakeService) {
+    this.colors.set(6, '#FC6644');
+    this.colors.set(7, '#f03863');
+    this.colors.set(8, '#a03823');
+    this.colors.set(9, '#a11Af0');
+    this.colors.set(10, '#511A80');
    }
 
   ngOnInit() {
-    let decades = [1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020];
-    let dataset1 = [10, 45, 23, 34, 45, 76, 45, 75, 8, 56, 22, 44, 55];
-    let dataset2 = [20, 54, 20, 40, 50, 80, 60, 54, 15, 34, 65, 98, 78];
-    let label1 = 'Magnitude 7';
-    let label2 = 'Magnitude 6';
-    let backgroundColor1 = '#FF0000';
-    let borderColor1 = '#1E88E5';
-    let backgroundColor2 = '#9CCC65';
-    let borderColor2 = '#7CB342';
-    this.data = {
-      labels: decades,
-      datasets: [
-        {
-          label: label1,
-          backgroundColor: backgroundColor1,
-          borderColor: borderColor1,
-          data: dataset1
-        },
-        {
-          label: label2,
-          backgroundColor: backgroundColor2,
-          borderColor: borderColor2,
-          data: dataset2
+    this.subscription = this.earthquakeService.getEarthquakes().subscribe( earthquakes => {
+     
+      if(earthquakes == null) {
+        return;
+      }
+
+      console.log('Trends: ' + earthquakes.length);
+      let earthquakeMap = new Map<number, Map<string, number>>();
+      earthquakes.forEach(quake => {
+        let year = new Date(quake.date).getFullYear();
+        let syear = year.toString();
+        let decade = syear.substr(0, 3) + '0';
+        console.log(decade);
+        let mag = Math.trunc(quake.magnitude);
+        let magMap = earthquakeMap.get(mag);
+        if(magMap == null) {
+          magMap = new Map<string, number>();
+          magMap.set(decade, 1);
+          earthquakeMap.set(mag, magMap);
+        } else {
+          let count = magMap.get(decade);
+          count++;
+          magMap.set(decade, count);
         }
-      ]
-    }
+      })
 
-    let dataset = {
-      label: label1,
-      backgroundColor: backgroundColor1,
-      borderColor: borderColor1,
-      data: dataset1
-    }
+      // extract decades (labels)
+      let decadeSet = new Set<string>();
+      Array.from(earthquakeMap.values()).forEach(entry => {
+        Array.from(entry.keys()).forEach(key => {
+          decadeSet.add(key);
+        });
+      });
 
-    let dataset3 = {
-      label: label2,
-      backgroundColor: backgroundColor2,
-      borderColor: borderColor2,
-      data: dataset2
-    }
+      let labels = Array.from(decadeSet).sort();
+      let datasets = [];
+      let mags = [];
 
-    this.data = {
-      labels: decades,
-      datasets: []
-    }
+      // extract data sets
+      Array.from(earthquakeMap.keys()).forEach(key => {
+        let magMap = earthquakeMap.get(key);
+        mags.push(key);
 
-    this.data.datasets.push(dataset);
-    this.data.datasets.push(dataset3);
+        let index = 0;
+        let dataset = [];
+        labels.forEach(label => {
+          // get quake count for specified decade
+          dataset.push(magMap.get(label));
+        });
+
+        datasets.push(dataset);
+      });
+
+      this.data = {
+        labels: labels,
+        datasets: []
+      }
+
+      let index = 0;
+      mags.forEach(mag => {
+        let color = this.colors.get(mag);
+        let dset = {
+          label: 'Magnitude ' + mag,
+          backgroundColor: color,
+          borderColor: '#1E88E5',
+          data: datasets[index]
+        }
+        this.data.datasets.push(dset);
+        index++;
+      });
+    });
   }
-
 }
