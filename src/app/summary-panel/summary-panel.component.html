@@ -8,7 +8,7 @@
     <li *ngFor="let quake of quakes"
       [class.selected]="quake.selected"
       (click)="onSelect(quake)">
-      <span class="magnitude">{{quake.label}}</span> {{quake.count}}
+      <span class="magnitude">{{quake.magnitude}}</span> {{quake.count}}
     </li>
   </ul>
 </p-card>

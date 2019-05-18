@@ -12,4 +12,8 @@ export class MainPanelComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSelectMagnitude(event) {
+    console.log('Parent: ' + event.magnitude + '   ' + event.selected);
+  }
+
 }

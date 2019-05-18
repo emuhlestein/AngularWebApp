@@ -38,7 +38,7 @@ export class TrendsPanelComponent implements OnInit {
         decadeSet.add(decade);
         let mag = Math.trunc(quake.magnitude);
         magMap = earthquakeMap.get(mag);
-;
+
         if(magMap) {
           let count = magMap.get(decade);
           if(count) {
