@@ -41,7 +41,7 @@ export class SummaryPanelComponent implements OnInit, OnDestroy {
         let quakes: MagnitudeDetails = {
           magnitude: String(key),
           count: this.earthquakeMap.get(key),
-          selected: false
+          selected: true
         };
         this.quakes.push(quakes);
       });

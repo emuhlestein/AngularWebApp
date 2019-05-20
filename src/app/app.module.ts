@@ -25,6 +25,7 @@ import { SummaryPanelComponent } from './summary-panel/summary-panel.component';
 import { MainPanelComponent } from './main-panel/main-panel.component';
 import { TrendsPanelComponent } from './trends-panel/trends-panel.component';
 import { ChartModule } from 'primeng/chart';
+import { MagnitudeSelectedService } from './magnitude-selected.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ChartModule } from 'primeng/chart';
     EarthquakeService,
     DatePipe,
     SessionDataService,
-    ConfirmationService
+    ConfirmationService,
+    MagnitudeSelectedService
   ],
   bootstrap: [AppComponent]
 })
