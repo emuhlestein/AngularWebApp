@@ -23,6 +23,9 @@ import { SpinnerModule } from 'primeng/spinner';
 import { CardModule } from 'primeng/card';
 import { SummaryPanelComponent } from './summary-panel/summary-panel.component';
 import { MainPanelComponent } from './main-panel/main-panel.component';
+import { TrendsPanelComponent } from './trends-panel/trends-panel.component';
+import { ChartModule } from 'primeng/chart';
+import { MagnitudeSelectedService } from './magnitude-selected.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { MainPanelComponent } from './main-panel/main-panel.component';
     ParametersComponent,
     CalendarComponent,
     SummaryPanelComponent,
-    MainPanelComponent
+    MainPanelComponent,
+    TrendsPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -47,13 +51,15 @@ import { MainPanelComponent } from './main-panel/main-panel.component';
     TableModule,
     HttpClientModule,
     ConfirmDialogModule,
-    SpinnerModule
+    SpinnerModule,
+    ChartModule
   ],
   providers: [
     EarthquakeService,
     DatePipe,
     SessionDataService,
-    ConfirmationService
+    ConfirmationService,
+    MagnitudeSelectedService
   ],
   bootstrap: [AppComponent]
 })

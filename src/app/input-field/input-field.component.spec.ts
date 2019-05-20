@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { SpinnerModule } from 'primeng/spinner';
 import { InputFieldComponent } from './input-field.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 describe('InputFieldComponent', () => {
   let component: InputFieldComponent;
@@ -8,7 +11,9 @@ describe('InputFieldComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputFieldComponent ]
+      declarations: [ InputFieldComponent ],
+      imports: [ SpinnerModule, HttpClientTestingModule, FormsModule ],
+      providers: [ DatePipe ]
     })
     .compileComponents();
   }));

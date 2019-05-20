@@ -1,7 +1,9 @@
 :host
     ::ng-deep .ui-card {
         background-color: lightgreen !important;
-        height: 100%;
+        display: inline-block;
+        vertical-align: top;
+        height:100%;
     }
 :host
     ::ng-deep .ui-corner-all {

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { EarthquakeService } from '../earthquake.service';
 import { Earthquake } from '../earthquake';
 import { Subscription } from 'rxjs';
@@ -14,6 +14,7 @@ export class SummaryPanelComponent implements OnInit, OnDestroy {
   earthquakes: Earthquake[];
   quakes: MagnitudeDetails[] = [];
   earthquakeMap: Map<number, number> = new Map<number, number>();
+  @Output() public magnitudeSelected = new EventEmitter();
 
   constructor(private earthquakeService: EarthquakeService) { }
 
@@ -21,13 +22,11 @@ export class SummaryPanelComponent implements OnInit, OnDestroy {
     this.subscription = this.earthquakeService.getEarthquakes().subscribe( result => {
      
       if(result == null) {
-        console.log('result is null');
         return;
       }
       this.quakes = [];
       this.earthquakeMap.clear();
       this.earthquakes = result;
-      console.log('Count: ' + this.earthquakes.length);
       this.earthquakes.forEach(quake => {
         let mag = Math.trunc(quake.magnitude);
         let count = this.earthquakeMap.get(mag);
@@ -40,9 +39,9 @@ export class SummaryPanelComponent implements OnInit, OnDestroy {
       });
       Array.from(this.earthquakeMap.keys()).forEach(key => {
         let quakes: MagnitudeDetails = {
-          label: String(key),
+          magnitude: String(key),
           count: this.earthquakeMap.get(key),
-          selected: false
+          selected: true
         };
         this.quakes.push(quakes);
       });
@@ -57,11 +56,12 @@ export class SummaryPanelComponent implements OnInit, OnDestroy {
 
   onSelect(quake: MagnitudeDetails) {
     quake.selected = !quake.selected;
+    this.magnitudeSelected.emit({magnitude: quake.magnitude, selected: quake.selected});
   }
 }
 
 interface MagnitudeDetails {
-  label: string,
+  magnitude: string,
   count: number,
   selected: boolean
 }
