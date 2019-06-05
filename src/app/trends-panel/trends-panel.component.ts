@@ -14,6 +14,8 @@ export class TrendsPanelComponent implements OnInit {
   data: any;
   selected = new Map<number, boolean>();
   earthquakes: Earthquake[];
+  width = 600;
+  height = 300;
 
   colors = new Map<number, string>();
 
