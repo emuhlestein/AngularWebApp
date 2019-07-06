@@ -28,4 +28,8 @@ describe('EarthquakesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('default page size should be 16', () => {
+    expect(component.pageSize).toEqual(16);
+  });
 });

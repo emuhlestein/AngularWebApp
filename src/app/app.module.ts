@@ -26,6 +26,12 @@ import { MainPanelComponent } from './main-panel/main-panel.component';
 import { TrendsPanelComponent } from './trends-panel/trends-panel.component';
 import { ChartModule } from 'primeng/chart';
 import { MagnitudeSelectedService } from './magnitude-selected.service';
+import { RecentQuakesComponent } from './recent-panel/recent-panel.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { ProgressBarComponent } from './progressbar/progressbar.component';
+import { ProgressBarService } from './progressbar/progressbar.service';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +43,9 @@ import { MagnitudeSelectedService } from './magnitude-selected.service';
     CalendarComponent,
     SummaryPanelComponent,
     MainPanelComponent,
-    TrendsPanelComponent
+    TrendsPanelComponent,
+    RecentQuakesComponent,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,
@@ -52,14 +60,17 @@ import { MagnitudeSelectedService } from './magnitude-selected.service';
     HttpClientModule,
     ConfirmDialogModule,
     SpinnerModule,
-    ChartModule
+    ChartModule,
+    ProgressSpinnerModule,
+    ProgressBarModule
   ],
   providers: [
     EarthquakeService,
     DatePipe,
     SessionDataService,
     ConfirmationService,
-    MagnitudeSelectedService
+    MagnitudeSelectedService,
+    ProgressBarService
   ],
   bootstrap: [AppComponent]
 })
