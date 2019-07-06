@@ -4,6 +4,7 @@ import { Earthquake } from './earthquake'
 import { EarthquakeData } from './earthquakedata'
 import { BehaviorSubject, Subject } from 'rxjs'
 import { HttpClient } from '@angular/common/http'
+import { ProgressBarService } from './progressbar/progressbar.service';
 
 @Injectable()
 export class EarthquakeService {
@@ -11,6 +12,7 @@ export class EarthquakeService {
   private earthquakes: Subject<Earthquake[]> = new BehaviorSubject<Earthquake[]>(null);
 
   constructor(
+    private progressBarService: ProgressBarService,
     private http: HttpClient,
     private datePipe: DatePipe) { }
 
@@ -26,6 +28,7 @@ export class EarthquakeService {
     url = `${url}&starttime=${stateDate}&endtime=${endDate}`;
     url = `${url}&minmagnitude=${minMag}`;
     url = `${url}&maxmagnitude=${maxMag}`;
+    this.progressBarService.startProgressBar();
     this.http.get<EarthquakeData>(url).subscribe(response => {
       let earthquakes = new Array<Earthquake>();
       for(let index in response.features) {
@@ -38,6 +41,7 @@ export class EarthquakeService {
         };
         earthquakes[index] = earthquake;
       }
+      this.progressBarService.stopProgressBar();
       this.earthquakes.next(earthquakes);
     });
   }

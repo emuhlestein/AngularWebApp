@@ -14,14 +14,17 @@ export class EarthquakesComponent implements OnInit {
   earthquakes: Earthquake[];
   cols: any[];
   rowData: Earthquake;
+  loading = false;
 
   constructor(
     private earthquakeService: EarthquakeService,
     private datePipe: DatePipe) { }
 
   ngOnInit() {
+    this.loading = true;
     this.earthquakeService.onSearch(6, 7, '2014-01-01', '2016-01-02');
     this.earthquakeService.getEarthquakes().subscribe(result => {
+      this.loading = false;
       this.earthquakes = result;
     });
 

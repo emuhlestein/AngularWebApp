@@ -1,6 +1,6 @@
 <p-card header="Earthquakes" styleClass="ui-card-shadow">
   
-<p-table [columns]="cols" [value]="earthquakes" [paginator]="true" [rows]="pageSize" [sortOrder]="-1"
+<p-table [columns]="cols" [value]="earthquakes" [loading]="loading" [paginator]="true" [rows]="pageSize" [sortOrder]="-1"
 (sortFunction)="customSort($event)" [customSort]="true">
 
     <ng-template pTemplate="header" let-columns>
