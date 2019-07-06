@@ -9,7 +9,7 @@
     ::ng-deep .trends-panel .ui-card {
         background-color: lightgray !important;
         display: inline-block;
-        vertical-align: top;;
+        vertical-align: top;
         height: 100%;
         max-height: 350px;
         width: 45%;

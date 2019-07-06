@@ -1,0 +1,9 @@
+:host
+    ::ng-deep .recent-panel .ui-card {
+        background-color: #e6e486 !important;
+        display: inline-block;
+        vertical-align: top;
+        height: 100%;
+        max-height: 350px;
+        width: 25%;
+    }

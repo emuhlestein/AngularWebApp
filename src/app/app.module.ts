@@ -26,6 +26,7 @@ import { MainPanelComponent } from './main-panel/main-panel.component';
 import { TrendsPanelComponent } from './trends-panel/trends-panel.component';
 import { ChartModule } from 'primeng/chart';
 import { MagnitudeSelectedService } from './magnitude-selected.service';
+import { RecentQuakesComponent } from './recent-panel/recent-panel.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MagnitudeSelectedService } from './magnitude-selected.service';
     CalendarComponent,
     SummaryPanelComponent,
     MainPanelComponent,
-    TrendsPanelComponent
+    TrendsPanelComponent,
+    RecentQuakesComponent
   ],
   imports: [
     BrowserModule,

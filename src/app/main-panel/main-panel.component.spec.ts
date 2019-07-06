@@ -5,6 +5,8 @@ import { TrendsPanelComponent } from '../trends-panel/trends-panel.component';
 import { MainPanelComponent } from './main-panel.component';
 import { CalendarComponent } from '../calendar/calendar.component';
 import { InputFieldComponent } from '../input-field/input-field.component';
+import { RecentQuakesComponent } from '../recent-panel/recent-panel.component';
+import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { ChartModule } from 'primeng/chart';
 import { CalendarModule } from 'primeng/calendar';
@@ -25,9 +27,9 @@ describe('MainPanelComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ MainPanelComponent,
          ParametersComponent, SummaryPanelComponent,
-         TrendsPanelComponent, CalendarComponent, InputFieldComponent ],
+         TrendsPanelComponent, CalendarComponent, InputFieldComponent, RecentQuakesComponent ],
       imports: [ FormsModule, CardModule, CalendarModule, ConfirmDialogModule,
-         SpinnerModule, HttpClientTestingModule, ChartModule ],
+         SpinnerModule, HttpClientTestingModule, ChartModule, TableModule ],
       providers: [ EarthquakeService, DatePipe, SessionDataService, ConfirmationService ]
     })
     .compileComponents();

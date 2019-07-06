@@ -7,6 +7,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { ParametersComponent } from './parameters/parameters.component'
 import { SummaryPanelComponent } from './summary-panel/summary-panel.component';
 import { TrendsPanelComponent } from './trends-panel/trends-panel.component';
+import { RecentQuakesComponent } from './recent-panel/recent-panel.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
@@ -33,7 +34,8 @@ describe('AppComponent', () => {
         ParametersComponent,
         SummaryPanelComponent,
         TrendsPanelComponent,
-        InputFieldComponent
+        InputFieldComponent,
+        RecentQuakesComponent
       ],
       imports: [
         CalendarModule,
