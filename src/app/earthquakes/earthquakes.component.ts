@@ -6,12 +6,13 @@ import { EarthquakeService } from '../earthquake.service';
 @Component({
   selector: 'app-earthquakes',
   templateUrl: './earthquakes.component.html',
-  styleUrls: ['./earthquakes.component.css']
+  styleUrls: ['./earthquakes.component.scss']
 })
 export class EarthquakesComponent implements OnInit {
 
   pageSize: number = 16;
   earthquakes: Earthquake[];
+  displayedColumns: string[] = ['location', 'magnitude', 'date', 'url'];
   cols: any[];
   rowData: Earthquake;
   loading = false;
@@ -29,11 +30,11 @@ export class EarthquakesComponent implements OnInit {
     });
 
     this.cols = [
-      {field: 'location', header: 'Location', type: 'string', width: '30%'},
-      {field: 'magnitude', header: 'Magnitude', type: 'number', width: '25%'},
-      {field: 'date', header: 'Date', type: 'date', width: '25%'},
-      {field: 'url', header: 'More Info', type: 'string', width: '20%'}
-    ];   
+      { field: 'location', header: 'Location', type: 'string' },
+      { field: 'magnitude', header: 'Magnitude', type: 'number' },
+      { field: 'date', header: 'Date', type: 'date' },
+      { field: 'url', header: 'More Info', type: 'string' }
+    ];
   }
 
   getFormattedDate(numSeconds: number): string {
@@ -48,16 +49,16 @@ export class EarthquakesComponent implements OnInit {
       let result = null;
 
       if (value1 == null && value2 != null)
-          result = -1;
+        result = -1;
       else if (value1 != null && value2 == null)
-          result = 1;
+        result = 1;
       else if (value1 == null && value2 == null) {
-          result = 0;
+        result = 0;
       } else if (event.field === 'date') {
         let date1 = new Date(value1).getTime();
         let date2 = new Date(value2).getTime();
         result = (date1 < date2) ? -1 : (date1 > date2) ? 1 : 0;
-     }
+      }
       else if (typeof value1 === 'string' && typeof value2 === 'string') {
         result = value1.localeCompare(value2);
       } else {

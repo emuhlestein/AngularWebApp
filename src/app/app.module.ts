@@ -3,9 +3,7 @@ import { NgModule } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { ButtonModule } from 'primeng/button';
-import { TableModule } from 'primeng/table';
+import { AppComponent } from './core/app.component';
 import { EarthquakeService } from './earthquake.service';
 import { EarthquakesComponent } from './earthquakes/earthquakes.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -31,6 +29,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ProgressBarComponent } from './progressbar/progressbar.component';
 import { ProgressBarService } from './progressbar/progressbar.service';
+import { MaterialModule } from './material-module';
 
 
 @NgModule({
@@ -50,19 +49,18 @@ import { ProgressBarService } from './progressbar/progressbar.service';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ButtonModule,
     CalendarModule,
     CardModule,
     DialogModule,
     ConfirmDialogModule,
     FormsModule,
-    TableModule,
     HttpClientModule,
     ConfirmDialogModule,
     SpinnerModule,
     ChartModule,
     ProgressSpinnerModule,
-    ProgressBarModule
+    ProgressBarModule,
+    MaterialModule
   ],
   providers: [
     EarthquakeService,

@@ -1,0 +1,59 @@
+td,
+th {
+  border: 1px solid rgb(190, 190, 190);
+  padding: 10px;
+}
+
+td {
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
+
+th[scope="col"] {
+  background-color: #696969;
+  color: #fff;
+}
+
+th[scope="row"] {
+  background-color: #d7d9f2;
+}
+
+div {
+  padding: 10px;
+  caption-side: bottom;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid rgb(200, 200, 200);
+  letter-spacing: 1px;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+}
+
+/* Column Widths */
+.mat-column-date,
+.mat-column-magnitude {
+  width: 120px;
+}
+
+// .mat-column-date,
+// .mat-column-url {
+//   max-width: 80px;
+// }
+
+// .mat-column-location {
+//   max-width: 256px;
+// }
+
+// .mat-column-magnitude {
+//   max-width: 200px;
+// }
+
+// .mat-column-url {
+//   max-width: 600px;
+// }

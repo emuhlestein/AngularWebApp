@@ -1,25 +1,25 @@
 import { TestBed, async } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { MainPanelComponent } from './main-panel/main-panel.component';
-import { EarthquakesComponent } from './earthquakes/earthquakes.component';
-import { MessagesComponent } from './messages/messages.component';
-import { ParametersComponent } from './parameters/parameters.component'
-import { SummaryPanelComponent } from './summary-panel/summary-panel.component';
-import { TrendsPanelComponent } from './trends-panel/trends-panel.component';
-import { RecentQuakesComponent } from './recent-panel/recent-panel.component';
-import { CalendarComponent } from './calendar/calendar.component';
+import { MainPanelComponent } from '../main-panel/main-panel.component';
+import { EarthquakesComponent } from '../earthquakes/earthquakes.component';
+import { MessagesComponent } from '../messages/messages.component';
+import { ParametersComponent } from '../parameters/parameters.component'
+import { SummaryPanelComponent } from '../summary-panel/summary-panel.component';
+import { TrendsPanelComponent } from '../trends-panel/trends-panel.component';
+import { RecentQuakesComponent } from '../recent-panel/recent-panel.component';
+import { CalendarComponent } from '../calendar/calendar.component';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { ChartModule } from 'primeng/chart';
 import { CalendarModule } from 'primeng/calendar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
-import { InputFieldComponent } from './input-field/input-field.component';
+import { InputFieldComponent } from '../input-field/input-field.component';
 import { SpinnerModule } from 'primeng/spinner';
-import { SessionDataService } from './session-data-service';
+import { SessionDataService } from '../session-data-service';
 import { DatePipe } from '@angular/common';
-import { EarthquakeService } from './earthquake.service';
+import { EarthquakeService } from '../earthquake.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
