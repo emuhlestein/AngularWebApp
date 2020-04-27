@@ -4,8 +4,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatButtonModule } from '@angular/material';
 
-const modules = [
+const matModules = [
+  MatButtonModule,
   MatCardModule,
   MatPaginatorModule,
   MatProgressBarModule,
@@ -14,7 +16,7 @@ const modules = [
 ];
 
 @NgModule({
-  imports: modules,
-  exports: modules
+  imports: matModules,
+  exports: matModules
 })
 export class MaterialModule { }

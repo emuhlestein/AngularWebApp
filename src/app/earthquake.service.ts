@@ -21,6 +21,7 @@ export class EarthquakeService {
   }
 
   onSearch(minMag: number, maxMag: number, stateDate: string, endDate: string) {
+    console.log('opnSearch');
     maxMag = maxMag + 0.999;
     let baseUrl: string = 'https://earthquake.usgs.gov/fdsnws/event/1/query?';
     let format: string = 'format=geojson';
@@ -31,13 +32,14 @@ export class EarthquakeService {
     this.progressBarService.startProgressBar();
     this.http.get<EarthquakeData>(url).subscribe(response => {
       let earthquakes = new Array<Earthquake>();
-      for(let index in response.features) {
+      for (let index in response.features) {
         let props = response.features[index].properties;
         let earthquake = {
           location: props.place,
           magnitude: props.mag,
           date: this.getFormattedDate(props.time),
-          url: props.url
+          url: props.url,
+          info: ''
         };
         earthquakes[index] = earthquake;
       }

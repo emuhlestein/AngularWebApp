@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { DatePipe, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './core/app.component';
@@ -30,6 +30,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { ProgressBarComponent } from './progressbar/progressbar.component';
 import { ProgressBarService } from './progressbar/progressbar.service';
 import { MaterialModule } from './material-module';
+import { DataTableComponent } from './data-table/data-table.component';
+import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { MaterialModule } from './material-module';
     MainPanelComponent,
     TrendsPanelComponent,
     RecentQuakesComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import { MaterialModule } from './material-module';
     CalendarModule,
     CardModule,
     DialogModule,
+    CommonModule,
     ConfirmDialogModule,
     FormsModule,
     HttpClientModule,
@@ -60,7 +64,10 @@ import { MaterialModule } from './material-module';
     ChartModule,
     ProgressSpinnerModule,
     ProgressBarModule,
-    MaterialModule
+    MaterialModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     EarthquakeService,

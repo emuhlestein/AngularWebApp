@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Earthquake } from '../earthquake'
 import { EarthquakeService } from '../earthquake.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-earthquakes',
@@ -10,23 +12,32 @@ import { EarthquakeService } from '../earthquake.service';
 })
 export class EarthquakesComponent implements OnInit {
 
-  pageSize: number = 16;
-  earthquakes: Earthquake[];
+  pageSize: number = 10;
+  earthquakes = new MatTableDataSource<Earthquake>();
   displayedColumns: string[] = ['location', 'magnitude', 'date', 'url'];
   cols: any[];
   rowData: Earthquake;
   loading = false;
+  length = 0;
+
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(
     private earthquakeService: EarthquakeService,
     private datePipe: DatePipe) { }
 
   ngOnInit() {
+
+    this.earthquakes.paginator = this.paginator;
     this.loading = true;
     this.earthquakeService.onSearch(6, 7, '2014-01-01', '2016-01-02');
     this.earthquakeService.getEarthquakes().subscribe(result => {
       this.loading = false;
-      this.earthquakes = result;
+      this.length = result ? result.length : 0;
+      this.paginator.length = this.length;
+      this.paginator.pageSize = this.pageSize;
+      this.paginator.pageIndex = 0;
+      this.earthquakes = new MatTableDataSource<Earthquake>(result);
     });
 
     this.cols = [
@@ -35,6 +46,10 @@ export class EarthquakesComponent implements OnInit {
       { field: 'date', header: 'Date', type: 'date' },
       { field: 'url', header: 'More Info', type: 'string' }
     ];
+  }
+
+  onPageEvent($event) {
+    console.log($event);
   }
 
   getFormattedDate(numSeconds: number): string {

@@ -6,12 +6,12 @@
         <!-- Location Column -->
         <ng-container matColumnDef="location">
           <th class="text-center" mat-header-cell *matHeaderCellDef>Location</th>
-          <td mat-cell *matCellDef="let element">{{element.location}}</td>
+          <td mat-cell *matCellDef="let element">{{element.location}}<button mat-button>Help</button></td>
         </ng-container>
 
         <!-- Magnitude Column -->
         <ng-container matColumnDef="magnitude">
-          <th class="text-center" mat-header-cell *matHeaderCellDef>Magnitude</th>
+          <th class="text-center" mat-header-cell *matHeaderCellDef>Mag</th>
           <td mat-cell *matCellDef="let element">{{element.magnitude}}</td>
         </ng-container>
 
@@ -24,12 +24,13 @@
         <!-- More Info Column -->
         <ng-container matColumnDef="url">
           <th class="text-center" mat-header-cell *matHeaderCellDef>More Info</th>
-          <td mat-cell *matCellDef="let element"><a href="element.url">{{element.url}}</a></td>
+          <td mat-cell *matCellDef="let element"><a target="_blank" href="element.url">{{element.url}}</a></td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      <mat-paginator (page)="onPageEvent($event)" [length]="length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"
+        showFirstLastButtons></mat-paginator>
 
     </mat-card>
   </div>
