@@ -12,6 +12,29 @@ th {
   padding: 0px;
 }
 
+.mat-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.mat-list-item {
+  padding: 0px;
+  margin: 0px;
+}
+
+.nav-link {
+  font-size: 1.5rem;
+}
+
+mat-icon {
+  position: relative;
+  top: 3px;
+  padding-right: 2rem;
+}
+
+// .mat-list-base {
+//   display: inline-block;
+// }
 // td,
 // th {
 //   text-align: center;

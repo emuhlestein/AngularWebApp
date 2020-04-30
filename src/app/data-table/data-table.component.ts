@@ -6,6 +6,7 @@ import { Earthquake, EarthquakesResolved } from '../earthquake';
 import { merge } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { RecentQuakesComponent } from '../recent-panel/recent-panel.component';
 
 @Component({
   templateUrl: './data-table.component.html',
@@ -19,6 +20,7 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   tempSort: MatSort;
   resolvedData: EarthquakesResolved;
   ds: MatTableDataSource<Earthquake>;
+  quakeCount: QuakeCount[] = [];
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['location', 'magnitude', 'date', 'info'];
@@ -32,6 +34,24 @@ export class DataTableComponent implements AfterViewInit, OnInit {
     console.log('ngOnInit');
     this.resolvedData = this.route.snapshot.data['resolvedEarthquakeData'];
     this.dataSource = new DataTableDataSource(this.resolvedData.earthquakes);
+
+    let quakeCountMap: { [key: string]: number } = {};
+
+    for (let quake of this.resolvedData.earthquakes) {
+      let mag = Math.trunc(quake.magnitude).toString();
+      if (quakeCountMap[mag]) {
+        quakeCountMap[mag]++;
+      } else {
+        quakeCountMap[mag] = 1;
+      }
+    }
+
+    console.log(Object.entries(quakeCountMap));
+    this.quakeCount = Object.entries(quakeCountMap).map(i => this.mapQuake(i));
+
+    // this.quakeCount = Object.entries(quakeCountMap);
+
+
     //this.ds = new MatTableDataSource<Earthquake>(this.resolvedData.earthquakes);
     // console.log(this.paginator);
 
@@ -46,6 +66,14 @@ export class DataTableComponent implements AfterViewInit, OnInit {
     // });
     // this.earthquakeService.onSearch(6, 7, '2014-01-01', '2016-01-02');
 
+  }
+
+  mapQuake(quake) {
+    const mag = quake[0];
+    console.log('color', mag);
+    const count = quake[1];
+    const color = mag === "7" ? "#ff0000" : "#ffff00";
+    return ({ magnitude: mag, count: count, color: color });
   }
 
   ngAfterViewInit() {
@@ -79,4 +107,10 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   moreInfo(element) {
     console.log(element);
   }
+}
+
+export interface QuakeCount {
+  magnitude: string;
+  count: number;
+  color: string;
 }
