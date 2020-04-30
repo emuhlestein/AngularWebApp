@@ -53,9 +53,10 @@ export class DataTableDataSource extends DataSource<Earthquake> {
   //   // });
   // }
 
-  pageQuakes(pageIndex: number, pageSize: number) {
-    // paginator.length = this.data.length;
-    const quakes = this.getPagedData([...this.data], pageIndex, pageSize);
+  pageQuakes(pageIndex: number, pageSize: number, sortColumn: string, sortDirection: string) {
+    console.log('Sort Column', sortColumn);
+    console.log('Sort Direction', sortDirection);
+    const quakes = this.getPagedData(this.getSortedData(this.data, sortColumn, sortDirection), pageIndex, pageSize);
     this.earthquakeSubject.next(quakes);
   }
 
@@ -115,14 +116,14 @@ export class DataTableDataSource extends DataSource<Earthquake> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Earthquake[]) {
-    if (!this.sort.active || this.sort.direction === '') {
+  private getSortedData(data: Earthquake[], sortColumn: string, sortDirection: string) {
+    if (!sortColumn || sortDirection === '') {
       return data;
     }
 
     return data.sort((a, b) => {
-      const isAsc = this.sort.direction === 'asc';
-      switch (this.sort.active) {
+      const isAsc = sortDirection === 'asc';
+      switch (sortColumn) {
         case 'location': return compare(a.location, b.location, isAsc);
         case 'magnitude': return compare(+a.magnitude, +b.magnitude, isAsc);
         case 'date': return compare(+a.date, +b.date, isAsc);

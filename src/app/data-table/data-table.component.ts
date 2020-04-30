@@ -63,10 +63,12 @@ export class DataTableComponent implements AfterViewInit, OnInit {
 
     // this.dataSource = new DataTableDataSource(this.paginator, this.sort, this.earthquakeService);
 
-    merge(this.paginator.page)
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(
         tap(() => console.log('Paginating')),
-        tap(() => this.dataSource.pageQuakes(this.paginator.pageIndex, this.paginator.pageSize))
+        tap(() => this.dataSource.pageQuakes(
+          this.paginator.pageIndex, this.paginator.pageSize,
+          this.sort.active, this.sort.direction))
       ).subscribe();
   }
 
