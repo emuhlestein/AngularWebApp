@@ -1,6 +1,6 @@
-.full-width-table {
-  width: 100%;
-}
+// .full-width-table {
+//   width: 100%;
+// }
 
 td,
 th {
@@ -8,8 +8,33 @@ th {
   padding: 10px;
 }
 
-td {
+.container {
+  padding: 0px;
+}
+
+// td,
+// th {
+//   text-align: center;
+// }
+
+// th {
+//   text-align: center;
+// }
+
+// .mat-column-date,
+// .mat-column-magnitude,
+.mat-column-info {
   text-align: center;
+}
+
+.mat-column-date,
+.mat-column-magnitude {
+  text-align: center;
+}
+
+:host ::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
 }
 
 tr:nth-child(even) {
@@ -40,10 +65,10 @@ table {
 }
 
 /* Column Widths */
-.mat-column-date,
-.mat-column-magnitude {
-  width: 120px;
-}
+// .mat-column-date,
+// .mat-column-magnitude {
+//   width: 120px;
+// }
 
 // .mat-column-date,
 // .mat-column-url {

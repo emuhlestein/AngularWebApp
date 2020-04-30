@@ -1,33 +1,33 @@
 <div class="card mb-5">
   <div class="card-header">
-    Test
+    Earthquakes
   </div>
 
-  <div class="card-body">
-    <div class="row">
-      <div class="col-md-8">
-        <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
+  <div class="container">
+    <div class="card-body">
+      <div>
+        <table mat-table class="full-width-table col-12" [dataSource]="dataSource" matSort aria-label="Elements">
           <!-- Location Column -->
           <ng-container matColumnDef="location">
-            <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
             <td mat-cell *matCellDef="let element">{{element.location}}</td>
           </ng-container>
 
           <!-- Magnitude Column -->
           <ng-container matColumnDef="magnitude">
-            <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header>Mag</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Mag</th>
             <td mat-cell *matCellDef="let element">{{element.magnitude | number:'1.1-1'}}</td>
           </ng-container>
 
           <!-- Date Column -->
           <ng-container matColumnDef="date">
-            <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
             <td mat-cell *matCellDef="let element">{{element.date | date:'yyyy-MM-dd'}}</td>
           </ng-container>
 
           <!-- More Info Column -->
           <ng-container matColumnDef="info">
-            <th class="text-center" mat-header-cell *matHeaderCellDef>More Info</th>
+            <th mat-header-cell *matHeaderCellDef>More Info</th>
             <td mat-cell *matCellDef="let element"><a target="_blank" [href]="element.url"><i
                   class="material-icons">info</i></a></td>
           </ng-container>
@@ -40,5 +40,6 @@
         </mat-paginator>
       </div>
     </div>
+
   </div>
 </div>
