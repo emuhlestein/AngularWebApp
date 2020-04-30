@@ -5,3 +5,8 @@ export interface Earthquake {
   url: string;
   info: string;
 }
+
+export interface EarthquakesResolved {
+  earthquakes: Earthquake[];
+  error?: any;
+}

@@ -31,7 +31,7 @@ export class EarthquakesComponent implements OnInit {
     this.earthquakes.paginator = this.paginator;
     this.loading = true;
     this.earthquakeService.onSearch(6, 7, '2014-01-01', '2016-01-02');
-    this.earthquakeService.getEarthquakes().subscribe(result => {
+    this.earthquakeService.earthquakes$.subscribe(result => {
       this.loading = false;
       this.length = result ? result.length : 0;
       this.paginator.length = this.length;

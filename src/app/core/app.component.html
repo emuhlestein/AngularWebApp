@@ -8,6 +8,9 @@
 
 <div class="col-12">
   <!-- <app-main-panel style="margin: 10px"></app-main-panel> -->
-  <app-data-table></app-data-table>
+  <!-- <app-data-table></app-data-table> -->
+  <div class="col-md-12" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
+    <router-outlet #o="outlet"></router-outlet>
+  </div>
 </div>
 <app-messages></app-messages>

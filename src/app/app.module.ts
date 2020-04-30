@@ -32,6 +32,8 @@ import { ProgressBarService } from './progressbar/progressbar.service';
 import { MaterialModule } from './material-module';
 import { DataTableComponent } from './data-table/data-table.component';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { JunkDataTableComponent } from './junk-data-table/junk-data-table.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/mate
     TrendsPanelComponent,
     RecentQuakesComponent,
     ProgressBarComponent,
-    DataTableComponent
+    DataTableComponent,
+    JunkDataTableComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/mate
     MaterialModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    AppRoutingModule
   ],
   providers: [
     EarthquakeService,
