@@ -126,7 +126,7 @@ export class DataTableDataSource extends DataSource<Earthquake> {
       switch (sortColumn) {
         case 'location': return compare(a.location, b.location, isAsc);
         case 'magnitude': return compare(+a.magnitude, +b.magnitude, isAsc);
-        case 'date': return compare(+a.date, +b.date, isAsc);
+        case 'date': return compare(new Date(a.date), new Date(b.date), isAsc);
         default: return 0;
       }
     });
