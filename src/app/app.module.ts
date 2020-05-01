@@ -30,9 +30,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { ProgressBarComponent } from './progressbar/progressbar.component';
 import { ProgressBarService } from './progressbar/progressbar.service';
 import { MaterialModule } from './material-module';
-import { DataTableComponent } from './data-table/data-table.component';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
-import { JunkDataTableComponent } from './junk-data-table/junk-data-table.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -51,8 +49,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     TrendsPanelComponent,
     RecentQuakesComponent,
     ProgressBarComponent,
-    DataTableComponent,
-    JunkDataTableComponent,
     HomeComponent,
     PageNotFoundComponent
   ],
