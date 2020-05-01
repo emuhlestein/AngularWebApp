@@ -1,13 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
+// must come before bootstrap
+@import "./src/app/styles/_colors";
+
 @import "~bootstrap/scss/bootstrap";
 
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
+@import "./src/app/styles/website";

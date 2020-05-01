@@ -1,11 +1,62 @@
+// .full-width-table {
+//   width: 100%;
+// }
+
 td,
 th {
   border: 1px solid rgb(190, 190, 190);
-  padding: 10px;
 }
 
-td {
+.container {
+  padding: 0px;
+}
+
+.mat-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.mat-list-item {
+  padding: 0px;
+  margin: 0px;
+}
+
+.nav-link {
+  font-size: 1rem;
+}
+
+mat-icon {
+  position: relative;
+  top: 3px;
+  padding-right: 2rem;
+}
+
+// .mat-list-base {
+//   display: inline-block;
+// }
+// td,
+// th {
+//   text-align: center;
+// }
+
+// th {
+//   text-align: center;
+// }
+
+// .mat-column-date,
+// .mat-column-magnitude,
+.mat-column-info {
   text-align: center;
+}
+
+.mat-column-date,
+.mat-column-magnitude {
+  text-align: center;
+}
+
+:host ::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
 }
 
 tr:nth-child(even) {
@@ -36,10 +87,10 @@ table {
 }
 
 /* Column Widths */
-.mat-column-date,
-.mat-column-magnitude {
-  width: 120px;
-}
+// .mat-column-date,
+// .mat-column-magnitude {
+//   width: 120px;
+// }
 
 // .mat-column-date,
 // .mat-column-url {

@@ -4,8 +4,8 @@ import { DatePipe, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './core/app.component';
-import { EarthquakeService } from './earthquake.service';
-import { EarthquakesComponent } from './earthquakes/earthquakes.component';
+import { EarthquakeService } from './earthquakes/earthquake.service';
+import { EarthquakeComponent } from './earthquakes/earthquakes.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InputFieldComponent } from './input-field/input-field.component';
@@ -34,12 +34,14 @@ import { DataTableComponent } from './data-table/data-table.component';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { JunkDataTableComponent } from './junk-data-table/junk-data-table.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './components/home/home.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EarthquakesComponent,
+    EarthquakeComponent,
     MessagesComponent,
     InputFieldComponent,
     ParametersComponent,
@@ -50,7 +52,9 @@ import { AppRoutingModule } from './app-routing.module';
     RecentQuakesComponent,
     ProgressBarComponent,
     DataTableComponent,
-    JunkDataTableComponent
+    JunkDataTableComponent,
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

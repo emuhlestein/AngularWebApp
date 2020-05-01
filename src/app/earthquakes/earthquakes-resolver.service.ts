@@ -3,8 +3,8 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { EarthquakesResolved } from '../earthquake';
-import { EarthquakeService } from '../earthquake.service';
+import { EarthquakesResolved } from './earthquake';
+import { EarthquakeService } from './earthquake.service';
 
 @Injectable({
   providedIn: 'root'

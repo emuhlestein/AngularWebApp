@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { EarthquakeService } from '../earthquake.service';
+import { EarthquakeService } from '../earthquakes/earthquake.service';
 import { SessionDataService, START_DATE_KEY, END_DATE_KEY, MIN_MAG_KEY, MAX_MAG_KEY } from '../session-data-service';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { Message } from '../common/message';
@@ -39,8 +39,8 @@ export class ParametersComponent implements OnInit {
   }
 
   search() {
-   
-    if(this.minMagnitudeValue > this.maxMagnitudeValue) {
+
+    if (this.minMagnitudeValue > this.maxMagnitudeValue) {
       this.showDialog('Maximum magnitude must be greater than or equal to Minimum magnitude.');
     } else {
 
@@ -57,7 +57,7 @@ export class ParametersComponent implements OnInit {
   }
 
   onStartDateChanged($event) {
-    if($event.value.getTime() > this.endDateValue.getTime()) {
+    if ($event.value.getTime() > this.endDateValue.getTime()) {
       $event.value = this.endDateValue;
       this.startDateValue = this.endDateValue;
       this.showDialog('Stop date must be greater than or equal to start date.');
@@ -68,7 +68,7 @@ export class ParametersComponent implements OnInit {
   }
 
   onEndDateChanged($event) {
-    if($event.value.getTime() < this.startDateValue.getTime()) {
+    if ($event.value.getTime() < this.startDateValue.getTime()) {
       $event.value = this.startDateValue;
       this.endDateValue = this.startDateValue;
       this.showDialog('Stop date must be greater than or equal to start date.');
@@ -79,7 +79,7 @@ export class ParametersComponent implements OnInit {
   }
 
   onMinMagChanged($event) {
-    if($event.value > this.maxMagnitudeValue) {
+    if ($event.value > this.maxMagnitudeValue) {
       $event.value = this.maxMagnitudeValue;
       this.minMagnitudeValue = this.maxMagnitudeValue;
       this.showDialog('Maximum magnitude must be greater than or equal to Minimum magnitude.');
@@ -90,7 +90,7 @@ export class ParametersComponent implements OnInit {
   }
 
   onMaxMagChanged($event) {
-    if($event.value < this.minMagnitudeValue) {
+    if ($event.value < this.minMagnitudeValue) {
       $event.value = this.minMagnitudeValue;
       this.maxMagnitudeValue = this.minMagnitudeValue;
       this.showDialog('Maximum magnitude must be greater than or equal to Minimum magnitude.');
@@ -106,8 +106,8 @@ export class ParametersComponent implements OnInit {
       header: 'Confirmation',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-          console.log("HERE!!!!!")
+        console.log("HERE!!!!!")
       },
-  });
+    });
   }
 }

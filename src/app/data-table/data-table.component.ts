@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { DataTableDataSource } from './data-table-datasource';
-import { EarthquakeService } from '../earthquake.service';
-import { Earthquake, EarthquakesResolved } from '../earthquake';
+import { EarthquakeService } from '../earthquakes/earthquake.service';
+import { Earthquake, EarthquakesResolved } from '../earthquakes/earthquake';
 import { merge } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';

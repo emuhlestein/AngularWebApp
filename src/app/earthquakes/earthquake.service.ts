@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Earthquake } from './earthquake'
 import { EarthquakeData } from './earthquakedata'
-import { BehaviorSubject, Subject, Observable } from 'rxjs'
+import { BehaviorSubject, Observable } from 'rxjs'
 import { HttpClient } from '@angular/common/http'
-import { ProgressBarService } from './progressbar/progressbar.service';
+import { ProgressBarService } from '../progressbar/progressbar.service';
 import { map, tap } from 'rxjs/operators';
 
 @Injectable()

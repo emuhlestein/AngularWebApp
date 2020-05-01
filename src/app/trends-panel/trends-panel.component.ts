@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EarthquakeService } from '../earthquake.service';
-import { Earthquake } from '../earthquake';
+import { EarthquakeService } from '../earthquakes/earthquake.service';
+import { Earthquake } from '../earthquakes/earthquake';
 import { Subscription } from 'rxjs';
 import { MagnitudeSelectedService } from '../magnitude-selected.service';
 

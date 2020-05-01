@@ -1,35 +1,32 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { TableModule } from 'primeng/table';
-import { EarthquakesComponent } from './earthquakes.component';
-import { EarthquakeService } from '../earthquake.service';
-import { CardModule } from 'primeng/card';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { DatePipe } from '@angular/common';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule, MatSortModule, MatTableModule } from '@angular/material';
 
-describe('EarthquakesComponent', () => {
-  let component: EarthquakesComponent;
-  let fixture: ComponentFixture<EarthquakesComponent>;
+import { EarthquakeComponent } from './earthquakes.component';
+
+describe('DataTableComponent', () => {
+  let component: EarthquakeComponent;
+  let fixture: ComponentFixture<EarthquakeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EarthquakesComponent ],
-      imports: [ CardModule, TableModule, HttpClientTestingModule ],
-      providers: [ EarthquakeService, DatePipe ]
-    })
-    .compileComponents();
+      declarations: [EarthquakeComponent],
+      imports: [
+        NoopAnimationsModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatTableModule,
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EarthquakesComponent);
+    fixture = TestBed.createComponent(EarthquakeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should compile', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('default page size should be 16', () => {
-    expect(component.pageSize).toEqual(16);
   });
 });

@@ -22,7 +22,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.sessionDataService.init();
-    this.router.navigate(['/earthquakes']);
+    // this.router.navigate(['/earthquakes']);
   }
 
   handleClick() {

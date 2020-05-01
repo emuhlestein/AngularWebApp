@@ -1,16 +1,34 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="600" src="assets/img/sunrise.png">
-</div>
-
-<div class="col-12">
-  <!-- <app-main-panel style="margin: 10px"></app-main-panel> -->
-  <!-- <app-data-table></app-data-table> -->
-  <div class="col-md-12" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
-    <router-outlet #o="outlet"></router-outlet>
+<div class="site">
+  <div class="site-content">
+    <div class="container">
+      <nav class="navbar navbar-expand navbar-dark">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" [routerLink]="['/home']" routerLinkActive="active">
+            <i class="d-none d-sm-inline-block fas fa-home mx-1"></i>Home</a>
+          <a class="nav-item nav-link" [routerLink]="['/about']" routerLinkActive="active">
+            <i class="d-none d-sm-inline-block fas fa-info-circle mx-1"></i>About</a>
+          <a class="nav-item nav-link" [routerLink]="['/contact']" routerLinkActive="active">
+            <i class="d-none d-sm-inline-block fas fa-envelope mx-1"></i>Contact</a>
+          <a class="nav-item nav-link" [routerLink]="['/earthquakes']" routerLinkActive="active">
+            <i class="d-none d-sm-inline-block fas fa-envelope mx-1"></i>Earthquakes</a>
+        </div>
+      </nav>
+    </div>
+    <div class="header">
+      <div class="container">
+        <h1>Ed Muhlestein</h1>
+        <h2>Developer</h2>
+      </div>
+    </div>
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
   </div>
+  <footer class="footer container">
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <p>Copyright © 2020 Ed Muhlestein</p>
+      </div>
+    </div>
+  </footer>
 </div>
-<app-messages></app-messages>

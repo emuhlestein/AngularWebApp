@@ -18,7 +18,7 @@ export interface DataTableItem {
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class DataTableDataSource extends DataSource<Earthquake> {
+export class EarthquakeDataSource extends DataSource<Earthquake> {
   data: Earthquake[] = [];
 
   private earthquakeSubject = new BehaviorSubject<Earthquake[]>([]);

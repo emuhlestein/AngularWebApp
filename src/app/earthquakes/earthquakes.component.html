@@ -1,37 +1,57 @@
-<div class="row">
-  <div class="col-12">
-    <mat-card header="Earthquakes" styleClass="ui-card-shadow">
-      <table mat-table [dataSource]="earthquakes" class="mat-elevation-z8">
+<div class="card">
+  <div class="card-header">
+    <nav class="navbar navbar-expand">
+      <a class="navbar-brand">Earthquakes</a>
+      <ul class="navbar-nav">
+        <li class="nav-item" *ngFor="let i of quakeCount"><a class="nav-link">
+            <i class="fas fa-circle" [ngStyle]="{'color': i.color}"></i>{{i.magnitude}}: {{i.count}}
+          </a></li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/search']">Search</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
-        <!-- Location Column -->
-        <ng-container matColumnDef="location">
-          <th class="text-center" mat-header-cell *matHeaderCellDef>Location</th>
-          <td mat-cell *matCellDef="let element">{{element.location}}<button mat-button>Help</button></td>
-        </ng-container>
+  <div class="container">
+    <div class="card-body">
+      <div>
+        <table mat-table class="full-width-table col-12" [dataSource]="dataSource" matSort aria-label="Elements">
+          <!-- Location Column -->
+          <ng-container matColumnDef="location">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
+            <td mat-cell *matCellDef="let element">{{element.location}}</td>
+          </ng-container>
 
-        <!-- Magnitude Column -->
-        <ng-container matColumnDef="magnitude">
-          <th class="text-center" mat-header-cell *matHeaderCellDef>Mag</th>
-          <td mat-cell *matCellDef="let element">{{element.magnitude}}</td>
-        </ng-container>
+          <!-- Magnitude Column -->
+          <ng-container matColumnDef="magnitude">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Mag</th>
+            <td mat-cell *matCellDef="let element">{{element.magnitude | number:'1.1-1'}}</td>
+          </ng-container>
 
-        <!-- Date Column -->
-        <ng-container matColumnDef="date">
-          <th class="text-center" mat-header-cell *matHeaderCellDef>Date</th>
-          <td mat-cell *matCellDef="let element">{{element.date}}</td>
-        </ng-container>
+          <!-- Date Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+            <td mat-cell *matCellDef="let element">{{element.date | date:'yyyy-MM-dd'}}</td>
+          </ng-container>
 
-        <!-- More Info Column -->
-        <ng-container matColumnDef="url">
-          <th class="text-center" mat-header-cell *matHeaderCellDef>More Info</th>
-          <td mat-cell *matCellDef="let element"><a target="_blank" href="element.url">{{element.url}}</a></td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-      <mat-paginator (page)="onPageEvent($event)" [length]="length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"
-        showFirstLastButtons></mat-paginator>
+          <!-- More Info Column -->
+          <ng-container matColumnDef="info">
+            <th mat-header-cell *matHeaderCellDef>More Info</th>
+            <td mat-cell *matCellDef="let element"><a target="_blank" [href]="element.url"><i
+                  class="material-icons">info</i></a></td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
 
-    </mat-card>
+        <mat-paginator #paginator [length]="dataSource?.data?.length" [pageSize]="10"
+          [pageSizeOptions]="[10, 25, 50, 100]">
+        </mat-paginator>
+      </div>
+    </div>
+
   </div>
 </div>
