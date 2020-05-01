@@ -25,6 +25,8 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['location', 'magnitude', 'date', 'info'];
 
+  filter;
+
   constructor(
     private route: ActivatedRoute,
     private earthquakeService: EarthquakeService) {
