@@ -7,3 +7,11 @@ $alt-color: #f2f2f2;
 .bg-color {
   background-color: $body-bg;
 }
+
+.accent-color {
+  color: $accent;
+}
+
+:root {
+  --accent: #009988;
+}
