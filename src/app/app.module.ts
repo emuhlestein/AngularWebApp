@@ -39,7 +39,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 @NgModule({
   declarations: [
     AppComponent,
-    EarthquakeComponent,
     MessagesComponent,
     InputFieldComponent,
     ParametersComponent,
@@ -74,12 +73,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     AppRoutingModule
   ],
   providers: [
-    EarthquakeService,
     DatePipe,
-    SessionDataService,
-    ConfirmationService,
-    MagnitudeSelectedService,
-    ProgressBarService
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })

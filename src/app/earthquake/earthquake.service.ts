@@ -7,7 +7,9 @@ import { HttpClient } from '@angular/common/http'
 import { ProgressBarService } from '../progressbar/progressbar.service';
 import { map, tap } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class EarthquakeService {
 
   private earthquakeSubject = new BehaviorSubject<Earthquake[]>([]);

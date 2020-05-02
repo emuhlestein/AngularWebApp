@@ -23,8 +23,8 @@ import { EarthquakeComponent } from './earthquake/earthquake.component';
       {
         path: 'earthquakes',
         canActivate: [EarthquakeGuard],
-        resolve: { resolvedEarthquakeData: EarthquakesResolver },
-        component: EarthquakeComponent
+        loadChildren: () => import('./earthquake/earthquake.module').then(m => m.EarthquakeModule),
+        resolve: { resolvedEarthquakeData: EarthquakesResolver }
       },
       {
         path: 'search',
