@@ -1,27 +1,62 @@
-<p-card>
-    <p-header>
-        <div style="text-align: center; margin: 10px">
-        <label >Search Parameters</label>
+<div class="card">
+  <div class="card-header">
+    <label>Search Parameters</label>
+  </div>
+
+  <div class="container">
+    <div class="card-body">
+      <div>
+        <mat-form-field class="mr-5">
+          <mat-label>{{calendarEndLabel}}</mat-label>
+          <input matInput [matDatepicker]="picker1">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{calendarStartLabel}}</mat-label>
+          <input matInput [matDatepicker]="picker2">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <div class="mag-container">
+          <mat-form-field class="mr-5">
+            <mat-label>{{maxMagnitudeLabel}}</mat-label>
+            <mat-select [value]='maxMagnitudeValue' (selectionChange)="onMaxMagChanged($event)">
+              <mat-option value="5">5</mat-option>
+              <mat-option value="6">6</mat-option>
+              <mat-option value="7">7</mat-option>
+              <mat-option value="8">8</mat-option>
+              <mat-option value="9">9</mat-option>
+              <mat-option value="10">10</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>{{minMagnitudeLabel}}</mat-label>
+            <mat-select [value]='minMagnitudeValue' (selectionChange)="onMinMagChanged($event)">
+              <mat-option value="5">5</mat-option>
+              <mat-option value="6">6</mat-option>
+              <mat-option value="7">7</mat-option>
+              <mat-option value="8">8</mat-option>
+              <mat-option value="9">9</mat-option>
+              <mat-option value="10">10</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
-    </p-header>
-    <div class="subpanel">
-    <div>
-    <app-calendar [label]="calendarEndLabel"  [value]="endDateValue" (dataChangeEvent)="onEndDateChanged($event)"></app-calendar>
-    <app-calendar [label]="calendarStartLabel" [value]="startDateValue" (dataChangeEvent)="onStartDateChanged($event)"></app-calendar>
+      </div>
     </div>
-    <div>
-    <app-input-field [label]="maxMagnitudeLabel" [value]="maxMagnitudeValue" (dataChangeEvent)="onMaxMagChanged($event)" [min]="minMagnitudeLimit" [max]="maxMagnitudeLimit"></app-input-field>
+    <div class="card-footer">
+      <button mat-raised-button color="primary" (onClick)="search()">Search</button>
+      <div class='alert alert-danger' *ngIf='errorMessage'>{{errorMessage}}
+      </div>
     </div>
-    <div>
-    <app-input-field [label]="minMagnitudeLabel" [value]="minMagnitudeValue" (dataChangeEvent)="onMinMagChanged($event)" [min]="minMagnitudeLimit" [max]="maxMagnitudeLimit"></app-input-field>
-    </div>
-    <p-footer>
-        <p-button label="Search" (onClick)="search()"></p-button>
-    </p-footer>
+  </div>
 </div>
-</p-card>
-<p-confirmDialog #confirmation>
+
+
+<!-- <p-confirmDialog #confirmation>
     <p-footer>
-        <button pButton type="button" label = "Ok" (click) = confirmation.accept() class="ui-button-secondary"></button>
+      <button pButton type="button" label="Ok" (click)=confirmation.accept() class="ui-button-secondary"></button>
     </p-footer>
-</p-confirmDialog>
+  </p-confirmDialog> -->

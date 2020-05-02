@@ -24,6 +24,7 @@ export class ParametersComponent implements OnInit {
   public endDateValue;
   rejectVisible: boolean = false;
   msg: string;
+  errorMessage = '';
 
   constructor(
     private earthquakeService: EarthquakeService,

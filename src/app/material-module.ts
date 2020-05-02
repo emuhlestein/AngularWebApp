@@ -7,14 +7,22 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material';
 
 const matModules = [
   MatButtonModule,
   MatCardModule,
+  MatDatepickerModule,
   MatIconModule,
+  MatInputModule,
   MatListModule,
+  MatNativeDateModule,
   MatPaginatorModule,
   MatProgressBarModule,
+  MatSelectModule,
   MatSortModule,
   MatTableModule
 ];
