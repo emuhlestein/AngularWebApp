@@ -25,95 +25,17 @@ div.mat-select-value {
   background-color: #3d3737;
 }
 
-/* .mat-select:focus:not(.mat-select-disabled).mat-primary .mat-select-arrow {
-  color: #63961c;
-} */
-
+/* change arrow icon when has focus */
 .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
   color: #009988;
 }
 
-/* to change underline when focused */
+/* change underline (ripple) when has focus */
 .mat-form-field.mat-focused .mat-form-field-ripple {
   background-color: #009988;
 }
 
-/* .mat-form-field {
-  color: green;
-}
-
-.mat-form-field-wrapper {
-  color: orange;
-}
-
-:host ::ng-deep div.mat-select-value {
+.mat-input-element:disabled {
   color: #f2f2f2;
   background-color: #3d3737;
 }
-
-.mat-input-element {
-  color: #f2f2f2;
-  background-color: #3d3737;
-}
-
-mat-label {
-  color: #f2f2f2;
-}
-
-.mat-datepicker-toggle-default-icon {
-  color: yellow;
-}
-
-mat-datepicker-toggle {
-  color: #009988;
-}
-
-:host ::ng-deep .mat-select-arrow,
-.mat-form-field-underline:focus {
-  color: #009988;
-}
-
-.mat-form-field-underline:focus {
-  background-color: #009988;
-  color: #009988;
-  border-color: mediumvioletred;
-}
-
-:host ::ng-deep .mat-select-arrow:focus {
-  color: #009988;
-}
-
-:host ::ng-deep :focus {
-  color: #009988;
-}
-*/
-
-/* :host ::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
-  background-color: red;
-}
-.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
-  color: red;
-}
-.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
-  color: red;
-} */
-
-/* to change underline when focused */
-/* .mat-select:focus:not(.mat-select-disabled).mat-primary .mat-select-underline {
-  background-color: red;
-}
-*/
-
-/* to change plceholder text when focused */
-/* .mat-select:focus:not(.mat-select-disabled).mat-primary .mat-select-trigger {
-  color: red;
-} */
-
-/* to change selected item color in the select list */
-/* .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
-  color: red;
-}
-
-.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
-  color: greenyellow;
-} */
