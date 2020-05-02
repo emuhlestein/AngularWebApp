@@ -12,7 +12,7 @@ export class PageNotFoundComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.router.navigate(['/earthquakes']);
+      this.router.navigate(['/home']);
     }, 2000);
   }
 
