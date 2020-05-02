@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { EarthquakeGuard } from './earthquakes/earthquake.guard';
-import { EarthquakesResolver } from './earthquakes/earthquakes-resolver.service';
+import { EarthquakeGuard } from './earthquake/earthquake.guard';
+import { EarthquakesResolver } from './earthquake/earthquake-resolver.service';
 import { ParametersComponent } from './parameters/parameters.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { EarthquakeComponent } from './earthquakes/earthquakes.component';
+import { EarthquakeComponent } from './earthquake/earthquake.component';
 
 @NgModule({
   imports: [

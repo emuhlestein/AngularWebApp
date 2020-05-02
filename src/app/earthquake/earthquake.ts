@@ -6,7 +6,7 @@ export interface Earthquake {
   info: string;
 }
 
-export interface EarthquakesResolved {
+export interface EarthquakeResolved {
   earthquakes: Earthquake[];
   error?: any;
 }

@@ -2,8 +2,8 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { map, tap } from 'rxjs/operators';
 import { Observable, of as observableOf, merge, BehaviorSubject, of } from 'rxjs';
-import { EarthquakeService } from '../earthquakes/earthquake.service';
-import { Earthquake } from '../earthquakes/earthquake';
+import { EarthquakeService } from '../earthquake/earthquake.service';
+import { Earthquake } from '../earthquake/earthquake';
 
 // TODO: Replace this with your own data model type
 export interface DataTableItem {

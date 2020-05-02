@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule, MatSortModule, MatTableModule } from '@angular/material';
 
-import { EarthquakeComponent } from './earthquakes.component';
+import { EarthquakeComponent } from './earthquake.component';
 
 describe('DataTableComponent', () => {
   let component: EarthquakeComponent;

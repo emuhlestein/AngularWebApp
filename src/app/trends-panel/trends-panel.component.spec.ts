@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CardModule } from 'primeng/card';
 import { ChartModule } from 'primeng/chart';
 import { TrendsPanelComponent } from './trends-panel.component';
-import { EarthquakeService } from '../earthquakes/earthquake.service';
+import { EarthquakeService } from '../earthquake/earthquake.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DatePipe } from '@angular/common';
 

@@ -9,7 +9,7 @@ import { ConfirmationService } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { SpinnerModule } from 'primeng/spinner';
-import { EarthquakeService } from '../earthquakes/earthquake.service';
+import { EarthquakeService } from '../earthquake/earthquake.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DatePipe } from '@angular/common';
 import { SessionDataService } from '../session-data-service';

@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { EarthquakeService } from '../earthquakes/earthquake.service';
+import { EarthquakeService } from '../earthquake/earthquake.service';
 import { SessionDataService, START_DATE_KEY, END_DATE_KEY, MIN_MAG_KEY, MAX_MAG_KEY } from '../session-data-service';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { Message } from '../common/message';

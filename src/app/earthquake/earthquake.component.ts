@@ -2,15 +2,14 @@ import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { EarthquakeDataSource } from './earthquake-datasource';
 import { EarthquakeService } from './earthquake.service';
-import { Earthquake, EarthquakesResolved } from './earthquake';
+import { Earthquake, EarthquakeResolved } from './earthquake';
 import { merge } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { RecentQuakesComponent } from '../recent-panel/recent-panel.component';
 
 @Component({
-  templateUrl: './earthquakes.component.html',
-  styleUrls: ['./earthquakes.component.scss']
+  templateUrl: './earthquake.component.html',
+  styleUrls: ['./earthquake.component.scss']
 })
 export class EarthquakeComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -18,7 +17,7 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
   dataSource: EarthquakeDataSource;
   tempPaginator: MatPaginator;
   tempSort: MatSort;
-  resolvedData: EarthquakesResolved;
+  resolvedData: EarthquakeResolved;
   ds: MatTableDataSource<Earthquake>;
   quakeCount: QuakeCount[] = [];
 

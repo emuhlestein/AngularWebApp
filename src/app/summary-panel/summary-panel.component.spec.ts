@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { EarthquakeService } from '../earthquakes/earthquake.service';
+import { EarthquakeService } from '../earthquake/earthquake.service';
 import { SummaryPanelComponent } from './summary-panel.component';
 import { CardModule } from 'primeng/card';
 import { HttpClientTestingModule } from '@angular/common/http/testing';

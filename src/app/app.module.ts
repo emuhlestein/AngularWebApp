@@ -4,8 +4,8 @@ import { DatePipe, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './core/app.component';
-import { EarthquakeService } from './earthquakes/earthquake.service';
-import { EarthquakeComponent } from './earthquakes/earthquakes.component';
+import { EarthquakeService } from './earthquake/earthquake.service';
+import { EarthquakeComponent } from './earthquake/earthquake.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InputFieldComponent } from './input-field/input-field.component';

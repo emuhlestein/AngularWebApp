@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Earthquake } from '../earthquakes/earthquake'
-import { EarthquakeService } from '../earthquakes/earthquake.service';
+import { Earthquake } from '../earthquake/earthquake'
+import { EarthquakeService } from '../earthquake/earthquake.service';
 
 @Component({
   selector: 'app-recent-panel',

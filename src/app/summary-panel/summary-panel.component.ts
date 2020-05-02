@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { EarthquakeService } from '../earthquakes/earthquake.service';
-import { Earthquake } from '../earthquakes/earthquake';
+import { EarthquakeService } from '../earthquake/earthquake.service';
+import { Earthquake } from '../earthquake/earthquake';
 import { Subscription } from 'rxjs';
 
 @Component({

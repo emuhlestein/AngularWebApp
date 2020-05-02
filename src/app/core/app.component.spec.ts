@@ -2,7 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MainPanelComponent } from '../main-panel/main-panel.component';
-import { EarthquakeComponent } from '../earthquakes/earthquakes.component';
+import { EarthquakeComponent } from '../earthquake/earthquake.component';
 import { MessagesComponent } from '../messages/messages.component';
 import { ParametersComponent } from '../parameters/parameters.component'
 import { SummaryPanelComponent } from '../summary-panel/summary-panel.component';
@@ -19,7 +19,7 @@ import { InputFieldComponent } from '../input-field/input-field.component';
 import { SpinnerModule } from 'primeng/spinner';
 import { SessionDataService } from '../session-data-service';
 import { DatePipe } from '@angular/common';
-import { EarthquakeService } from '../earthquakes/earthquake.service';
+import { EarthquakeService } from '../earthquake/earthquake.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
