@@ -36,12 +36,9 @@ th {
   font-size: 1rem;
 }
 
-mat-icon {
-  position: relative;
-  top: 3px;
-  padding-right: 2rem;
+.nat-item .nav-link {
+  font-size: large;
 }
-
 // .mat-list-base {
 //   display: inline-block;
 // }
@@ -70,17 +67,24 @@ mat-icon {
   justify-content: center;
 }
 
-tr:nth-child(even) {
-  background-color: #eee;
+.mat-cell,
+.mat-header-cell {
+  color: white;
+}
+
+tr:nth-child(odd) {
+  background-color: rgb(20, 19, 19);
+  color: white;
 }
 
 th[scope="col"] {
-  background-color: #696969;
+  background-color: #111010;
   color: #fff;
 }
 
 th[scope="row"] {
-  background-color: #d7d9f2;
+  background-color: #171718;
+  color: red;
 }
 
 div {
@@ -89,6 +93,7 @@ div {
 }
 
 table {
+  background-color: rgb(65, 60, 60);
   width: 100%;
   border-collapse: collapse;
   border: 2px solid rgb(200, 200, 200);

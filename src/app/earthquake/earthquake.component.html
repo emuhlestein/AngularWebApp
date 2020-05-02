@@ -4,7 +4,8 @@
       <a class="navbar-brand">Earthquakes</a>
       <ul class="navbar-nav">
         <li class="nav-item" *ngFor="let i of quakeCount"><a class="nav-link">
-            <i class="fas fa-circle" [ngStyle]="{'color': i.color}"></i>{{i.magnitude}}: {{i.count}}
+            <i class="fas fa-circle pr-2" [ngStyle]="{'color': i.color}"></i><strong>{{i.magnitude}}:</strong>
+            {{i.count}}
           </a></li>
       </ul>
       <ul class="navbar-nav ml-auto">
