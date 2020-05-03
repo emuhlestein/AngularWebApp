@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { EarthquakeGuard } from './earthquake/earthquake.guard';
-import { EarthquakesResolver } from './earthquake/earthquake-resolver.service';
+import { EarthquakeResolver } from './earthquake/earthquake-resolver.service';
 import { ParametersComponent } from './parameters/parameters.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { EarthquakeComponent } from './earthquake/earthquake.component';
 
 @NgModule({
   imports: [
@@ -24,7 +23,7 @@ import { EarthquakeComponent } from './earthquake/earthquake.component';
         path: 'earthquakes',
         canActivate: [EarthquakeGuard],
         loadChildren: () => import('./earthquake/earthquake.module').then(m => m.EarthquakeModule),
-        resolve: { resolvedEarthquakeData: EarthquakesResolver }
+        resolve: { resolvedEarthquakeData: EarthquakeResolver }
       },
       {
         path: 'search',

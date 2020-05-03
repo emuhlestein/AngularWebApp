@@ -3,18 +3,18 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { EarthquakesResolved } from './earthquake';
+import { EarthquakeResolved } from './earthquake';
 import { EarthquakeService } from './earthquake.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EarthquakesResolver implements Resolve<EarthquakesResolved> {
+export class EarthquakeResolver implements Resolve<EarthquakeResolved> {
 
   constructor(private earthquakeService: EarthquakeService) { }
 
   resolve(route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<EarthquakesResolved> {
+    state: RouterStateSnapshot): Observable<EarthquakeResolved> {
 
     return this.earthquakeService.getEarthquakes(6, 7, '2014-01-01', '2016-01-02')
       .pipe(
