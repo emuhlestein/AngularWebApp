@@ -16,8 +16,14 @@ mat-label {
   color: #f2f2f2;
 }
 
+/* set the color of datapicker icon */
 .mat-datepicker-toggle-default-icon {
   color: #f2f2f2;
+}
+
+/* set the color of the focus of datapicker icon */
+.mat-icon-button:focus {
+  outline-color: #009988;
 }
 
 div.mat-select-value {
