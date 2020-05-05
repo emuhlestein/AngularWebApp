@@ -4,16 +4,10 @@ import { DatePipe, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './core/app.component';
-import { EarthquakeService } from './earthquake/earthquake.service';
-import { EarthquakeComponent } from './earthquake/earthquake.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InputFieldComponent } from './input-field/input-field.component';
-import { ParametersComponent } from './parameters/parameters.component'
-import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarComponent } from './calendar/calendar.component';
-import { SessionDataService } from './session-data-service';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
@@ -23,12 +17,10 @@ import { SummaryPanelComponent } from './summary-panel/summary-panel.component';
 import { MainPanelComponent } from './main-panel/main-panel.component';
 import { TrendsPanelComponent } from './trends-panel/trends-panel.component';
 import { ChartModule } from 'primeng/chart';
-import { MagnitudeSelectedService } from './magnitude-selected.service';
 import { RecentQuakesComponent } from './recent-panel/recent-panel.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ProgressBarComponent } from './progressbar/progressbar.component';
-import { ProgressBarService } from './progressbar/progressbar.service';
 import { MaterialModule } from './material-module';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
@@ -41,8 +33,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     AppComponent,
     MessagesComponent,
     InputFieldComponent,
-    ParametersComponent,
-    CalendarComponent,
     SummaryPanelComponent,
     MainPanelComponent,
     TrendsPanelComponent,
@@ -54,7 +44,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    CalendarModule,
     CardModule,
     DialogModule,
     CommonModule,

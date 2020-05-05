@@ -1,9 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ParametersComponent } from '../parameters/parameters.component';
+import { EarthquakeSearchComponent } from '../earthquake-search/earthquake-search.component';
 import { SummaryPanelComponent } from '../summary-panel/summary-panel.component';
 import { TrendsPanelComponent } from '../trends-panel/trends-panel.component';
 import { MainPanelComponent } from './main-panel.component';
-import { CalendarComponent } from '../calendar/calendar.component';
 import { InputFieldComponent } from '../input-field/input-field.component';
 import { RecentQuakesComponent } from '../recent-panel/recent-panel.component';
 import { TableModule } from 'primeng/table';
@@ -26,8 +25,8 @@ describe('MainPanelComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MainPanelComponent,
-        ParametersComponent, SummaryPanelComponent,
-        TrendsPanelComponent, CalendarComponent, InputFieldComponent, RecentQuakesComponent],
+        EarthquakeSearchComponent, SummaryPanelComponent,
+        TrendsPanelComponent, InputFieldComponent, RecentQuakesComponent],
       imports: [FormsModule, CardModule, CalendarModule, ConfirmDialogModule,
         SpinnerModule, HttpClientTestingModule, ChartModule, TableModule],
       providers: [EarthquakeService, DatePipe, SessionDataService, ConfirmationService]
