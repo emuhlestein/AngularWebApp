@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+// must come before bootstrap
+@import "./src/app/styles/_colors";
+
+@import "~bootstrap/scss/bootstrap";
+
+@import "./src/app/styles/website";

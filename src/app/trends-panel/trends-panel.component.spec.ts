@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CardModule } from 'primeng/card';
 import { ChartModule } from 'primeng/chart';
 import { TrendsPanelComponent } from './trends-panel.component';
-import { EarthquakeService } from '../earthquake.service';
+import { EarthquakeService } from '../earthquake/earthquake.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DatePipe } from '@angular/common';
 
@@ -12,11 +12,11 @@ describe('TrendsPanelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TrendsPanelComponent ],
-      imports: [ CardModule, ChartModule, HttpClientTestingModule ],
-      providers: [ EarthquakeService, DatePipe ]
+      declarations: [TrendsPanelComponent],
+      imports: [CardModule, ChartModule, HttpClientTestingModule],
+      providers: [EarthquakeService, DatePipe]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

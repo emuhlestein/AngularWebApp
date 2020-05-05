@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { EarthquakeService } from '../earthquake.service';
-import { Earthquake } from '../earthquake';
+import { EarthquakeService } from '../earthquake/earthquake.service';
+import { Earthquake } from '../earthquake/earthquake';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -19,9 +19,9 @@ export class SummaryPanelComponent implements OnInit, OnDestroy {
   constructor(private earthquakeService: EarthquakeService) { }
 
   ngOnInit() {
-    this.subscription = this.earthquakeService.getEarthquakes().subscribe( result => {
-     
-      if(result == null) {
+    this.subscription = this.earthquakeService.earthquakes$.subscribe(result => {
+
+      if (result == null) {
         return;
       }
       this.quakes = [];
@@ -30,7 +30,7 @@ export class SummaryPanelComponent implements OnInit, OnDestroy {
       this.earthquakes.forEach(quake => {
         let mag = Math.trunc(quake.magnitude);
         let count = this.earthquakeMap.get(mag);
-        if(count == null) {
+        if (count == null) {
           this.earthquakeMap.set(mag, 1);
         } else {
           count++;
@@ -49,14 +49,14 @@ export class SummaryPanelComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if(this.subscription != null) {
+    if (this.subscription != null) {
       this.subscription.unsubscribe();
     }
   }
 
   onSelect(quake: MagnitudeDetails) {
     quake.selected = !quake.selected;
-    this.magnitudeSelected.emit({magnitude: quake.magnitude, selected: quake.selected});
+    this.magnitudeSelected.emit({ magnitude: quake.magnitude, selected: quake.selected });
   }
 }
 

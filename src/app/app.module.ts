@@ -1,13 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { DatePipe, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { ButtonModule } from 'primeng/button';
-import { TableModule } from 'primeng/table';
-import { EarthquakeService } from './earthquake.service';
-import { EarthquakesComponent } from './earthquakes/earthquakes.component';
+import { AppComponent } from './core/app.component';
+import { EarthquakeService } from './earthquake/earthquake.service';
+import { EarthquakeComponent } from './earthquake/earthquake.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InputFieldComponent } from './input-field/input-field.component';
@@ -31,12 +29,16 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ProgressBarComponent } from './progressbar/progressbar.component';
 import { ProgressBarService } from './progressbar/progressbar.service';
+import { MaterialModule } from './material-module';
+import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './components/home/home.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EarthquakesComponent,
     MessagesComponent,
     InputFieldComponent,
     ParametersComponent,
@@ -45,32 +47,34 @@ import { ProgressBarService } from './progressbar/progressbar.service';
     MainPanelComponent,
     TrendsPanelComponent,
     RecentQuakesComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ButtonModule,
     CalendarModule,
     CardModule,
     DialogModule,
+    CommonModule,
     ConfirmDialogModule,
     FormsModule,
-    TableModule,
     HttpClientModule,
     ConfirmDialogModule,
     SpinnerModule,
     ChartModule,
     ProgressSpinnerModule,
-    ProgressBarModule
+    ProgressBarModule,
+    MaterialModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    AppRoutingModule
   ],
   providers: [
-    EarthquakeService,
     DatePipe,
-    SessionDataService,
-    ConfirmationService,
-    MagnitudeSelectedService,
-    ProgressBarService
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })

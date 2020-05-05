@@ -1,10 +1,65 @@
-:host
-    ::ng-deep .ui-card {
-        background-color: lightblue !important;
-        display: inline-block;
-        height:100%;
-    }
-:host
-    ::ng-deep .ui-corner-all {
-        border-radius: 6px;
-    }
+.mag-container {
+  display: flex;
+}
+
+.card {
+  background-color: #000;
+  padding: 0px;
+  margin: 0px;
+}
+
+.card-body {
+  background-color: #202020;
+}
+
+mat-label {
+  color: #f2f2f2;
+}
+
+/* set the color of datapicker icon */
+.mat-datepicker-toggle-default-icon {
+  color: #f2f2f2;
+}
+
+/* set the color of the focus of datapicker icon */
+.mat-icon-button:focus {
+  outline-color: #009988;
+}
+
+div.mat-select-value {
+  color: #f2f2f2;
+  background-color: #3d3737;
+}
+
+/* change arrow icon when has focus */
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: #009988;
+}
+
+/* change arrow icon when does not have focus */
+.mat-form-field.mat-primary .mat-select-arrow {
+  color: #f2f2f2;
+}
+
+/* change underline (ripple) when has focus */
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #009988;
+}
+
+.mat-input-element:disabled {
+  color: #f2f2f2;
+  background-color: #3d3737;
+}
+
+.search-button {
+  background-color: #009988;
+}
+
+.close-button {
+  background-color: transparent;
+}
+
+.close-button:active .close-button:focus {
+  background-color: transparent;
+  outline: 0;
+}

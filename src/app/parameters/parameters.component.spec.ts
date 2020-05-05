@@ -9,7 +9,7 @@ import { ConfirmationService } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { SpinnerModule } from 'primeng/spinner';
-import { EarthquakeService } from '../earthquake.service';
+import { EarthquakeService } from '../earthquake/earthquake.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DatePipe } from '@angular/common';
 import { SessionDataService } from '../session-data-service';
@@ -20,12 +20,12 @@ describe('ParametersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ParametersComponent, CalendarComponent, InputFieldComponent ],
-      imports: [ CardModule, ButtonModule, ConfirmDialogModule,
-         FormsModule, CalendarModule, SpinnerModule, HttpClientTestingModule ],
-      providers: [ ConfirmationService, EarthquakeService, DatePipe, SessionDataService ]
+      declarations: [ParametersComponent, CalendarComponent, InputFieldComponent],
+      imports: [CardModule, ButtonModule, ConfirmDialogModule,
+        FormsModule, CalendarModule, SpinnerModule, HttpClientTestingModule],
+      providers: [ConfirmationService, EarthquakeService, DatePipe, SessionDataService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

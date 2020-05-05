@@ -13,7 +13,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { FormsModule } from '@angular/forms';
 import { SpinnerModule } from 'primeng/spinner';
-import { EarthquakeService } from '../earthquake.service';
+import { EarthquakeService } from '../earthquake/earthquake.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DatePipe } from '@angular/common';
 import { SessionDataService } from '../session-data-service';
@@ -25,14 +25,14 @@ describe('MainPanelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainPanelComponent,
-         ParametersComponent, SummaryPanelComponent,
-         TrendsPanelComponent, CalendarComponent, InputFieldComponent, RecentQuakesComponent ],
-      imports: [ FormsModule, CardModule, CalendarModule, ConfirmDialogModule,
-         SpinnerModule, HttpClientTestingModule, ChartModule, TableModule ],
-      providers: [ EarthquakeService, DatePipe, SessionDataService, ConfirmationService ]
+      declarations: [MainPanelComponent,
+        ParametersComponent, SummaryPanelComponent,
+        TrendsPanelComponent, CalendarComponent, InputFieldComponent, RecentQuakesComponent],
+      imports: [FormsModule, CardModule, CalendarModule, ConfirmDialogModule,
+        SpinnerModule, HttpClientTestingModule, ChartModule, TableModule],
+      providers: [EarthquakeService, DatePipe, SessionDataService, ConfirmationService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
