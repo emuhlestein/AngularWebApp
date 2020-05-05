@@ -8,9 +8,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMomentDateModule } from '@angular/material-moment-adapter'
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const matModules = [
   MatButtonModule,
@@ -19,6 +20,7 @@ const matModules = [
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatMomentDateModule,
   MatNativeDateModule,
   MatPaginatorModule,
   MatProgressBarModule,

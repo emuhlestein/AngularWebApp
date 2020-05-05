@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, ViewChild } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { EarthquakeService } from '../earthquake/earthquake.service';
 import { SessionDataService, START_DATE_KEY, END_DATE_KEY, MIN_MAG_KEY, MAX_MAG_KEY } from '../session-data-service';
@@ -26,6 +26,7 @@ export class ParametersComponent implements OnInit {
   rejectVisible: boolean = false;
   msg: string;
   errorMessage = '';
+  magValues = ['5', '6', '7', '8', '9', '10'];
 
   constructor(
     private earthquakeService: EarthquakeService,
@@ -41,17 +42,25 @@ export class ParametersComponent implements OnInit {
   }
 
   search() {
-
-    if (this.minMagnitudeValue > this.maxMagnitudeValue) {
-      this.showDialog('Maximum magnitude must be greater than or equal to Minimum magnitude.');
+    console.log(this.minMagnitudeValue, this.maxMagnitudeValue);
+    if (+this.minMagnitudeValue > +this.maxMagnitudeValue) {
+      console.log('HERE');
+      this.errorMessage = 'Maximum magnitude must be greater than';// or equal to Minimum magnitude.';
+      return;
     } else {
 
     }
+
+    this.errorMessage = '';
     this.earthquakeService.onSearch(
       this.minMagnitudeValue,
       this.maxMagnitudeValue,
       this.formatDate(this.startDateValue),
       this.formatDate(this.endDateValue));
+  }
+
+  close() {
+    this.errorMessage = '';
   }
 
   private formatDate(date: Date): string {
@@ -62,7 +71,7 @@ export class ParametersComponent implements OnInit {
     if ($event.value.getTime() > this.endDateValue.getTime()) {
       $event.value = this.endDateValue;
       this.startDateValue = this.endDateValue;
-      this.showDialog('Stop date must be greater than or equal to start date.');
+      this.errorMessage = 'Stop date must be greater than or equal to start date.';
     } else {
       this.startDateValue = $event.value;
     }
@@ -73,7 +82,7 @@ export class ParametersComponent implements OnInit {
     if ($event.value.getTime() < this.startDateValue.getTime()) {
       $event.value = this.startDateValue;
       this.endDateValue = this.startDateValue;
-      this.showDialog('Stop date must be greater than or equal to start date.');
+      this.errorMessage = 'Stop date must be greater than or equal to start date.';
     } else {
       this.endDateValue = $event.value;
     }
@@ -84,7 +93,7 @@ export class ParametersComponent implements OnInit {
     if ($event.value > this.maxMagnitudeValue) {
       $event.value = this.maxMagnitudeValue;
       this.minMagnitudeValue = this.maxMagnitudeValue;
-      this.showDialog('Maximum magnitude must be greater than or equal to Minimum magnitude.');
+      this.errorMessage = 'Maximum magnitude must be greater than';// or equal to Minimum magnitude.';
     } else {
       this.minMagnitudeValue = $event.value;
     }
@@ -95,21 +104,10 @@ export class ParametersComponent implements OnInit {
     if ($event.value < this.minMagnitudeValue) {
       $event.value = this.minMagnitudeValue;
       this.maxMagnitudeValue = this.minMagnitudeValue;
-      this.showDialog('Maximum magnitude must be greater than or equal to Minimum magnitude.');
+      this.errorMessage = 'Maximum magnitude must be greater than or equal to Minimum magnitude.';
     } else {
       this.maxMagnitudeValue = $event.value;
     }
     this.sessionDataService.setItem(MAX_MAG_KEY, this.maxMagnitudeValue);
-  }
-
-  showDialog(message) {
-    this.confirmationService.confirm({
-      message: message,
-      header: 'Confirmation',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-        console.log("HERE!!!!!")
-      },
-    });
   }
 }

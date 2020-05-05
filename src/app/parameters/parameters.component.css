@@ -50,3 +50,16 @@ div.mat-select-value {
   color: #f2f2f2;
   background-color: #3d3737;
 }
+
+.search-button {
+  background-color: #009988;
+}
+
+.close-button {
+  background-color: transparent;
+}
+
+.close-button:active .close-button:focus {
+  background-color: transparent;
+  outline: 0;
+}

@@ -6,54 +6,53 @@
   </div>
 
   <div class="container">
+
     <div class="card-body">
-      <div>
-        <mat-form-field class="mr-5">
-          <mat-label>{{calendarEndLabel}}</mat-label>
-          <input matInput [matDatepicker]="picker1" disabled>
-          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker #picker1 disabled="false"></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>{{calendarStartLabel}}</mat-label>
-          <input matInput [matDatepicker]="picker2" disabled>
-          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2 disabled="false"></mat-datepicker>
-        </mat-form-field>
-      </div>
-      <div>
-        <div class="mag-container">
-          <mat-form-field class="mr-5">
-            <mat-label>{{maxMagnitudeLabel}}</mat-label>
-            <mat-select [value]='maxMagnitudeValue' (selectionChange)="onMaxMagChanged($event)">
-              <mat-option value="5">5</mat-option>
-              <mat-option value="6">6</mat-option>
-              <mat-option value="7">7</mat-option>
-              <mat-option value="8">8</mat-option>
-              <mat-option value="9">9</mat-option>
-              <mat-option value="10">10</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>{{minMagnitudeLabel}}</mat-label>
-            <mat-select [value]='minMagnitudeValue' (selectionChange)="onMinMagChanged($event)">
-              <mat-option value="5">5</mat-option>
-              <mat-option value="6">6</mat-option>
-              <mat-option value="7">7</mat-option>
-              <mat-option value="8">8</mat-option>
-              <mat-option value="9">9</mat-option>
-              <mat-option value="10">10</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
-    </div>
-    <div class="card-footer">
-      <button mat-raised-button color="primary" (onClick)="search()">Search</button>
       <div class='alert alert-danger' *ngIf='errorMessage'>{{errorMessage}}
+        <button class="btn btn-light btn-sm float-right close-button" (click)="close()">
+          X
+        </button>
+      </div>
+      <div class="row">
+        <mat-form-field class="col-12 col-sm-6 col-md-4">
+          <mat-label>{{calendarStartLabel}}</mat-label>
+          <input matInput [(ngModel)]="startDateValue" [matDatepicker]="startPicker" disabled>
+          <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+          <mat-datepicker #startPicker disabled="false"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="col-12 col-sm-6 col-md-4">
+          <mat-label>{{calendarEndLabel}}</mat-label>
+          <input matInput [(ngModel)]="endDateValue" [matDatepicker]="endPicker" disabled>
+          <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+          <mat-datepicker #endPicker disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="col-12 col-sm-6 col-md-4">
+          <mat-label>{{minMagnitudeLabel}}</mat-label>
+          <mat-select [value]='minMagnitudeValue' (selectionChange)="onMinMagChanged($event)">
+            <mat-option *ngFor="let mag of magValues" [value]='mag'>
+              {{mag}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-12 col-sm-6 col-md-4">
+          <mat-label>{{maxMagnitudeLabel}}</mat-label>
+          <mat-select [value]='maxMagnitudeValue' (selectionChange)="onMaxMagChanged($event)">
+            <mat-option value="5">5</mat-option>
+            <mat-option value="6">6</mat-option>
+            <mat-option value="7">7</mat-option>
+            <mat-option value="8">8</mat-option>
+            <mat-option value="9">9</mat-option>
+            <mat-option value="10">10</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="card-footer">
+        <button mat-raised-button class="search-button mb-3" (click)="search()">Search</button>
       </div>
     </div>
   </div>
+
 </div>
 
 

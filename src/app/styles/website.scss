@@ -16,6 +16,15 @@ body {
 .navbar {
   background: $alt-bg;
   border-bottom: 3px solid $accent;
+
+  .navbar-nav .nav-link {
+    color: $alt-color;
+    transition: color 0.2s ease-in;
+
+    &.active {
+      color: $accent;
+    }
+  }
 }
 
 .header {
