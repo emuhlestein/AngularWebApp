@@ -37,16 +37,18 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
 
     let quakeCountMap: { [key: string]: number } = {};
 
-    for (let quake of this.resolvedData.earthquakes) {
-      let mag = Math.trunc(quake.magnitude).toString();
-      if (quakeCountMap[mag]) {
-        quakeCountMap[mag]++;
-      } else {
-        quakeCountMap[mag] = 1;
+    if (this.resolvedData.earthquakes) {
+      for (let quake of this.resolvedData.earthquakes) {
+        let mag = Math.trunc(quake.magnitude).toString();
+        if (quakeCountMap[mag]) {
+          quakeCountMap[mag]++;
+        } else {
+          quakeCountMap[mag] = 1;
+        }
       }
-    }
 
-    this.quakeCount = Object.entries(quakeCountMap).map(i => this.mapQuake(i));
+      this.quakeCount = Object.entries(quakeCountMap).map(i => this.mapQuake(i));
+    }
 
     // this.quakeCount = Object.entries(quakeCountMap);
 
@@ -89,13 +91,15 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
 
     // this.dataSource = new EarthquakeDataSource(this.paginator, this.sort, this.earthquakeService);
 
-    merge(this.sort.sortChange, this.paginator.page)
-      .pipe(
-        tap(() => console.log('Paginating')),
-        tap(() => this.dataSource.pageQuakes(
-          this.paginator.pageIndex, this.paginator.pageSize,
-          this.sort.active, this.sort.direction))
-      ).subscribe();
+    if (this.resolvedData.earthquakes) {
+      merge(this.sort.sortChange, this.paginator.page)
+        .pipe(
+          tap(() => console.log('Paginating')),
+          tap(() => this.dataSource.pageQuakes(
+            this.paginator.pageIndex, this.paginator.pageSize,
+            this.sort.active, this.sort.direction))
+        ).subscribe();
+    }
   }
 
   display() {

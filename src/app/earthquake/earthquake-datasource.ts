@@ -54,8 +54,6 @@ export class EarthquakeDataSource extends DataSource<Earthquake> {
   // }
 
   pageQuakes(pageIndex: number, pageSize: number, sortColumn: string, sortDirection: string) {
-    console.log('Sort Column', sortColumn);
-    console.log('Sort Direction', sortDirection);
     const quakes = this.getPagedData(this.getSortedData(this.data, sortColumn, sortDirection), pageIndex, pageSize);
     this.earthquakeSubject.next(quakes);
   }
@@ -108,8 +106,12 @@ export class EarthquakeDataSource extends DataSource<Earthquake> {
   // }
 
   private getPagedData(data: Earthquake[], pageIndex: number, pageSize: number) {
-    const startIndex = pageIndex * pageSize;
-    return data.slice(startIndex, pageSize * (1 + pageIndex));
+    if (data) {
+      const startIndex = pageIndex * pageSize;
+      return data.slice(startIndex, pageSize * (1 + pageIndex));
+    } else {
+      return [];
+    }
   }
 
   /**
