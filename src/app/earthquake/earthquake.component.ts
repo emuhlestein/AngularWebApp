@@ -32,7 +32,6 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.resolvedData = this.route.snapshot.data['resolvedEarthquakeData'];
     this.dataSource = new EarthquakeDataSource(this.resolvedData.earthquakes);
 
@@ -47,7 +46,6 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
       }
     }
 
-    console.log(Object.entries(quakeCountMap));
     this.quakeCount = Object.entries(quakeCountMap).map(i => this.mapQuake(i));
 
     // this.quakeCount = Object.entries(quakeCountMap);
@@ -71,7 +69,6 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
 
   mapQuake(quake) {
     const mag = quake[0];
-    console.log('color', mag);
     const count = quake[1];
     const color = mag === "7" ? "#ff0000" : "#ffff00";
     return ({ magnitude: mag, count: count, color: color });

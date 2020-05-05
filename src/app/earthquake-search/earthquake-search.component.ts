@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@ang
 import { DatePipe } from '@angular/common';
 import { EarthquakeService } from '../earthquake/earthquake.service';
 import { SessionDataService, START_DATE_KEY, END_DATE_KEY, MIN_MAG_KEY, MAX_MAG_KEY } from '../session-data-service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './earthquake-search.component.html',
@@ -27,6 +28,7 @@ export class EarthquakeSearchComponent implements OnInit {
 
   constructor(
     private earthquakeService: EarthquakeService,
+    private router: Router,
     private datePipe: DatePipe,
     private sessionDataService: SessionDataService) { }
 
@@ -47,12 +49,19 @@ export class EarthquakeSearchComponent implements OnInit {
 
     }
 
-    this.errorMessage = '';
-    this.earthquakeService.onSearch(
-      this.minMagnitudeValue,
-      this.maxMagnitudeValue,
-      this.formatDate(this.startDateValue),
-      this.formatDate(this.endDateValue));
+    console.log('start date', this.formatDate(this.startDateValue));
+    // this.errorMessage = '';
+    // this.earthquakeService.onSearch(
+    //   this.minMagnitudeValue,
+    //   this.maxMagnitudeValue,
+    //   this.formatDate(this.startDateValue),
+    //   this.formatDate(this.endDateValue));
+
+    this.router.navigate(['/earthquakes',
+      {
+        minMag: this.minMagnitudeValue, maxMag: this.maxMagnitudeValue,
+        startDate: this.formatDate(this.startDateValue), endDate: this.formatDate(this.endDateValue)
+      }]);
   }
 
   close() {

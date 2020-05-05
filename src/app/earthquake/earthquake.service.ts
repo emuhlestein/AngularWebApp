@@ -44,14 +44,13 @@ export class EarthquakeService {
   }
 
   getEarthquakes(minMag: number, maxMag: number, stateDate: string, endDate: string): Observable<Earthquake[]> {
-
+    console.log('getEarthquakes');
     maxMag = maxMag + 0.999;
 
     const url = this.createUrl(minMag, maxMag, stateDate, endDate);
     this.progressBarService.startProgressBar();
     return this.http.get<EarthquakeData>(url)
       .pipe(
-        tap(stuff => console.log('stuff', stuff)),
         map(data => data.features.map(feature => ({
           location: feature.properties.place,
           magnitude: feature.properties.mag,
@@ -63,14 +62,13 @@ export class EarthquakeService {
   }
 
   onSearch(minMag: number, maxMag: number, stateDate: string, endDate: string) {
-
+    console.log('onSearch');
     maxMag = maxMag + 0.999;
 
     const url = this.createUrl(minMag, maxMag, stateDate, endDate);
     this.progressBarService.startProgressBar();
     const data$ = this.http.get<EarthquakeData>(url)
       .pipe(
-        tap(stuff => console.log('stuff', stuff)),
         map(data => data.features.map(feature => ({
           location: feature.properties.place,
           magnitude: feature.properties.mag,

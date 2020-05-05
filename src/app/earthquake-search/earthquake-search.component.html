@@ -48,7 +48,8 @@
         </mat-form-field>
       </div>
       <div class="card-footer">
-        <button mat-raised-button class="search-button mb-3" (click)="search()">Search</button>
+        <button mat-raised-button class="search-button mb-3"
+          [routerLink]="['/earthquakes', {minMag: minMagnitudeValue}]" (click)="search()">Search</button>
       </div>
     </div>
   </div>

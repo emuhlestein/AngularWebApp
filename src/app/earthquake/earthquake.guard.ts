@@ -11,7 +11,6 @@ export class EarthquakeGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    console.log('Should not activate');
     return true;
   }
 }
