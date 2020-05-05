@@ -102,25 +102,61 @@ table {
   font-size: 0.8rem;
 }
 
-/* Column Widths */
-// .mat-column-date,
-// .mat-column-magnitude {
-//   width: 120px;
-// }
+.mat-paginator {
+  padding: 0px;
+  margin: 0px;
+  color: rgb(200, 200, 200);
+  background-color: rgb(65, 60, 60);
+}
 
-// .mat-column-date,
-// .mat-column-url {
-//   max-width: 80px;
-// }
+.mat-paginator-navigation-previous:focus {
+  outline-color: #009988;
+}
 
-// .mat-column-location {
-//   max-width: 256px;
-// }
+.mat-paginator-icon:focus {
+  outline-color: #009988;
+}
 
-// .mat-column-magnitude {
-//   max-width: 200px;
-// }
+.mat-button-ripple:focus {
+  outline-color: #009988;
+}
 
-// .mat-column-url {
-//   max-width: 600px;
-// }
+/* change arrow icon when has focus */
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: #009988;
+}
+
+/* change arrow icon when does not have focus */
+.mat-form-field.mat-primary .mat-select-arrow {
+  color: #f2f2f2;
+}
+
+.mat-icon-button:focus {
+  outline-color: #009988;
+}
+
+.mat-form-field-infix {
+  color: rgb(200, 200, 200);
+}
+
+.mat-form-field-ripple {
+  color: #009988;
+}
+
+.mat-form-field-subscript-wrapper {
+  color: #009988;
+}
+
+.map-select-arrow:focus {
+  color: #009988;
+  background-color: #009988;
+}
+
+.mat-select-arrow-wrapper.mat-focused .map-select-arrow {
+  color: #009988;
+  background-color: #009988;
+}
+
+.mat-select-value .mat-select-value-text {
+  color: rgb(200, 200, 200);
+}
