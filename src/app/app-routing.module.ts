@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 
 import { EarthquakeGuard } from './earthquake/earthquake.guard';
 import { EarthquakeResolver } from './earthquake/earthquake-resolver.service';
-import { EarthquakeSearchComponent } from './earthquake-search/earthquake-search.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
@@ -27,7 +26,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
       },
       {
         path: 'search',
-        component: EarthquakeSearchComponent
+        loadChildren: () => import('./earthquake-search/earthquake-search.module').then(m => m.EarthquakeSearchModule)
       },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent }

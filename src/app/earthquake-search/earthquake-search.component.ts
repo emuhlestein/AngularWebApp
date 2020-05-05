@@ -4,7 +4,6 @@ import { EarthquakeService } from '../earthquake/earthquake.service';
 import { SessionDataService, START_DATE_KEY, END_DATE_KEY, MIN_MAG_KEY, MAX_MAG_KEY } from '../session-data-service';
 
 @Component({
-  selector: 'app-parameters',
   templateUrl: './earthquake-search.component.html',
   styleUrls: ['./earthquake-search.component.css'],
   encapsulation: ViewEncapsulation.None
