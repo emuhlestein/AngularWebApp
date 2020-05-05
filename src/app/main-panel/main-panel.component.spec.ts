@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { EarthquakeSearchComponent } from '../earthquake-search/earthquake-search.component';
 import { SummaryPanelComponent } from '../summary-panel/summary-panel.component';
 import { TrendsPanelComponent } from '../trends-panel/trends-panel.component';
 import { MainPanelComponent } from './main-panel.component';
@@ -25,7 +24,7 @@ describe('MainPanelComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MainPanelComponent,
-        EarthquakeSearchComponent, SummaryPanelComponent,
+        SummaryPanelComponent,
         TrendsPanelComponent, InputFieldComponent, RecentQuakesComponent],
       imports: [FormsModule, CardModule, CalendarModule, ConfirmDialogModule,
         SpinnerModule, HttpClientTestingModule, ChartModule, TableModule],

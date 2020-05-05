@@ -21,8 +21,6 @@ export class EarthquakeResolver implements Resolve<EarthquakeResolved> {
     const startDate = route.paramMap.get('startDate');
     const endDate = route.paramMap.get('endDate');
 
-    console.log('In EarthquakeResolver', startDate, endDate);
-
     return this.earthquakeService.getEarthquakes(minMag, maxMag, startDate, endDate)
       .pipe(
         map(earthquakes => ({ earthquakes: earthquakes })),

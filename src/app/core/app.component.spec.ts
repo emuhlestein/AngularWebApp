@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { MainPanelComponent } from '../main-panel/main-panel.component';
 import { EarthquakeComponent } from '../earthquake/earthquake.component';
 import { MessagesComponent } from '../messages/messages.component';
-import { EarthquakeSearchComponent } from '../earthquake-search/earthquake-search.component'
 import { SummaryPanelComponent } from '../summary-panel/summary-panel.component';
 import { TrendsPanelComponent } from '../trends-panel/trends-panel.component';
 import { RecentQuakesComponent } from '../recent-panel/recent-panel.component';
@@ -29,7 +28,6 @@ describe('AppComponent', () => {
         MainPanelComponent,
         EarthquakeComponent,
         MessagesComponent,
-        EarthquakeSearchComponent,
         SummaryPanelComponent,
         TrendsPanelComponent,
         InputFieldComponent,
