@@ -20,6 +20,7 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
   resolvedData: EarthquakeResolved;
   ds: MatTableDataSource<Earthquake>;
   quakeCount: QuakeCount[] = [];
+  colors = new Map();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['location', 'magnitude', 'date', 'info'];
@@ -32,6 +33,8 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
+    this.initColors();
+
     this.resolvedData = this.route.snapshot.data['resolvedEarthquakeData'];
     this.dataSource = new EarthquakeDataSource(this.resolvedData.earthquakes);
 
@@ -49,6 +52,8 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
 
       this.quakeCount = Object.entries(quakeCountMap).map(i => this.mapQuake(i));
     }
+
+
 
     // this.quakeCount = Object.entries(quakeCountMap);
 
@@ -70,9 +75,20 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
   }
 
   mapQuake(quake) {
+
+    console.log(quake);
     const mag = quake[0];
     const count = quake[1];
-    const color = mag === "7" ? "#ff0000" : "#ffff00";
+
+    let color;
+    if (+mag <= 4) {
+      color = this.colors.get(4);
+    } else if (+mag >= 10) {
+      color = this.colors.get(10);
+    } else {
+      color = this.colors.get(+mag);
+    }
+
     return ({ magnitude: mag, count: count, color: color });
   }
 
@@ -108,6 +124,16 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
 
   moreInfo(element) {
     console.log(element);
+  }
+
+  private initColors() {
+    this.colors.set(4, '#00ff40');
+    this.colors.set(5, '#80ff00');
+    this.colors.set(6, '#ffff00');
+    this.colors.set(7, '#ff8000');
+    this.colors.set(8, '#ff0040');
+    this.colors.set(9, '#ff00ff');
+    this.colors.set(10, '#4000ff');
   }
 }
 
