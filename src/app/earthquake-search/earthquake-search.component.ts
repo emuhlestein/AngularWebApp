@@ -1,17 +1,15 @@
-import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { EarthquakeService } from '../earthquake/earthquake.service';
 import { SessionDataService, START_DATE_KEY, END_DATE_KEY, MIN_MAG_KEY, MAX_MAG_KEY } from '../session-data-service';
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
-import { Message } from '../common/message';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-parameters',
-  templateUrl: './parameters.component.html',
-  styleUrls: ['./parameters.component.css'],
+  templateUrl: './earthquake-search.component.html',
+  styleUrls: ['./earthquake-search.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class ParametersComponent implements OnInit {
+export class EarthquakeSearchComponent implements OnInit {
   public minMagnitudeLabel = "Minimum Magnitude";
   public maxMagnitudeLabel = "Maximum Magnitude";
   public minMagnitudeValue = 6;
@@ -30,9 +28,9 @@ export class ParametersComponent implements OnInit {
 
   constructor(
     private earthquakeService: EarthquakeService,
+    private router: Router,
     private datePipe: DatePipe,
-    private sessionDataService: SessionDataService,
-    private confirmationService: ConfirmationService) { }
+    private sessionDataService: SessionDataService) { }
 
   ngOnInit() {
     this.startDateValue = new Date(this.sessionDataService.getItem(START_DATE_KEY));
@@ -51,12 +49,19 @@ export class ParametersComponent implements OnInit {
 
     }
 
-    this.errorMessage = '';
-    this.earthquakeService.onSearch(
-      this.minMagnitudeValue,
-      this.maxMagnitudeValue,
-      this.formatDate(this.startDateValue),
-      this.formatDate(this.endDateValue));
+    console.log('start date', this.formatDate(this.startDateValue));
+    // this.errorMessage = '';
+    // this.earthquakeService.onSearch(
+    //   this.minMagnitudeValue,
+    //   this.maxMagnitudeValue,
+    //   this.formatDate(this.startDateValue),
+    //   this.formatDate(this.endDateValue));
+
+    this.router.navigate(['/earthquakes',
+      {
+        minMag: this.minMagnitudeValue, maxMag: this.maxMagnitudeValue,
+        startDate: this.formatDate(this.startDateValue), endDate: this.formatDate(this.endDateValue)
+      }]);
   }
 
   close() {

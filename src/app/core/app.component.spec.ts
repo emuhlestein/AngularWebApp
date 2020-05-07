@@ -4,11 +4,9 @@ import { AppComponent } from './app.component';
 import { MainPanelComponent } from '../main-panel/main-panel.component';
 import { EarthquakeComponent } from '../earthquake/earthquake.component';
 import { MessagesComponent } from '../messages/messages.component';
-import { ParametersComponent } from '../parameters/parameters.component'
 import { SummaryPanelComponent } from '../summary-panel/summary-panel.component';
 import { TrendsPanelComponent } from '../trends-panel/trends-panel.component';
 import { RecentQuakesComponent } from '../recent-panel/recent-panel.component';
-import { CalendarComponent } from '../calendar/calendar.component';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { ChartModule } from 'primeng/chart';
@@ -27,11 +25,9 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        CalendarComponent,
         MainPanelComponent,
         EarthquakeComponent,
         MessagesComponent,
-        ParametersComponent,
         SummaryPanelComponent,
         TrendsPanelComponent,
         InputFieldComponent,

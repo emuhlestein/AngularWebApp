@@ -16,7 +16,12 @@ export class EarthquakeResolver implements Resolve<EarthquakeResolved> {
   resolve(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<EarthquakeResolved> {
 
-    return this.earthquakeService.getEarthquakes(6, 7, '2014-01-01', '2016-01-02')
+    const minMag = +route.paramMap.get('minMag');
+    const maxMag = +route.paramMap.get('maxMag');
+    const startDate = route.paramMap.get('startDate');
+    const endDate = route.paramMap.get('endDate');
+
+    return this.earthquakeService.getEarthquakes(minMag, maxMag, startDate, endDate)
       .pipe(
         map(earthquakes => ({ earthquakes: earthquakes })),
         catchError(error => {
