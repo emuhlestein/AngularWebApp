@@ -28,6 +28,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
         path: 'search',
         loadChildren: () => import('./earthquake-search/earthquake-search.module').then(m => m.EarthquakeSearchModule)
       },
+      {
+        path: 'portfolio',
+        loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule)
+      },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent }
     ])
