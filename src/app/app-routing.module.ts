@@ -5,18 +5,23 @@ import { EarthquakeGuard } from './earthquake/earthquake.guard';
 import { EarthquakeResolver } from './earthquake/earthquake-resolver.service';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
       {
-        path: 'home', component: HomeComponent
+        path: 'home',
+        data: { title: 'home', depth: 1 },
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
       {
         path: 'contact', component: PageNotFoundComponent
       },
       {
-        path: 'about', component: PageNotFoundComponent
+        path: 'about',
+        data: { title: 'about', depth: 2 },
+        loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
       },
       {
         path: 'earthquakes',

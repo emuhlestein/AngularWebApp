@@ -1,12 +1,9 @@
-.lang-circle {
-  color: #ff4477;
-}
-
-.lang-text {
-  color: rgb(200, 200, 200);
-  letter-spacing: 2px;
-}
-
-.tech-content {
-  margin-top: 20px;
+.home-content {
+  background: url("../../assets/img/landing.jpg") no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed;
+  min-height: 420px;
+  padding-top: 180px;
+  padding-bottom: 50px;
 }
