@@ -25,6 +25,8 @@ import { MaterialModule } from './material-module';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { HeaderComponent } from './components/header/header.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     TrendsPanelComponent,
     RecentQuakesComponent,
     ProgressBarComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HeaderComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
