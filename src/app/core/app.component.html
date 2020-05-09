@@ -1,30 +1,9 @@
 <div class="site">
   <div class="site-content">
-    <div class="container">
-      <nav class="navbar navbar-expand navbar-dark">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" [routerLink]="['/home']" routerLinkActive="active">
-            <i class="d-none d-sm-inline-block fas fa-home mx-1"></i>Home</a>
-          <a class="nav-item nav-link" [routerLink]="['/about']" routerLinkActive="active">
-            <i class="d-none d-sm-inline-block fas fa-info-circle mx-1"></i>About</a>
-          <a class="nav-item nav-link" [routerLink]="['/contact']" routerLinkActive="active">
-            <i class="d-none d-sm-inline-block fas fa-envelope mx-1"></i>Contact</a>
-          <a class="nav-item nav-link" [routerLink]="['/earthquakes']" routerLinkActive="active">
-            <i class="d-none d-sm-inline-block far fa-dot-circle mx-1"></i>Earthquakes</a>
-        </div>
-      </nav>
-    </div>
-    <div class="header">
-      <div class="container">
-        <h1>Ed Muhlestein</h1>
-        <h2>Developer</h2>
-      </div>
-    </div>
-    <div class="container">
-      <main class="main-content" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
-        <router-outlet #o="outlet"></router-outlet>
-      </main>
-    </div>
+    <app-nav-bar></app-nav-bar>
+    <main class="main-content" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
+      <router-outlet #o="outlet"></router-outlet>
+    </main>
   </div>
   <footer class="footer container">
     <div class="row">
