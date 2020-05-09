@@ -24,8 +24,9 @@ import { ProgressBarComponent } from './progressbar/progressbar.component';
 import { MaterialModule } from './material-module';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     RecentQuakesComponent,
     ProgressBarComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
