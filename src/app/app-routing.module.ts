@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { EarthquakeGuard } from './earthquake/earthquake.guard';
 import { EarthquakeResolver } from './earthquake/earthquake-resolver.service';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
