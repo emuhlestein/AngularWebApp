@@ -24,6 +24,11 @@ import { AboutComponent } from './about/about.component';
         loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
       },
       {
+        path: 'resume',
+        data: { title: 'about', depth: 2 },
+        loadChildren: () => import('./resume/resume.module').then(m => m.ResumeModule)
+      },
+      {
         path: 'earthquakes',
         canActivate: [EarthquakeGuard],
         loadChildren: () => import('./earthquake/earthquake.module').then(m => m.EarthquakeModule),
