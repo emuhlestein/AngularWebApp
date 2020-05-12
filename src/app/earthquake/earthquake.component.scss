@@ -39,20 +39,7 @@ th {
 .nat-item .nav-link {
   font-size: large;
 }
-// .mat-list-base {
-//   display: inline-block;
-// }
-// td,
-// th {
-//   text-align: center;
-// }
 
-// th {
-//   text-align: center;
-// }
-
-// .mat-column-date,
-// .mat-column-magnitude,
 .mat-column-info {
   text-align: center;
 }
@@ -82,16 +69,6 @@ th[scope="col"] {
   color: #fff;
 }
 
-th[scope="row"] {
-  background-color: #171718;
-  color: red;
-}
-
-div {
-  padding: 10px;
-  caption-side: bottom;
-}
-
 table {
   background-color: rgb(65, 60, 60);
   width: 100%;
@@ -102,15 +79,6 @@ table {
   font-size: 0.8rem;
 }
 
-.mat-select-value-text {
-  color: rgb(200, 200, 200);
-}
-
-.mat-focus-indicator {
-  border: 0;
-  margin: 0;
-}
-
 .mat-paginator {
   padding: 0px;
   margin: 0px;
@@ -118,62 +86,14 @@ table {
   background-color: rgb(65, 60, 60);
 }
 
-.mat-paginator-navigation-previous:focus {
-  outline-color: #009988;
-}
-
-.mat-paginator-icon:focus {
-  outline-color: #009988;
-}
-
-.mat-button-ripple:focus {
-  outline-color: #009988;
-}
-
-/* change arrow icon when has focus */
-.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
-  color: #009988;
-}
-
-/* change arrow icon when does not have focus */
-.mat-form-field.mat-primary .mat-select-arrow {
-  color: #f2f2f2;
-}
-
-.mat-form-field-infix {
-  color: #f2f2f2;
-}
-
-.mat-icon-button:focus {
-  outline-color: #009988;
-}
-
-.mat-form-field-infix {
+:host ::ng-deep .mat-select-value-text {
   color: rgb(200, 200, 200);
 }
 
-.mat-form-field-ripple {
+:host ::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
   color: #009988;
 }
 
-.mat-form-field-underline {
-  color: #009988;
-}
-
-.map-select-arrow:focus {
-  color: #009988;
+:host ::ng-deep .mat-form-field.mat-focused.mat-primary .mat-form-field-ripple {
   background-color: #009988;
-}
-
-mat-select > .mat-select-value {
-  color: rgb(200, 200, 200);
-}
-
-.mat-select-arrow-wrapper.mat-focused .map-select-arrow {
-  color: #009988;
-  background-color: #009988;
-}
-
-.mat-select-value-text {
-  color: rgb(200, 200, 200);
 }
