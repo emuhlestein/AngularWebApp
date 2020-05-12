@@ -16,7 +16,8 @@ import { AboutComponent } from './about/about.component';
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
       {
-        path: 'contact', component: PageNotFoundComponent
+        path: 'contact',
+        loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
       },
       {
         path: 'about',
