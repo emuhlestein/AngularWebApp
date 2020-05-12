@@ -3,7 +3,7 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { EarthquakeDataSource } from './earthquake-datasource';
 import { EarthquakeService } from './earthquake.service';
 import { Earthquake, EarthquakeResolved } from './earthquake';
-import { merge } from 'rxjs';
+import { merge, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 
@@ -25,7 +25,17 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['location', 'magnitude', 'date', 'info'];
 
-  filter;
+  private filterSubject = new Subject<string>();
+
+  _filter = '';
+  get filter(): string {
+    return this._filter;
+  }
+
+  set filter(value: string) {
+    this._filter = value;
+    this.filterSubject.next(value);
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -52,26 +62,6 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
 
       this.quakeCount = Object.entries(quakeCountMap).map(i => this.mapQuake(i));
     }
-
-
-
-    // this.quakeCount = Object.entries(quakeCountMap);
-
-
-    //this.ds = new MatTableDataSource<Earthquake>(this.resolvedData.earthquakes);
-    // console.log(this.paginator);
-
-
-    // console.log('Resolved Data', resolvedData.earthquakes);
-
-    // this.earthquakeService.earthquakes$.subscribe(earthquakes => {
-    //   console.log('Got the quakes', earthquakes)
-    //   this.dataSource = new MatTableDataSource<Earthquake>(earthquakes);
-    //   this.dataSource.paginator = this.tempPaginator;
-    //   this.dataSource.sort = this.tempSort;
-    // });
-    // this.earthquakeService.onSearch(6, 7, '2014-01-01', '2016-01-02');
-
   }
 
   mapQuake(quake) {
@@ -93,28 +83,14 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    // this.ds.paginator = this.paginator;
-    // this.paginator.length = this.resolvedData.earthquakes.length;
-    // console.log('ngAfterViewInit', this.dataSource.data.length);
-
-    // reset the paginator after sorting
-    // this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-    // merge(this.paginator.page)
-    //   .pipe(
-    //     tap(() => this.display())
-    //   ).subscribe();
-    // this.dataSource.pageQuakes();
-
-    // this.dataSource = new EarthquakeDataSource(this.paginator, this.sort, this.earthquakeService);
 
     if (this.resolvedData.earthquakes) {
-      merge(this.sort.sortChange, this.paginator.page)
+      merge(this.sort.sortChange, this.paginator.page, this.filterSubject.asObservable())
         .pipe(
           tap(() => console.log('Paginating')),
           tap(() => this.dataSource.pageQuakes(
             this.paginator.pageIndex, this.paginator.pageSize,
-            this.sort.active, this.sort.direction))
-        ).subscribe();
+            this.sort.active, this.sort.direction, this.filter))).subscribe();
     }
   }
 

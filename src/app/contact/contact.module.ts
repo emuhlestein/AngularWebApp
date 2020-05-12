@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
-import { EarthquakeComponent } from './earthquake.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material-module';
+import { FormsModule } from '@angular/forms';
+import { ContactComponent } from './contact.component';
 
 @NgModule({
   imports: [
@@ -14,12 +14,12 @@ import { MaterialModule } from '../material-module';
     RouterModule.forChild([
       {
         path: '',
-        component: EarthquakeComponent
+        component: ContactComponent
       }
     ])
   ],
   declarations: [
-    EarthquakeComponent
+    ContactComponent
   ]
 })
-export class EarthquakeModule { }
+export class ContactModule { }
