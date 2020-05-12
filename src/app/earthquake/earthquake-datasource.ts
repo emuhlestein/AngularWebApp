@@ -1,17 +1,6 @@
 import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator, MatSort } from '@angular/material';
-import { map, tap } from 'rxjs/operators';
-import { Observable, of as observableOf, merge, BehaviorSubject, of } from 'rxjs';
-import { EarthquakeService } from '../earthquake/earthquake.service';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Earthquake } from '../earthquake/earthquake';
-
-// TODO: Replace this with your own data model type
-export interface DataTableItem {
-  location: string;
-  magnitude: string;
-  date: string;
-  url: string;
-}
 
 /**
  * Data source for the DataTable view. This class should
@@ -22,38 +11,19 @@ export class EarthquakeDataSource extends DataSource<Earthquake> {
   data: Earthquake[] = [];
 
   private earthquakeSubject = new BehaviorSubject<Earthquake[]>([]);
-  private loadingSubject = new BehaviorSubject<boolean>(false);
 
-  private sort: MatSort;
-
-  paginator: MatPaginator;
-
-  constructor(private earthquake: Earthquake[]) {
+  constructor(private earthquakes: Earthquake[]) {
     super();
-    this.data = earthquake;
+    this.data = this.earthquakes;
     const quakes = this.getPagedData(this.data, 1, 10);
     this.earthquakeSubject.next(quakes);
   }
 
-
-  // constructor(private paginator: MatPaginator, private sort: MatSort,
-  //   private earthquakeService: EarthquakeService, ) {
-  //   super();
-  // }
-
-  // loadQuakes(): Observable<Earthquake[]> {
-  //   this.earthquakeService.onSearch(6, 7, '2014-01-01', '2016-01-02');
-  //   this.earthquakes$ = this.earthquakeService.earthquakes$; // this is all the quakes
-  //   return this.earthquakeService.earthquakes$
-  //     .pipe(
-  //       tap(result => this.data = result)
-  //     );
-  //   // this.earthquakeService.earthquakes$.subscribe(result => {
-  //   //   this.data = result;
-  //   // });
-  // }
-
-  pageQuakes(pageIndex: number, pageSize: number, sortColumn: string, sortDirection: string) {
+  pageQuakes(pageIndex: number, pageSize: number, sortColumn: string, sortDirection: string, filter: string) {
+    if (filter) {
+      this.data = this.earthquakes.filter(quake =>
+        quake.location.toLocaleUpperCase().includes(filter.toLocaleUpperCase()))
+    }
     const quakes = this.getPagedData(this.getSortedData(this.data, sortColumn, sortDirection), pageIndex, pageSize);
     this.earthquakeSubject.next(quakes);
   }
@@ -64,23 +34,7 @@ export class EarthquakeDataSource extends DataSource<Earthquake> {
    * @returns A stream of the items to be rendered.
    */
   connect(): Observable<Earthquake[]> {
-    // console.log('connect', this.data);
     return this.earthquakeSubject.asObservable();
-
-    // // Combine everything that affects the rendered data into one update
-    // // stream for the data-table to consume.
-    // const dataMutations = [
-    //   observableOf(this.data),
-    //   this.paginator.page,
-    //   this.sort.sortChange
-    // ];
-
-    // // Set the paginator's length
-    // this.paginator.length = this.data.length;
-
-    // return merge(...dataMutations).pipe(map(() => {
-    //   return this.getPagedData(this.getSortedData([...this.data]));
-    // }));
   }
 
   /**
@@ -89,21 +43,7 @@ export class EarthquakeDataSource extends DataSource<Earthquake> {
    */
   disconnect() {
     this.earthquakeSubject.complete();
-    this.loadingSubject.complete();
   }
-
-  loadEarthquakes() {
-
-  }
-
-  /**
-   * Paginate the data (client-side). If you're using server-side pagination,
-   * this would be replaced by requesting the appropriate data from the server.
-   */
-  // private getPagedData(data: Earthquake[]) {
-  //   const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
-  //   return data.splice(startIndex, this.paginator.pageSize);
-  // }
 
   private getPagedData(data: Earthquake[], pageIndex: number, pageSize: number) {
     if (data) {
