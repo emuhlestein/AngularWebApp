@@ -48,20 +48,7 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
     this.resolvedData = this.route.snapshot.data['resolvedEarthquakeData'];
     this.dataSource = new EarthquakeDataSource(this.resolvedData.earthquakes);
 
-    let quakeCountMap: { [key: string]: number } = {};
-
-    if (this.resolvedData.earthquakes) {
-      for (let quake of this.resolvedData.earthquakes) {
-        let mag = Math.trunc(quake.magnitude).toString();
-        if (quakeCountMap[mag]) {
-          quakeCountMap[mag]++;
-        } else {
-          quakeCountMap[mag] = 1;
-        }
-      }
-
-      this.quakeCount = Object.entries(quakeCountMap).map(i => this.mapQuake(i));
-    }
+    this.colorizeQuake();
   }
 
   mapQuake(quake) {
@@ -88,9 +75,7 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
       merge(this.sort.sortChange, this.paginator.page, this.filterSubject.asObservable())
         .pipe(
           tap(() => console.log('Paginating')),
-          tap(() => this.dataSource.pageQuakes(
-            this.paginator.pageIndex, this.paginator.pageSize,
-            this.sort.active, this.sort.direction, this.filter))).subscribe();
+          tap(() => this.countQuakes())).subscribe();
     }
   }
 
@@ -100,6 +85,47 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
 
   moreInfo(element) {
     console.log(element);
+  }
+
+  private countQuakes() {
+    this.dataSource.pageQuakes(
+      this.paginator.pageIndex, this.paginator.pageSize,
+      this.sort.active, this.sort.direction, this.filter);
+    this.colorizeQuakes(this.dataSource.data);
+  }
+
+  private colorizeQuakes(earthquakes) {
+    let quakeCountMap: { [key: string]: number } = {};
+
+    if (earthquakes) {
+      for (let quake of earthquakes) {
+        let mag = Math.trunc(quake.magnitude).toString();
+        if (quakeCountMap[mag]) {
+          quakeCountMap[mag]++;
+        } else {
+          quakeCountMap[mag] = 1;
+        }
+      }
+
+      this.quakeCount = Object.entries(quakeCountMap).map(i => this.mapQuake(i));
+    }
+  }
+
+  private colorizeQuake() {
+    let quakeCountMap: { [key: string]: number } = {};
+
+    if (this.resolvedData.earthquakes) {
+      for (let quake of this.resolvedData.earthquakes) {
+        let mag = Math.trunc(quake.magnitude).toString();
+        if (quakeCountMap[mag]) {
+          quakeCountMap[mag]++;
+        } else {
+          quakeCountMap[mag] = 1;
+        }
+      }
+
+      this.quakeCount = Object.entries(quakeCountMap).map(i => this.mapQuake(i));
+    }
   }
 
   private initColors() {

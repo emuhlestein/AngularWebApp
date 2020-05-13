@@ -4,17 +4,6 @@ import { AppComponent } from './app.component';
 import { MainPanelComponent } from '../main-panel/main-panel.component';
 import { EarthquakeComponent } from '../earthquake/earthquake.component';
 import { MessagesComponent } from '../messages/messages.component';
-import { SummaryPanelComponent } from '../summary-panel/summary-panel.component';
-import { TrendsPanelComponent } from '../trends-panel/trends-panel.component';
-import { RecentQuakesComponent } from '../recent-panel/recent-panel.component';
-import { TableModule } from 'primeng/table';
-import { CardModule } from 'primeng/card';
-import { ChartModule } from 'primeng/chart';
-import { CalendarModule } from 'primeng/calendar';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
-import { InputFieldComponent } from '../input-field/input-field.component';
-import { SpinnerModule } from 'primeng/spinner';
 import { SessionDataService } from '../session-data-service';
 import { DatePipe } from '@angular/common';
 import { EarthquakeService } from '../earthquake/earthquake.service';
@@ -27,24 +16,13 @@ describe('AppComponent', () => {
         AppComponent,
         MainPanelComponent,
         EarthquakeComponent,
-        MessagesComponent,
-        SummaryPanelComponent,
-        TrendsPanelComponent,
-        InputFieldComponent,
-        RecentQuakesComponent
+        MessagesComponent
       ],
       imports: [
-        CalendarModule,
-        CardModule,
-        ConfirmDialogModule,
         FormsModule,
-        SpinnerModule,
-        TableModule,
-        HttpClientTestingModule,
-        ChartModule
+        HttpClientTestingModule
       ],
       providers: [
-        ConfirmationService,
         DatePipe,
         EarthquakeService,
         SessionDataService
