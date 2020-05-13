@@ -97,3 +97,36 @@ table {
 :host ::ng-deep .mat-form-field.mat-focused.mat-primary .mat-form-field-ripple {
   background-color: #009988;
 }
+
+::ng-deep .mat-form-field {
+  .mat-input-element {
+    color: rgb(200, 200, 200);
+  }
+  .mat-form-field-label {
+    color: rgb(200, 200, 200);
+  }
+  .mat-form-field-underline {
+    background-color: rgb(200, 200, 200);
+  }
+  .mat-form-field-ripple {
+    background-color: rgb(200, 200, 200);
+  }
+  .mat-form-field-required-marker {
+    color: rgb(200, 200, 200);
+  }
+}
+
+::ng-deep .mat-form-field.mat-focused {
+  .mat-form-field-label {
+    color: #009988;
+  }
+  .mat-form-field-ripple {
+    background-color: #009988;
+  }
+  .mat-form-field-required-marker {
+    color: #009988;
+  }
+  .mat-input-element {
+    color: #009988;
+  }
+}

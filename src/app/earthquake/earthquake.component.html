@@ -2,9 +2,9 @@
   <div class="card-header">
     <nav class="navbar navbar-expand">
       <a class="navbar-brand">Earthquakes</a>
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="example-full-width" appearance="fill" floatLabel="never">
         <mat-label>Filter</mat-label>
-        <input matInput placeholder="Filter" [(ngModel)]="filter">
+        <input matInput class="filter-text" placeholder="Filter" [(ngModel)]="filter">
       </mat-form-field>
       <ul class="navbar-nav">
         <li class="nav-item" *ngFor="let i of quakeCount"><a class="nav-link">
