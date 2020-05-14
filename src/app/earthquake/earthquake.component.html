@@ -14,7 +14,8 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/search']">Search</a>
+          <button mat-raised-button class="search-button" [routerLink]="['/search']">Search</button>
+          <!-- <a class="nav-link" [routerLink]="['/search']">Search</a> -->
         </li>
       </ul>
     </nav>
@@ -52,7 +53,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
 
-        <div *ngIf="!dataSource?.data">
+        <div *ngIf="haveData()" class="p-1">
           No data found
         </div>
 

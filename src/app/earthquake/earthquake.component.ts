@@ -87,6 +87,10 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
     console.log(element);
   }
 
+  haveData() {
+    return this.dataSource.data;
+  }
+
   private countQuakes() {
     this.dataSource.pageQuakes(
       this.paginator.pageIndex, this.paginator.pageSize,
