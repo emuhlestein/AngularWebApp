@@ -12,7 +12,6 @@ import { AboutComponent } from './about/about.component';
     RouterModule.forRoot([
       {
         path: 'home',
-        data: { title: 'home', depth: 1 },
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
       {
@@ -21,12 +20,10 @@ import { AboutComponent } from './about/about.component';
       },
       {
         path: 'about',
-        data: { title: 'about', depth: 2 },
         loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
       },
       {
         path: 'resume',
-        data: { title: 'about', depth: 2 },
         loadChildren: () => import('./resume/resume.module').then(m => m.ResumeModule)
       },
       {
