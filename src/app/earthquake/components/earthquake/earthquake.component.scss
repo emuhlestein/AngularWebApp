@@ -58,9 +58,14 @@ th {
   justify-content: center;
 }
 
+.table-header {
+  text-align: center;
+}
+
 .mat-cell,
 .mat-header-cell {
   color: white;
+  justify-content: center;
 }
 
 tr:nth-child(odd) {

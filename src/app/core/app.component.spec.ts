@@ -1,8 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { MainPanelComponent } from '../main-panel/main-panel.component';
-import { EarthquakeComponent } from '../earthquake/earthquake.component';
+import { EarthquakeComponent } from '../earthquake/components/earthquake/earthquake.component';
 import { MessagesComponent } from '../messages/messages.component';
 import { SessionDataService } from '../session-data-service';
 import { DatePipe } from '@angular/common';
@@ -14,7 +13,6 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        MainPanelComponent,
         EarthquakeComponent,
         MessagesComponent
       ],

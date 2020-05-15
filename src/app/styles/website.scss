@@ -1,4 +1,6 @@
 body {
+  margin: 0;
+  padding: 0;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
 }
@@ -6,11 +8,17 @@ body {
 .site {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 .site-content {
   flex: 1;
+  height: 100vh;
+  width: 100%;
+  background: url("./assets/img/landing.jpg") no-repeat;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center;
+  background-attachment: fixed;
 }
 
 .navbar {
@@ -28,29 +36,20 @@ body {
   }
 }
 
-.footer {
-  margin-top: -40px;
+.main-content {
+  min-height: 84vh;
+}
+
+.main-footer {
   color: $alt-color;
   border-top: 3px solid $accent;
   background-color: $alt-bg;
-  p {
-    padding-top: 1.25rem;
-  }
 }
 
 // Home Content
-
-.home-content {
-  min-height: 82vh;
-  background: url("./assets/img/landing.jpg") no-repeat;
-  background-size: 100% 100%;
-}
-
 .home-image-content {
-  top: 50%;
-  left: 30%;
-  transform: translate(-50%, -50%);
   position: absolute;
+  transform: translate(50%, 50%);
 }
 
 .home-image-content img {
@@ -59,7 +58,6 @@ body {
   border: 2px solid $accent;
 }
 
-// About Content
 .about-content {
   padding: 20px;
 }
@@ -145,4 +143,69 @@ body {
   width: 20px;
   height: 20px;
   z-index: 1;
+}
+
+mat-footer-row mat-footer-cell {
+  justify-content: center;
+  font-style: italic;
+}
+
+.search-div {
+  margin: 10px;
+}
+
+.search-form-field {
+  width: 60%;
+  margin-left: 10px;
+  padding: 5px 10px;
+  // background-color: $alt-bg;
+  background-color: #ff4477;
+  border-radius: 5px;
+}
+
+.search-form-field div.mat-form-field-underline {
+  display: none;
+}
+
+.search-form-field div.mat-form-field-infix {
+  border-top: 0px;
+
+  .mat-input-element {
+    color: #fff !important;
+  }
+}
+
+.search-form-field div.mat-form-field-wrapper {
+  padding-bottom: 0px;
+}
+
+.search-form-field div.mat-form-field-suffix button {
+  height: 28px;
+  width: 28px;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: green !important;
+}
+
+input::-webkit-input-placeholder {
+  color: red !important;
+}
+input:-ms-input-placeholder {
+  color: red !important;
+}
+
+// Search Dialog Styles
+.mat-dialog-container {
+  background-color: $alt-bg;
+}
+
+.navbar .search-navbar-brand {
+  color: $alt-color;
+}
+
+/* set the color of datapicker icon */
+.mat-datepicker-toggle-default-icon {
+  color: #f2f2f2;
 }

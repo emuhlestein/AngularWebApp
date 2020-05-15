@@ -1,10 +1,14 @@
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { EarthquakeService } from '../earthquake/earthquake.service';
-import { SessionDataService, START_DATE_KEY, END_DATE_KEY, MIN_MAG_KEY, MAX_MAG_KEY } from '../session-data-service';
+import { EarthquakeService } from '../../earthquake.service';
+import { SessionDataService, START_DATE_KEY, END_DATE_KEY, MIN_MAG_KEY, MAX_MAG_KEY } from '../../../session-data-service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialogRef } from '@angular/material/dialog';
+import { SearchParams } from '../../search-params';
 
 @Component({
+  selector: 'app-earthquake-search',
   templateUrl: './earthquake-search.component.html',
   styleUrls: ['./earthquake-search.component.css'],
   encapsulation: ViewEncapsulation.None
@@ -16,21 +20,22 @@ export class EarthquakeSearchComponent implements OnInit {
   public maxMagnitudeValue = 8;
   public minMagnitudeLimit = 6;
   public maxMagnitudeLimit = 10;
-  @Output() public childEvent = new EventEmitter();
+  @Output() public search = new EventEmitter();
   public calendarStartLabel = "Start Date";
   public calendarEndLabel = "End Date";
   public startDateValue;
   public endDateValue;
   rejectVisible: boolean = false;
   msg: string;
-  errorMessage = '';
   magValues = ['5', '6', '7', '8', '9', '10'];
 
   constructor(
     private earthquakeService: EarthquakeService,
     private router: Router,
     private datePipe: DatePipe,
-    private sessionDataService: SessionDataService) { }
+    private sessionDataService: SessionDataService,
+    private snackBar: MatSnackBar,
+    public dialogRef: MatDialogRef<EarthquakeSearchComponent>) { }
 
   ngOnInit() {
     this.startDateValue = new Date(this.sessionDataService.getItem(START_DATE_KEY));
@@ -39,17 +44,22 @@ export class EarthquakeSearchComponent implements OnInit {
     this.maxMagnitudeValue = this.sessionDataService.getItem(MAX_MAG_KEY);
   }
 
-  search() {
+  onSearch() {
     console.log(this.minMagnitudeValue, this.maxMagnitudeValue);
-    if (+this.minMagnitudeValue > +this.maxMagnitudeValue) {
-      console.log('HERE');
-      this.errorMessage = 'Maximum magnitude must be greater than';// or equal to Minimum magnitude.';
-      return;
-    } else {
+    // if (+this.minMagnitudeValue > +this.maxMagnitudeValue) {
+    //   console.log('HERE');
+    //   this.showErrorMessage('Maximum magnitude must be greater than');// or equal to Minimum magnitude.';
+    //   return;
+    // } else {
 
-    }
+    // }
 
     console.log('start date', this.formatDate(this.startDateValue));
+
+    // this.earthquakeService.onSearch(
+    //   this.minMagnitudeValue, this.maxMagnitudeValue,
+    //   this.formatDate(this.startDateValue), this.formatDate(this.endDateValue));
+    // this.search.emit({ minMag: this.minMagnitudeValue });
     // this.errorMessage = '';
     // this.earthquakeService.onSearch(
     //   this.minMagnitudeValue,
@@ -57,15 +67,19 @@ export class EarthquakeSearchComponent implements OnInit {
     //   this.formatDate(this.startDateValue),
     //   this.formatDate(this.endDateValue));
 
-    this.router.navigate(['/earthquakes',
-      {
-        minMag: this.minMagnitudeValue, maxMag: this.maxMagnitudeValue,
-        startDate: this.formatDate(this.startDateValue), endDate: this.formatDate(this.endDateValue)
-      }]);
+    // this.router.navigate(['/earthquakes',
+    //   {
+    //     minMag: this.minMagnitudeValue, maxMag: this.maxMagnitudeValue,
+    //     startDate: this.formatDate(this.startDateValue), endDate: this.formatDate(this.endDateValue)
+    //   }]);
+
+    this.dialogRef.close(new SearchParams(
+      this.minMagnitudeValue, this.maxMagnitudeValue,
+      this.formatDate(this.startDateValue), this.formatDate(this.endDateValue)));
   }
 
-  close() {
-    this.errorMessage = '';
+  showErrorMessage(message) {
+    this.snackBar.open(message, "close", { duration: 2000 });
   }
 
   private formatDate(date: Date): string {
@@ -76,7 +90,7 @@ export class EarthquakeSearchComponent implements OnInit {
     if ($event.value.getTime() > this.endDateValue.getTime()) {
       $event.value = this.endDateValue;
       this.startDateValue = this.endDateValue;
-      this.errorMessage = 'Stop date must be greater than or equal to start date.';
+      this.showErrorMessage('Stop date must be greater than or equal to start date.');
     } else {
       this.startDateValue = $event.value;
     }
@@ -87,7 +101,7 @@ export class EarthquakeSearchComponent implements OnInit {
     if ($event.value.getTime() < this.startDateValue.getTime()) {
       $event.value = this.startDateValue;
       this.endDateValue = this.startDateValue;
-      this.errorMessage = 'Stop date must be greater than or equal to start date.';
+      this.showErrorMessage('Stop date must be greater than or equal to start date.');
     } else {
       this.endDateValue = $event.value;
     }
@@ -98,7 +112,7 @@ export class EarthquakeSearchComponent implements OnInit {
     if ($event.value > this.maxMagnitudeValue) {
       $event.value = this.maxMagnitudeValue;
       this.minMagnitudeValue = this.maxMagnitudeValue;
-      this.errorMessage = 'Maximum magnitude must be greater than';// or equal to Minimum magnitude.';
+      this.showErrorMessage('Maximum magnitude must be greater than');// or equal to Minimum magnitude.';
     } else {
       this.minMagnitudeValue = $event.value;
     }
@@ -109,7 +123,7 @@ export class EarthquakeSearchComponent implements OnInit {
     if ($event.value < this.minMagnitudeValue) {
       $event.value = this.minMagnitudeValue;
       this.maxMagnitudeValue = this.minMagnitudeValue;
-      this.errorMessage = 'Maximum magnitude must be greater than or equal to Minimum magnitude.';
+      this.showErrorMessage('Maximum magnitude must be greater than or equal to Minimum magnitude.');
     } else {
       this.maxMagnitudeValue = $event.value;
     }

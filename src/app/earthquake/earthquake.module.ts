@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { EarthquakeComponent } from './earthquake.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material-module';
+import { EarthquakeComponent } from './components/earthquake/earthquake.component';
+import { EarthquakeSearchComponent } from './components/earthquake-search/earthquake-search.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,11 @@ import { MaterialModule } from '../material-module';
     ])
   ],
   declarations: [
-    EarthquakeComponent
+    EarthquakeComponent,
+    EarthquakeSearchComponent
+  ],
+  entryComponents: [
+    EarthquakeSearchComponent
   ]
 })
 export class EarthquakeModule { }

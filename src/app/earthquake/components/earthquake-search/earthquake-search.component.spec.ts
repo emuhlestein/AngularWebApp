@@ -1,27 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MainPanelComponent } from './main-panel.component';
+import { EarthquakeSearchComponent } from './earthquake-search.component';
 import { FormsModule } from '@angular/forms';
-import { EarthquakeService } from '../earthquake/earthquake.service';
+import { EarthquakeService } from '../../earthquake.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DatePipe } from '@angular/common';
-import { SessionDataService } from '../session-data-service';
+import { SessionDataService } from '../../../session-data-service';
 
-describe('MainPanelComponent', () => {
-  let component: MainPanelComponent;
-  let fixture: ComponentFixture<MainPanelComponent>;
+describe('EarthquakeSearchComponent', () => {
+  let component: EarthquakeSearchComponent;
+  let fixture: ComponentFixture<EarthquakeSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MainPanelComponent],
-      imports: [FormsModule,
-        HttpClientTestingModule,],
+      declarations: [EarthquakeSearchComponent],
+      imports: [
+        FormsModule, HttpClientTestingModule],
       providers: [EarthquakeService, DatePipe, SessionDataService]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainPanelComponent);
+    fixture = TestBed.createComponent(EarthquakeSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

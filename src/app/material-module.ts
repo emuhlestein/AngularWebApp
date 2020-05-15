@@ -12,11 +12,14 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter'
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const matModules = [
   MatButtonModule,
   MatCardModule,
   MatDatepickerModule,
+  MatDialogModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
@@ -25,6 +28,7 @@ const matModules = [
   MatPaginatorModule,
   MatProgressBarModule,
   MatSelectModule,
+  MatSnackBarModule,
   MatSortModule,
   MatTableModule
 ];

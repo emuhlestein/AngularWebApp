@@ -7,8 +7,6 @@ import { AppComponent } from './core/app.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainPanelComponent } from './main-panel/main-panel.component';
-import { ProgressBarComponent } from './progressbar/progressbar.component';
 import { MaterialModule } from './material-module';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,8 +18,6 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
   declarations: [
     AppComponent,
     MessagesComponent,
-    MainPanelComponent,
-    ProgressBarComponent,
     PageNotFoundComponent,
     NavBarComponent
   ],

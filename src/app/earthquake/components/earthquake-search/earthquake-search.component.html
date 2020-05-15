@@ -1,18 +1,12 @@
 <div class="card">
   <div class="card-header">
     <nav class="navbar navbar-expand">
-      <a class="navbar-brand">Search Parameters</a>
+      <a class="search-navbar-brand">Search Parameters</a>
     </nav>
   </div>
 
   <div class="container search-container">
-
     <div class="card-body">
-      <div class='alert alert-danger' *ngIf='errorMessage'>{{errorMessage}}
-        <button class="btn btn-light btn-sm float-right close-button" (click)="close()">
-          X
-        </button>
-      </div>
       <div class="row">
         <mat-form-field class="col-12 col-sm-6 col-md-4">
           <mat-label>{{calendarStartLabel}}</mat-label>
@@ -48,17 +42,8 @@
         </mat-form-field>
       </div>
       <div class="card-footer">
-        <button mat-raised-button class="search-button mb-3"
-          [routerLink]="['/earthquakes', {minMag: minMagnitudeValue}]" (click)="search()">Search</button>
+        <button mat-raised-button class="search-button mb-3" (click)="onSearch()">Search</button>
       </div>
     </div>
   </div>
-
 </div>
-
-
-<!-- <p-confirmDialog #confirmation>
-    <p-footer>
-      <button pButton type="button" label="Ok" (click)=confirmation.accept() class="ui-button-secondary"></button>
-    </p-footer>
-  </p-confirmDialog> -->

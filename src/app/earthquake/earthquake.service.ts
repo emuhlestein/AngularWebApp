@@ -4,8 +4,8 @@ import { Earthquake } from './earthquake'
 import { EarthquakeData } from './earthquakedata'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { HttpClient } from '@angular/common/http'
-import { ProgressBarService } from '../progressbar/progressbar.service';
 import { map, tap } from 'rxjs/operators';
+import { SearchParams } from './search-params';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,6 @@ export class EarthquakeService {
   earthquakes$ = this.earthquakeSubject.asObservable();
 
   constructor(
-    private progressBarService: ProgressBarService,
     private http: HttpClient,
     private datePipe: DatePipe) { }
 
@@ -24,7 +23,6 @@ export class EarthquakeService {
     console.log('opnSearch');
     maxMag = maxMag + 0.999;
     const url = this.createUrl(minMag, maxMag, stateDate, endDate);
-    this.progressBarService.startProgressBar();
     this.http.get<EarthquakeData>(url).subscribe(response => {
       let earthquakes = new Array<Earthquake>();
       for (let index in response.features) {
@@ -38,7 +36,6 @@ export class EarthquakeService {
         };
         earthquakes[index] = earthquake;
       }
-      this.progressBarService.stopProgressBar();
       // this.earthquakes.next(earthquakes);
     });
   }
@@ -48,7 +45,6 @@ export class EarthquakeService {
     maxMag = maxMag + 0.999;
 
     const url = this.createUrl(minMag, maxMag, stateDate, endDate);
-    this.progressBarService.startProgressBar();
     return this.http.get<EarthquakeData>(url)
       .pipe(
         map(data => data.features.map(feature => ({
@@ -66,7 +62,6 @@ export class EarthquakeService {
     maxMag = maxMag + 0.999;
 
     const url = this.createUrl(minMag, maxMag, stateDate, endDate);
-    this.progressBarService.startProgressBar();
     const data$ = this.http.get<EarthquakeData>(url)
       .pipe(
         map(data => data.features.map(feature => ({

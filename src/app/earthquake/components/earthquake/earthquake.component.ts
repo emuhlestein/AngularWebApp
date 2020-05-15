@@ -1,15 +1,19 @@
-import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { EarthquakeDataSource } from './earthquake-datasource';
-import { EarthquakeService } from './earthquake.service';
-import { Earthquake, EarthquakeResolved } from './earthquake';
+import { EarthquakeDataSource } from '../../earthquake-datasource';
+import { EarthquakeService } from '../../earthquake.service';
+import { Earthquake, EarthquakeResolved } from '../../earthquake';
 import { merge, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog, MatDialogConfig } from "@angular/material";
+import { EarthquakeSearchComponent } from '../earthquake-search/earthquake-search.component';
+import { SearchParams } from '../../search-params';
 
 @Component({
   templateUrl: './earthquake.component.html',
-  styleUrls: ['./earthquake.component.scss']
+  styleUrls: ['./earthquake.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class EarthquakeComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -39,16 +43,28 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private earthquakeService: EarthquakeService) {
+    private earthquakeService: EarthquakeService,
+    private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
+
+    this.earthquakeService.earthquakes$.subscribe(earthquakes => {
+      console.log('Earthquakes', earthquakes);
+      if (earthquakes) {
+        this.dataSource = new EarthquakeDataSource(earthquakes);
+      }
+    });
     this.initColors();
 
-    this.resolvedData = this.route.snapshot.data['resolvedEarthquakeData'];
-    this.dataSource = new EarthquakeDataSource(this.resolvedData.earthquakes);
+    // this.resolvedData = this.route.snapshot.data['resolvedEarthquakeData'];
+    // this.dataSource = new EarthquakeDataSource(this.resolvedData.earthquakes);
 
-    this.colorizeQuake();
+    // this.earthquakeService.getEarthquakes(5, 6).subscribe(results => {
+
+    // });
+
+    // this.colorizeQuake();
   }
 
   mapQuake(quake) {
@@ -71,7 +87,7 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
 
-    if (this.resolvedData.earthquakes) {
+    if (this.dataSource && this.dataSource.data) {
       merge(this.sort.sortChange, this.paginator.page, this.filterSubject.asObservable())
         .pipe(
           tap(() => console.log('Paginating')),
@@ -88,7 +104,20 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
   }
 
   haveData() {
-    return this.dataSource.data;
+    return this.dataSource && this.dataSource.data;
+  }
+
+  onFilterClear() {
+    this.filter = "";
+  }
+
+  onSearch() {
+    let dialogRef = this.dialog.open(EarthquakeSearchComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      let sp = result as SearchParams;
+      this.earthquakeService.onSearch(sp.minMag, sp.maxMag, sp.startDate, sp.endDate);
+    });
   }
 
   private countQuakes() {
