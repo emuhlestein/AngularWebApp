@@ -13,18 +13,13 @@
   margin: 0px;
 }
 
-td,
-th {
-  border: 1px solid rgb(190, 190, 190);
-}
-
 .container {
   padding: 0px;
 }
 
-.search-button {
-  background-color: #009988;
-}
+// .search-button {
+//   background-color: #009988;
+// }
 
 .mat-list {
   display: flex;
@@ -44,41 +39,42 @@ th {
   font-size: large;
 }
 
-.mat-column-info {
-  text-align: center;
-}
+// .mat-column-info {
+//   text-align: center;
+// }
 
-.mat-column-date,
-.mat-column-magnitude {
-  text-align: center;
-}
+// .mat-column-date,
+// .mat-column-magnitude {
+//   text-align: center;
+// }
 
-:host ::ng-deep .mat-sort-header-container {
-  display: flex;
-  justify-content: center;
-}
+// :host ::ng-deep .mat-sort-header-container {
+//   display: flex;
+//   justify-content: center;
+// }
 
-.table-header {
-  text-align: center;
-}
+// .table-header {
+//   background-color: rgb(65, 60, 60);
+//   text-align: center;
+// }
 
-.mat-cell,
-.mat-header-cell {
-  color: white;
-  justify-content: center;
-}
+// .mat-cell,
+// .mat-header-cell {
+//   color: white;
+//   justify-content: center;
+// }
 
-tr:nth-child(odd) {
-  background-color: rgb(20, 19, 19);
-  color: white;
-}
+// tr:nth-child(odd) {
+//   background-color: rgb(20, 19, 19);
+//   color: white;
+// }
 
-th[scope="col"] {
-  background-color: #111010;
-  color: #fff;
-}
+// th[scope="col"] {
+//   background-color: #111010;
+//   color: #fff;
+// }
 
-table {
+table .mat-table {
   background-color: rgb(65, 60, 60);
   width: 100%;
   border-collapse: collapse;

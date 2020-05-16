@@ -209,3 +209,63 @@ input:-ms-input-placeholder {
 .mat-datepicker-toggle-default-icon {
   color: #f2f2f2;
 }
+
+// ***********************************
+// Earthquake page styling
+// ***********************************
+.search-button {
+  background-color: #009988;
+}
+
+//
+// Table styles
+//
+.table-even {
+  background-color: rgb(65, 60, 60);
+}
+
+// NOTE: this is not needed as the background color for the entire
+// table is set to this color.
+// .table-odd {
+//   background-color: #111010;
+// }
+
+// set the background color of the entire table
+.full-width-table {
+  background-color: #111010;
+}
+
+// remove the padding in the more info column header text
+th.table-header.mat-header-cell.cdk-column-info {
+  padding: 0;
+}
+
+.mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-cell,
+.mat-header-cell {
+  color: rgb(190, 190, 190);
+}
+
+// to center header text in non-sorted column
+.table-header.mat-header-cell.cdk-column-info {
+  text-align: center;
+}
+
+tr,
+td,
+th {
+  border: 1px solid rgb(190, 190, 190);
+}
+
+tr:nth-child(odd) {
+  color: white;
+}
+
+// the range dropdown in the table pagination
+.mat-select-value-text {
+  color: rgb(190, 190, 190);
+}

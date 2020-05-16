@@ -51,11 +51,13 @@
                   class="fas fa-info-circle accent-color"></i></a></td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr mat-row *matRowDef="let row; let even = even; columns: displayedColumns;"
+            [ngClass]="{'table-even': even}">
+          </tr>
         </table>
 
-        <div *ngIf="haveData()" class="p-1">
-          No data found
+        <div *ngIf="dataSource?.data" class="p-1">
+          No data found. Please click Search to find earthquake data.
         </div>
 
         <mat-paginator #paginator [length]="dataSource?.data?.length" [pageSize]="10"
