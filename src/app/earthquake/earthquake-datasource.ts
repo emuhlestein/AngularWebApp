@@ -20,6 +20,7 @@ export class EarthquakeDataSource extends DataSource<Earthquake> {
   }
 
   pageQuakes(pageIndex: number, pageSize: number, sortColumn: string, sortDirection: string, filter: string) {
+    this.data = this.earthquakes;
     if (filter) {
       this.data = this.earthquakes.filter(quake =>
         quake.location.toLocaleUpperCase().includes(filter.toLocaleUpperCase()))

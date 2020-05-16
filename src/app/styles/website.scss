@@ -1,4 +1,6 @@
 body {
+  margin: 0;
+  padding: 0;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
 }
@@ -6,11 +8,17 @@ body {
 .site {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 .site-content {
   flex: 1;
+  height: 100vh;
+  width: 100%;
+  background: url("./assets/img/landing.jpg") no-repeat;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center;
+  background-attachment: fixed;
 }
 
 .navbar {
@@ -28,29 +36,20 @@ body {
   }
 }
 
-.footer {
-  margin-top: -40px;
+.main-content {
+  min-height: 84vh;
+}
+
+.main-footer {
   color: $alt-color;
   border-top: 3px solid $accent;
   background-color: $alt-bg;
-  p {
-    padding-top: 1.25rem;
-  }
 }
 
 // Home Content
-
-.home-content {
-  min-height: 82vh;
-  background: url("./assets/img/landing.jpg") no-repeat;
-  background-size: 100% 100%;
-}
-
 .home-image-content {
-  top: 50%;
-  left: 30%;
-  transform: translate(-50%, -50%);
   position: absolute;
+  transform: translate(50%, 50%);
 }
 
 .home-image-content img {
@@ -59,7 +58,6 @@ body {
   border: 2px solid $accent;
 }
 
-// About Content
 .about-content {
   padding: 20px;
 }
@@ -145,4 +143,206 @@ body {
   width: 20px;
   height: 20px;
   z-index: 1;
+}
+
+mat-footer-row mat-footer-cell {
+  justify-content: center;
+  font-style: italic;
+}
+
+.search-div {
+  margin: 10px;
+}
+
+// Filter
+.search-form-field {
+  width: 30%;
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: $alt-bg;
+  border-radius: 5px;
+  border: solid 1px rgb(190, 190, 190);
+}
+
+// Filter
+.placeholder {
+  color: rgb(190, 190, 190);
+}
+
+.search-form-field div.mat-form-field-underline {
+  display: none;
+}
+
+.search-form-field div.mat-form-field-infix {
+  border-top: 0px;
+
+  .mat-input-element {
+    color: #fff !important;
+  }
+}
+
+.search-form-field div.mat-form-field-wrapper {
+  padding-bottom: 0px;
+}
+
+.search-form-field div.mat-form-field-suffix button {
+  height: 28px;
+  width: 28px;
+}
+
+// Search Dialog Styles
+.mat-dialog-container {
+  background-color: $alt-bg;
+}
+
+.navbar .search-navbar-brand {
+  color: $alt-color;
+}
+
+/* set the color of datapicker icon */
+.mat-datepicker-toggle-default-icon {
+  color: #f2f2f2;
+}
+
+// ***********************************
+// Earthquake page styling
+// ***********************************
+.search-button {
+  background-color: #009988;
+}
+
+//
+// Table styles
+//
+.table-even {
+  background-color: rgb(65, 60, 60);
+}
+
+// NOTE: this is not needed as the background color for the entire
+// table is set to this color.
+// .table-odd {
+//   background-color: #111010;
+// }
+
+// set the background color of the entire table
+.full-width-table {
+  background-color: #111010;
+}
+
+// remove the padding in the more info column header text
+th.table-header.mat-header-cell.cdk-column-info {
+  padding: 0;
+}
+
+td.mat-cell.cdk-column-info.mat-column-info {
+  padding: 0;
+}
+
+.mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-cell,
+.mat-header-cell {
+  color: rgb(190, 190, 190);
+}
+
+// to center header text in non-sorted column
+.table-header.mat-header-cell.cdk-column-info {
+  text-align: center;
+}
+
+tr,
+td,
+th {
+  border: 1px solid rgb(190, 190, 190);
+}
+
+tr:nth-child(odd) {
+  color: white;
+}
+
+// the range dropdown in the table pagination
+.mat-select-value-text {
+  color: rgb(190, 190, 190);
+}
+
+.mat-column-info,
+.mat-column-date,
+.mat-column-magnitude {
+  text-align: center;
+}
+
+//
+// Search Dialog
+//
+
+.mat-dialog-container#mat-dialog-0 {
+  padding: 10px;
+}
+
+.search-card {
+  border: solid 1px $accent;
+}
+
+.search-container {
+  padding: 0;
+  margin: 0;
+}
+
+.card {
+  background-color: #000;
+  padding: 0px;
+  margin: 0px;
+}
+
+.search-card-body {
+  background-color: #202020;
+}
+
+.search-card-footer {
+  padding: 0px;
+  margin: 0px;
+}
+
+mat-label {
+  color: #f2f2f2;
+}
+
+.search-card-body {
+  padding: 10px;
+}
+
+/* change arrow icon when has focus */
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: #009988;
+}
+
+/* change arrow icon when does not have focus */
+.mat-form-field.mat-primary .mat-select-arrow {
+  color: #f2f2f2;
+}
+
+/* change underline (ripple) when has focus */
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #009988;
+}
+
+div.mat-select-value {
+  color: #f2f2f2;
+  background-color: #3d3737;
+}
+
+.mat-icon-button:focus .mat-icon-button:active {
+  outline-color: #009988;
+}
+
+.mat-input-element:disabled {
+  color: #f2f2f2;
+  background-color: #3d3737;
+}
+
+.close-button {
+  color: #009988;
 }

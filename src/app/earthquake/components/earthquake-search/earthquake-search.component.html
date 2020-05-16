@@ -1,26 +1,20 @@
-<div class="card">
+<div class="search-card">
   <div class="card-header">
     <nav class="navbar navbar-expand">
-      <a class="navbar-brand">Search Parameters</a>
+      <a class="search-navbar-brand">Search Parameters</a>
     </nav>
   </div>
 
   <div class="container search-container">
-
-    <div class="card-body">
-      <div class='alert alert-danger' *ngIf='errorMessage'>{{errorMessage}}
-        <button class="btn btn-light btn-sm float-right close-button" (click)="close()">
-          X
-        </button>
-      </div>
+    <div class="search-card-body">
       <div class="row">
-        <mat-form-field class="col-12 col-sm-6 col-md-4">
+        <mat-form-field class="col-12 col-md-6">
           <mat-label>{{calendarStartLabel}}</mat-label>
           <input matInput [(ngModel)]="startDateValue" [matDatepicker]="startPicker" disabled>
           <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
           <mat-datepicker #startPicker disabled="false"></mat-datepicker>
         </mat-form-field>
-        <mat-form-field class="col-12 col-sm-6 col-md-4">
+        <mat-form-field class="col-12 col-md-6">
           <mat-label>{{calendarEndLabel}}</mat-label>
           <input matInput [(ngModel)]="endDateValue" [matDatepicker]="endPicker" disabled>
           <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
@@ -28,14 +22,14 @@
         </mat-form-field>
       </div>
       <div class="row">
-        <mat-form-field class="col-12 col-sm-6 col-md-4">
+        <mat-form-field class="col-12 col-md-6">
           <mat-label>{{minMagnitudeLabel}}</mat-label>
           <mat-select [value]='minMagnitudeValue' (selectionChange)="onMinMagChanged($event)">
             <mat-option *ngFor="let mag of magValues" [value]='mag'>
               {{mag}}</mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field class="col-12 col-sm-6 col-md-4">
+        <mat-form-field class="col-12 col-md-6">
           <mat-label>{{maxMagnitudeLabel}}</mat-label>
           <mat-select [value]='maxMagnitudeValue' (selectionChange)="onMaxMagChanged($event)">
             <mat-option value="5">5</mat-option>
@@ -47,18 +41,12 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="card-footer">
-        <button mat-raised-button class="search-button mb-3"
-          [routerLink]="['/earthquakes', {minMag: minMagnitudeValue}]" (click)="search()">Search</button>
+      <div class="d-flex search-card-footer">
+        <button mat-raised-button class="search-button" (click)="onSearch()">Search</button>
+        <button mat-button class="ml-auto close-button mr-3" (click)="onClose()">
+          <mat-icon>close</mat-icon>
+        </button>
       </div>
     </div>
   </div>
-
 </div>
-
-
-<!-- <p-confirmDialog #confirmation>
-    <p-footer>
-      <button pButton type="button" label="Ok" (click)=confirmation.accept() class="ui-button-secondary"></button>
-    </p-footer>
-  </p-confirmDialog> -->

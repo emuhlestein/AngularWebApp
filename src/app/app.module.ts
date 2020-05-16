@@ -6,26 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './core/app.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HttpClientModule } from '@angular/common/http';
-import { InputFieldComponent } from './input-field/input-field.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DialogModule } from 'primeng/dialog';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
-import { SpinnerModule } from 'primeng/spinner';
-import { CardModule } from 'primeng/card';
-import { SummaryPanelComponent } from './summary-panel/summary-panel.component';
-import { MainPanelComponent } from './main-panel/main-panel.component';
-import { TrendsPanelComponent } from './trends-panel/trends-panel.component';
-import { ChartModule } from 'primeng/chart';
-import { RecentQuakesComponent } from './recent-panel/recent-panel.component';
-import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { ProgressBarModule } from 'primeng/progressbar';
-import { ProgressBarComponent } from './progressbar/progressbar.component';
 import { MaterialModule } from './material-module';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { HeaderComponent } from './components/header/header.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 
@@ -33,30 +18,15 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
   declarations: [
     AppComponent,
     MessagesComponent,
-    InputFieldComponent,
-    SummaryPanelComponent,
-    MainPanelComponent,
-    TrendsPanelComponent,
-    RecentQuakesComponent,
-    ProgressBarComponent,
     PageNotFoundComponent,
-    HeaderComponent,
     NavBarComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    CardModule,
-    DialogModule,
     CommonModule,
-    ConfirmDialogModule,
     FormsModule,
     HttpClientModule,
-    ConfirmDialogModule,
-    SpinnerModule,
-    ChartModule,
-    ProgressSpinnerModule,
-    ProgressBarModule,
     MaterialModule,
     MatTableModule,
     MatPaginatorModule,
@@ -64,8 +34,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     AppRoutingModule
   ],
   providers: [
-    DatePipe,
-    ConfirmationService
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

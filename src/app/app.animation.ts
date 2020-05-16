@@ -16,7 +16,7 @@ export const flipAnimation3 = trigger('flipAnimation', [
   ]),
 ]);
 
-export const slideInAnimation = trigger('slideInAnimation', [
+export const slideInAnimation9 = trigger('slideInAnimation', [
   // Transition between any two states
   transition('* <=> *', [
     // Events to apply
@@ -38,7 +38,7 @@ export const slideInAnimation = trigger('slideInAnimation', [
 ]);
 
 
-export const slideInAnimation5 = trigger('slideInAnimation', [
+export const slideInAnimation88 = trigger('slideInAnimation', [
   transition('* <=> *', [
     query(':enter, :leave',
       style({ position: 'fixed', width: '100%' }),
@@ -67,7 +67,7 @@ export const slideInAnimation5 = trigger('slideInAnimation', [
 
 
 
-export const slideInAnimation4 = trigger('slideInAnimation', [
+export const slideInAnimation99 = trigger('slideInAnimation', [
   transition('* <=> *', [
     query(':enter, :leave',
       style({ position: 'fixed', width: '100%' }),
@@ -135,7 +135,7 @@ export const slideInAnimation2 = trigger('slideInAnimation', [
   ])
 ]);
 
-export const slideInAnimation8 = trigger('slideInAnimation', [
+export const slideInAnimation = trigger('slideInAnimation', [
   transition('* <=> *', [
     query(':enter, :leave',
       style({ position: 'fixed', width: '100%' }),
