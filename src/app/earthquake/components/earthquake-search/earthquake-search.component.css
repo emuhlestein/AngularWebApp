@@ -1,12 +1,8 @@
-.card-header {
+/* .card-header {
   padding: 0;
   margin: 0;
 }
 
-.search-container {
-  padding: 0;
-  margin: 0;
-}
 
 .mag-container {
   display: flex;
@@ -24,30 +20,30 @@
 
 mat-label {
   color: #f2f2f2;
-}
+} */
 
 /* set the color of the focus of datapicker icon */
-.mat-icon-button:focus {
+/* .mat-icon-button:focus {
   outline-color: #009988;
 }
 
 div.mat-select-value {
   color: #f2f2f2;
   background-color: #3d3737;
-}
+} */
 
 /* change arrow icon when has focus */
-.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+/* .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
   color: #009988;
-}
+} */
 
 /* change arrow icon when does not have focus */
-.mat-form-field.mat-primary .mat-select-arrow {
+/* .mat-form-field.mat-primary .mat-select-arrow {
   color: #f2f2f2;
-}
+} */
 
 /* change underline (ripple) when has focus */
-.mat-form-field.mat-focused .mat-form-field-ripple {
+/* .mat-form-field.mat-focused .mat-form-field-ripple {
   background-color: #009988;
 }
 
@@ -67,4 +63,4 @@ div.mat-select-value {
 .close-button:active .close-button:focus {
   background-color: transparent;
   outline: 0;
-}
+} */
