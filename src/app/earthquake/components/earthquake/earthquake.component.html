@@ -15,10 +15,12 @@
     <div class="card-body">
       <div class="search-div">
         <button mat-raised-button class="search-button" (click)="onSearch()">
+
           <mat-icon>search</mat-icon>Search
         </button>
         <mat-form-field class="search-form-field" appearance="legacy" floatLabel="never">
-          <input matInput [(ngModel)]="filter" placeholder="Filter" autocomplete="off">
+          <mat-placeholder class="placeholder">Filter</mat-placeholder>
+          <input matInput [(ngModel)]="filter" autocomplete="off">
           <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="filter" (click)="onFilterClear()">
             <mat-icon>close</mat-icon>
           </button>
@@ -56,7 +58,7 @@
           </tr>
         </table>
 
-        <div *ngIf="dataSource?.data" class="p-1">
+        <div *ngIf="dataSource?.data" class="p-2">
           No data found. Please click Search to find earthquake data.
         </div>
 

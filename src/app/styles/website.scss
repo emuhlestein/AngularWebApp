@@ -154,13 +154,18 @@ mat-footer-row mat-footer-cell {
   margin: 10px;
 }
 
+// Filter
 .search-form-field {
-  width: 60%;
+  width: 30%;
   margin-left: 10px;
   padding: 5px 10px;
-  // background-color: $alt-bg;
-  background-color: #ff4477;
+  background-color: $alt-bg;
   border-radius: 5px;
+}
+
+// Filter
+.placeholder {
+  color: rgb(190, 190, 190);
 }
 
 .search-form-field div.mat-form-field-underline {
@@ -182,18 +187,6 @@ mat-footer-row mat-footer-cell {
 .search-form-field div.mat-form-field-suffix button {
   height: 28px;
   width: 28px;
-}
-
-::ng-deep .mat-focused .mat-form-field-label {
-  /*change color of label*/
-  color: green !important;
-}
-
-input::-webkit-input-placeholder {
-  color: red !important;
-}
-input:-ms-input-placeholder {
-  color: red !important;
 }
 
 // Search Dialog Styles
