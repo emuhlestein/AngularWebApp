@@ -54,25 +54,6 @@ export class EarthquakeSearchComponent implements OnInit {
 
     // }
 
-    console.log('start date', this.formatDate(this.startDateValue));
-
-    // this.earthquakeService.onSearch(
-    //   this.minMagnitudeValue, this.maxMagnitudeValue,
-    //   this.formatDate(this.startDateValue), this.formatDate(this.endDateValue));
-    // this.search.emit({ minMag: this.minMagnitudeValue });
-    // this.errorMessage = '';
-    // this.earthquakeService.onSearch(
-    //   this.minMagnitudeValue,
-    //   this.maxMagnitudeValue,
-    //   this.formatDate(this.startDateValue),
-    //   this.formatDate(this.endDateValue));
-
-    // this.router.navigate(['/earthquakes',
-    //   {
-    //     minMag: this.minMagnitudeValue, maxMag: this.maxMagnitudeValue,
-    //     startDate: this.formatDate(this.startDateValue), endDate: this.formatDate(this.endDateValue)
-    //   }]);
-
     this.dialogRef.close(new SearchParams(
       this.minMagnitudeValue, this.maxMagnitudeValue,
       this.formatDate(this.startDateValue), this.formatDate(this.endDateValue)));
@@ -84,6 +65,10 @@ export class EarthquakeSearchComponent implements OnInit {
 
   private formatDate(date: Date): string {
     return this.datePipe.transform(date, "yyyy-MM-dd")
+  }
+
+  onClose() {
+    this.dialogRef.close();
   }
 
   onStartDateChanged($event) {
