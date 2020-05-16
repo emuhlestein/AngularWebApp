@@ -262,3 +262,9 @@ tr:nth-child(odd) {
 .mat-select-value-text {
   color: rgb(190, 190, 190);
 }
+
+.mat-column-info,
+.mat-column-date,
+.mat-column-magnitude {
+  text-align: center;
+}
