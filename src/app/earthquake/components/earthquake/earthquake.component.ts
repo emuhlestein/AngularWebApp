@@ -5,10 +5,10 @@ import { EarthquakeService } from '../../earthquake.service';
 import { Earthquake, EarthquakeResolved } from '../../earthquake';
 import { merge, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
-import { MatDialog, MatDialogConfig } from "@angular/material";
+import { MatDialog } from "@angular/material";
 import { EarthquakeSearchComponent } from '../earthquake-search/earthquake-search.component';
 import { SearchParams } from '../../search-params';
+import { SessionDataService, START_DATE_KEY, END_DATE_KEY, MIN_MAG_KEY, MAX_MAG_KEY } from 'src/app/session-data-service';
 
 @Component({
   templateUrl: './earthquake.component.html',
@@ -42,7 +42,7 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
   }
 
   constructor(
-    private route: ActivatedRoute,
+    private sessionDataService: SessionDataService,
     private earthquakeService: EarthquakeService,
     private dialog: MatDialog) {
   }
@@ -50,26 +50,23 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {
 
     this.earthquakeService.earthquakes$.subscribe(earthquakes => {
-      console.log('Earthquakes', earthquakes);
       if (earthquakes) {
         this.dataSource = new EarthquakeDataSource(earthquakes);
+        this.colorizeQuakes(this.dataSource.data);
+      } else {
+        this.dataSource = null;
       }
     });
     this.initColors();
 
-    // this.resolvedData = this.route.snapshot.data['resolvedEarthquakeData'];
-    // this.dataSource = new EarthquakeDataSource(this.resolvedData.earthquakes);
-
-    // this.earthquakeService.getEarthquakes(5, 6).subscribe(results => {
-
-    // });
-
-    // this.colorizeQuake();
+    const startDate = this.sessionDataService.getItem(START_DATE_KEY);
+    const endDate = this.sessionDataService.getItem(END_DATE_KEY);
+    const minMag = this.sessionDataService.getItem(MIN_MAG_KEY);
+    const maxMag = this.sessionDataService.getItem(MAX_MAG_KEY);
+    this.earthquakeService.onSearch(minMag, maxMag, startDate, endDate);
   }
 
   mapQuake(quake) {
-
-    console.log(quake);
     const mag = quake[0];
     const count = quake[1];
 
@@ -132,23 +129,6 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
 
     if (earthquakes) {
       for (let quake of earthquakes) {
-        let mag = Math.trunc(quake.magnitude).toString();
-        if (quakeCountMap[mag]) {
-          quakeCountMap[mag]++;
-        } else {
-          quakeCountMap[mag] = 1;
-        }
-      }
-
-      this.quakeCount = Object.entries(quakeCountMap).map(i => this.mapQuake(i));
-    }
-  }
-
-  private colorizeQuake() {
-    let quakeCountMap: { [key: string]: number } = {};
-
-    if (this.resolvedData.earthquakes) {
-      for (let quake of this.resolvedData.earthquakes) {
         let mag = Math.trunc(quake.magnitude).toString();
         if (quakeCountMap[mag]) {
           quakeCountMap[mag]++;

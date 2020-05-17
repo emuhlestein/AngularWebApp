@@ -58,7 +58,7 @@
           </tr>
         </table>
 
-        <div *ngIf="dataSource?.data" class="p-2">
+        <div *ngIf="!(dataSource?.data?.length)" class="p-2">
           No data found. Please click Search to find earthquake data.
         </div>
 
