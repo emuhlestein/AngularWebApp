@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -16,8 +22,6 @@ body {
   width: 100%;
   background: url("./assets/img/landing.jpg") no-repeat;
   background-size: cover;
-  // background-repeat: no-repeat;
-  // background-position: center;
   background-attachment: fixed;
 }
 
@@ -48,8 +52,9 @@ body {
 
 // Home Content
 .home-image-content {
-  position: absolute;
-  transform: translate(50%, 50%);
+  position: relative;
+  transform: translateX(0%);
+  transform: translateY(50%);
 }
 
 .home-image-content img {

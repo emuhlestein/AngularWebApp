@@ -147,7 +147,7 @@ export const slideInAnimation = trigger('slideInAnimation', [
       ], { optional: true }),
       query(':leave', [
         style({ transform: 'translateX(0%)' }),
-        animate('2s ease-in-out', keyframes([
+        animate('0.5s ease-in-out', keyframes([
           style({ transform: 'translateX(0%) scale(1) skew(5deg, 5deg)', offset: 0 }),
           style({ transform: 'translateX(-5%) scale(0.9) skew(10deg, 10deg)', offset: 0.05 }),
           style({ transform: 'translateX(-10%) scale(0.85) skew(10deg, 10deg)', offset: 0.1 }),
