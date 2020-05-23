@@ -384,3 +384,19 @@ div.mat-select-value {
 .close-button {
   color: #009988;
 }
+
+//
+// Projects
+//
+.projects-content {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 20px;
+}
+
+.new-projects-button {
+  margin-top: 100px;
+  background-color: $accent;
+  display: block;
+}
