@@ -25,6 +25,7 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
   ds: MatTableDataSource<Earthquake>;
   quakeCount: QuakeCount[] = [];
   colors = new Map();
+  isLoading = true;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['location', 'magnitude', 'date', 'info'];
@@ -49,6 +50,7 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
 
+    this.isLoading = true;
     this.earthquakeService.earthquakes$.subscribe(earthquakes => {
       if (earthquakes) {
         this.dataSource = new EarthquakeDataSource(earthquakes);
@@ -56,6 +58,7 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
       } else {
         this.dataSource = null;
       }
+      this.isLoading = false;
     });
     this.initColors();
 
@@ -113,6 +116,7 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         let sp = result as SearchParams;
+        this.isLoading = true;
         this.earthquakeService.onSearch(sp.minMag, sp.maxMag, sp.startDate, sp.endDate);
       }
     });

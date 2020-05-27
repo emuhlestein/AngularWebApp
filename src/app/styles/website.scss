@@ -187,7 +187,12 @@ mat-footer-row mat-footer-cell {
 }
 
 .search-div {
+  display: flex;
   margin: 10px;
+}
+
+.spinner-class {
+  margin-left: 100px;
 }
 
 // Filter

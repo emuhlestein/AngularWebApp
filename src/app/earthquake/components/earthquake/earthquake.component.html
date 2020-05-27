@@ -15,7 +15,6 @@
     <div class="card-body">
       <div class="search-div">
         <button mat-raised-button class="search-button" (click)="onSearch()">
-
           <mat-icon>search</mat-icon>Search
         </button>
         <mat-form-field class="search-form-field" appearance="legacy" floatLabel="never">
@@ -25,9 +24,12 @@
             <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
+        <mat-progress-spinner class="spinner-class" mode="indeterminate" diameter="40" *ngIf="isLoading">
+        </mat-progress-spinner>
       </div>
       <div>
         <table mat-table class="full-width-table col-12" [dataSource]="dataSource" matSort aria-label="Elements">
+
           <!-- Location Column -->
           <ng-container matColumnDef="location">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
