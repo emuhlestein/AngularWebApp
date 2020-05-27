@@ -111,9 +111,10 @@ export class EarthquakeComponent implements AfterViewInit, OnInit {
   onSearch() {
     let dialogRef = this.dialog.open(EarthquakeSearchComponent);
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      let sp = result as SearchParams;
-      this.earthquakeService.onSearch(sp.minMag, sp.maxMag, sp.startDate, sp.endDate);
+      if (result) {
+        let sp = result as SearchParams;
+        this.earthquakeService.onSearch(sp.minMag, sp.maxMag, sp.startDate, sp.endDate);
+      }
     });
   }
 
