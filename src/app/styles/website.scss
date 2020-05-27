@@ -20,7 +20,7 @@ body {
   flex: 1;
   height: 100vh;
   width: 100%;
-  background: url("./assets/img/landing.jpg") no-repeat;
+  background: url("./assets/img/earth-at-night.jpg") no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -88,8 +88,33 @@ body {
   padding-bottom: 30px;
 }
 
+.company-bullet {
+  list-style: none;
+  position: relative;
+}
+
+/* draws a circle in vertical line */
+// .timeline li.company-bullet:before {
+//   content: "";
+//   background: $accent;
+//   display: inline-block;
+//   position: absolute;
+//   border-radius: 50%;
+//   border: 3px solid #000;
+//   left: -15px;
+//   top: 10px;
+//   width: 20px;
+//   height: 20px;
+//   z-index: 1;
+// }
+
 .resume-content ul li .company-background {
   background-color: rgba($alt-bg, 0.7);
+}
+
+.company-background {
+  padding-left: 20px;
+  padding-bottom: 20px;
 }
 
 .resume h3 {
@@ -124,16 +149,16 @@ ul .accomp-bullet li:before {
 }
 
 /* draw a vertical dark line in front of experience list */
-.timeline:before {
-  content: "";
-  background: $accent;
-  display: inline-block;
-  position: absolute;
-  left: 29px;
-  width: 2px;
-  height: 100%;
-  z-index: 1;
-}
+// .timeline:before {
+//   content: "";
+//   background: $accent;
+//   display: inline-block;
+//   position: absolute;
+//   left: 29px;
+//   width: 2px;
+//   height: 100%;
+//   z-index: 1;
+// }
 
 /* back ground of experiences is light color */
 .timeline li {
@@ -154,20 +179,6 @@ ul .accomp-bullet li:before {
 .timeline li h4 span {
   font-weight: bold;
   color: #ccc;
-}
-
-/* draws a circle in vertical line */
-.timeline li.job-bullet:before {
-  content: "";
-  background: $accent;
-  display: inline-block;
-  position: absolute;
-  border-radius: 50%;
-  border: 3px solid #000;
-  left: 20px;
-  width: 20px;
-  height: 20px;
-  z-index: 1;
 }
 
 mat-footer-row mat-footer-cell {
