@@ -31,6 +31,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
         loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule)
       },
       {
+        path: 'angularprojects',
+        loadChildren: () => import('./angular-projects/angular-projects.module').then(m => m.AngularProjectsModule)
+      },
+      {
         path: 'projects',
         loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule)
       },
