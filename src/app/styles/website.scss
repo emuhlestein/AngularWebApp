@@ -108,6 +108,43 @@ body {
   padding-top: 20px;
 }
 
+// New Project Dialog
+mat-card.new-project-card {
+  margin: 0;
+  padding: 0;
+  border: solid 2px $accent;
+}
+
+mat-card-title.new-project-title.mat-card-title {
+  margin: 0;
+  padding: 10px;
+}
+
+.new-project-title {
+  color: $alt-color;
+}
+
+.new-project-line {
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid $accent;
+  width: 100%;
+}
+
+.new-project-navbar-brand {
+  color: $alt-color;
+}
+
+.new-project-button {
+  background-color: #009988;
+}
+
+.new-project-card-header {
+  padding: 0;
+  margin: 0;
+  background-color: black;
+}
+
 //
 // Resume Content
 //
@@ -381,6 +418,7 @@ mat-paginator {
 
 .search-card-body {
   background-color: #202020;
+  padding: 10px;
 }
 
 .search-card-footer {
@@ -390,10 +428,6 @@ mat-paginator {
 
 mat-label {
   color: #f2f2f2;
-}
-
-.search-card-body {
-  padding: 10px;
 }
 
 /* change arrow icon when has focus */

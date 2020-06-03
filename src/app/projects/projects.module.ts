@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material-module';
 import { FormsModule } from '@angular/forms';
 import { ProjectsComponent } from './projects.component';
+import { NewProjectComponent } from './new-project/new-project.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,11 @@ import { ProjectsComponent } from './projects.component';
     ])
   ],
   declarations: [
-    ProjectsComponent
+    ProjectsComponent,
+    NewProjectComponent
+  ],
+  entryComponents: [
+    NewProjectComponent
   ]
 })
 export class ProjectsModule { }
