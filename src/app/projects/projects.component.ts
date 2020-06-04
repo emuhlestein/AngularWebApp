@@ -15,7 +15,10 @@ export class ProjectsComponent implements OnInit {
   }
 
   onNewProject() {
-    let dialogRef = this.dialog.open(NewProjectComponent);
+    let dialogRef = this.dialog.open(NewProjectComponent, {
+      width: '450px',
+      panelClass: 'new-project-dialog'
+    });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // get parameters from result

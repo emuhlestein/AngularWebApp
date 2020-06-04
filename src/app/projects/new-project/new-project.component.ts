@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
 import { SearchParams } from 'src/app/earthquake/search-params';
@@ -6,7 +6,8 @@ import { SearchParams } from 'src/app/earthquake/search-params';
 @Component({
   selector: 'app-new-project',
   templateUrl: './new-project.component.html',
-  styleUrls: ['./new-project.component.scss']
+  styleUrls: ['./new-project.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class NewProjectComponent implements OnInit {
   startProjectDateLabel = "Start Date";
