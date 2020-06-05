@@ -131,10 +131,13 @@ body {
 //   padding-left: 12px;
 // }
 
-// input.project-name-input {
-//   color: $alt-color;
-//   margin: 0;
-// }
+input.project-name-input {
+  color: $alt-color;
+}
+
+textarea.project-description-textarea {
+  color: $alt-color;
+}
 
 // remove padding, margin, scollbar from dialog
 .mat-dialog-container {
@@ -180,13 +183,22 @@ body {
 }
 
 .new-project-create-button {
-  margin-right: 24px;
+  margin-right: 24px !important;
   background-color: $accent;
 }
 
-// .new-project-title {
-//   color: $alt-color;
-// }
+.new-project-create-button:disabled {
+  margin-right: 24px !important;
+  background-color: $accent !important;
+}
+
+.new-project-button {
+  margin-left: 24px;
+}
+
+.project-name-input {
+  color: $alt-color;
+}
 
 // .new-project-line {
 //   margin: 0;
