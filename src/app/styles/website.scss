@@ -125,10 +125,9 @@ body {
 // .project-name-label {
 //   color: $alt-color;
 // }
-
+// .project-description,
 // .project-name {
-//   padding-top: 12px;
-//   padding-left: 12px;
+//   width: 100%;
 // }
 
 input.project-name-input {
@@ -178,7 +177,6 @@ textarea.project-description-textarea {
 .new-project-actions {
   margin: 0 !important;
   background-color: $alt-bg;
-  padding-left: 24px !important;
   padding-bottom: 24px !important;
 }
 
@@ -194,10 +192,6 @@ textarea.project-description-textarea {
 
 .new-project-button {
   margin-left: 24px;
-}
-
-.project-name-input {
-  color: $alt-color;
 }
 
 // .new-project-line {

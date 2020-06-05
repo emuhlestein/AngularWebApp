@@ -1,18 +1,18 @@
 <h2 mat-dialog-title class="new-project-title">New Project</h2>
 <div class="new-project-container">
   <form novalidate (ngSubmit)="createProject()" [formGroup]="newProjectForm">
-    <mat-form-field class="project-name">
+    <mat-form-field class="project-name col-12">
       <mat-label class="project-name-label">Name</mat-label>
       <input matInput class="project-name-input" placeholder="" value="" formControlName="projectName" required>
       <mat-error *ngIf="!newProjectForm.get('projectName').valid">You must enter a value</mat-error>
     </mat-form-field>
-    <mat-form-field class="project-description">
+    <mat-form-field class="project-description col-12">
       <mat-label>Description</mat-label>
       <textarea class="project-description-textarea" matInput placeholder="" formControlName="description"
         required></textarea>
       <mat-error *ngIf="newProjectForm.get('description')">You must enter a value</mat-error>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="col-6">
       <mat-label>{{sprintLengthLabel}}</mat-label>
       <mat-select formControlName="sprintLength">
         <mat-option value="1">1</mat-option>
@@ -21,7 +21,7 @@
         <mat-option value="4">4</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="col-6">
       <mat-label>{{numSprintsLabel}}</mat-label>
       <mat-select formControlName="numSprints">
         <mat-option value="1">1</mat-option>
@@ -38,16 +38,18 @@
         <mat-option value="12">12</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="col-6">
       <mat-label>{{startProjectDateLabel}}</mat-label>
       <input matInput [matDatepicker]="startPicker" formControlName="startDate">
       <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
       <mat-datepicker #startPicker disabled="false"></mat-datepicker>
     </mat-form-field>
+    <mat-dialog-actions class="new-project-actions">
+      <div class="ml-auto">
+        <button type="submit" mat-raised-button class="new-project-create-button"
+          [disabled]="!newProjectForm.valid">Create</button>
+        <button mat-raised-button class="new-project-button" (click)="onCancel()">Cancel</button>
+      </div>
+    </mat-dialog-actions>
   </form>
 </div>
-<mat-dialog-actions class="new-project-actions">
-  <button type="submit" mat-raised-button class="new-project-create-button"
-    [disabled]="!newProjectForm.valid">Create</button>
-  <button mat-raised-button class="new-project-button" (click)="onCancel()">Cancel</button>
-</mat-dialog-actions>
