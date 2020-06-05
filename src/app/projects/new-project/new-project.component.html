@@ -4,7 +4,9 @@
     <mat-form-field class="project-name col-12">
       <mat-label class="project-name-label">Name</mat-label>
       <input matInput class="project-name-input" placeholder="" value="" formControlName="projectName" required>
-      <mat-error *ngIf="!newProjectForm.get('projectName').valid">You must enter a value</mat-error>
+      <mat-error *ngIf="hasError('projectName', 'required')">{{getErrorMessage('projectName', 'required')}}</mat-error>
+      <mat-error *ngIf="hasError('projectName', 'minlength')">{{getErrorMessage('projectName', 'minlength')}}
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="project-description col-12">
       <mat-label>Description</mat-label>
@@ -40,7 +42,7 @@
     </mat-form-field>
     <mat-form-field class="col-6">
       <mat-label>{{startProjectDateLabel}}</mat-label>
-      <input matInput [matDatepicker]="startPicker" formControlName="startDate">
+      <input matInput [min]='minStartDate' [matDatepicker]="startPicker" formControlName="startDate">
       <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
       <mat-datepicker #startPicker disabled="false"></mat-datepicker>
     </mat-form-field>

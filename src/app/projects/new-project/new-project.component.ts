@@ -18,6 +18,7 @@ export class NewProjectComponent implements OnInit {
   startDateValue;
   numSprintsValue = "1";
   sprintLengthValue = "1";
+  minStartDate = new Date();
 
 
   newProjectForm: FormGroup;
@@ -39,21 +40,32 @@ export class NewProjectComponent implements OnInit {
     });
   }
 
-  hasError = (controlName: string, errorName: string) => {
-    return this.newProjectForm.controls[controlName].hasError(errorName);
+  hasError = (formControl: string, errorName: string) => {
+    return this.newProjectForm.get(formControl).hasError(errorName);
+    // return this.newProjectForm.controls[controlName].hasError(errorName);
   }
 
-  // getErrorMessage() {
-  //   if (this.name.hasError('required')) {
-  //     return 'You must enter a value';
-  //   }
+  getErrorMessage(formControl: string, errorName: string) {
+    const x = this.newProjectForm.get(formControl);
+    console.log(x);
+    if (this.hasError(formControl, errorName) && errorName === 'required') {
+      return 'You must enter a value';
+    }
+    if (this.hasError(formControl, errorName) && errorName === 'minlength') {
+      const requiredLength = this.newProjectForm.get(formControl).getError(errorName)['requiredLength'];
+      return `You must enter at least ${requiredLength} characters`;
+    }
 
-  //   if (this.description.hasError('required')) {
-  //     return 'You must enter a value';
-  //   }
+    // if (this.name.hasError('required')) {
+    //   return 'You must enter a value';
+    // }
 
-  //   return this.name.hasError('name') ? 'Project name cannot be blank' : '';
-  // }
+    // if (this.description.hasError('required')) {
+    //   return 'You must enter a value';
+    // }
+
+    // return this.name.hasError('name') ? 'Project name cannot be blank' : '';
+  }
 
   createProject() {
     console.log('In createProject');
