@@ -20,9 +20,17 @@ body {
   flex: 1;
   height: 100vh;
   width: 100%;
-  background: url("./assets/img/landing.jpg") no-repeat;
+}
+
+.bg-img {
   background-size: cover;
   background-attachment: fixed;
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(0, 47, 75, 0.52),
+      rgba(36, 25, 23, 0.73)
+    ),
+    url("./assets/img/earth-at-night.jpg");
 }
 
 .navbar {
@@ -51,6 +59,12 @@ body {
 }
 
 // Home Content
+
+.home-content {
+  display: flex;
+  flex-direction: column;
+}
+
 .home-image-content {
   position: relative;
   transform: translateX(0%);
@@ -64,7 +78,10 @@ body {
 }
 
 .about-content {
-  padding: 20px;
+  padding-top: 600px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
 }
 
 .lang-circle {
@@ -81,94 +98,241 @@ body {
 }
 
 //
+// Angular Projects
+//
+.angular-projects-content {
+  padding: 100px;
+}
+
+.angular-projects {
+  padding-top: 20px;
+}
+
+//
+// New Project Dialog
+//
+// mat-card.new-project-card {
+//   margin: 0;
+//   padding: 0;
+//   border: solid 2px $accent;
+// }
+
+// mat-card-title.new-project-title.mat-card-title {
+//   margin: 0;
+//   padding: 10px;
+// }
+
+// .project-name-label {
+//   color: $alt-color;
+// }
+// .project-description,
+// .project-name {
+//   width: 100%;
+// }
+
+input.project-name-input {
+  color: $alt-color;
+}
+
+textarea.project-description-textarea {
+  color: $alt-color;
+}
+
+// remove padding, margin, scollbar from dialog
+.mat-dialog-container {
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow-y: hidden !important;
+  border: solid 1px $accent;
+}
+
+.new-project-title {
+  background-color: $alt-bg;
+  color: $alt-color;
+  margin: 0 !important;
+  padding: 24px;
+}
+
+// .mat-dialog-content {
+// }
+
+.new-project-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px;
+  background-color: $alt-bg;
+}
+
+.new-project-container > * {
+  width: 100%;
+}
+
+// style the unfocused underlines
+.new-project-container
+  .mat-form-field-appearance-legacy
+  .mat-form-field-underline {
+  background-color: $alt-color;
+}
+
+.new-project-actions {
+  margin: 0 !important;
+  background-color: $alt-bg;
+  padding-bottom: 24px !important;
+}
+
+.new-project-create-button {
+  margin-right: 24px !important;
+  background-color: $accent;
+}
+
+.new-project-create-button:disabled {
+  margin-right: 24px !important;
+  background-color: $accent !important;
+}
+
+.new-project-button {
+  margin-left: 24px;
+}
+
+// .new-project-line {
+//   margin: 0;
+//   padding: 0;
+//   border-top: 2px solid $accent;
+//   width: 100%;
+// }
+
+// .new-project-container {
+//   background-color: $alt-bg;
+// }
+
+// .project-descriptiom {
+//   border: 1px solid #888;
+// }
+
+// .project-descriptiom {
+//   background-color: rgb(65, 60, 60);
+// }
+
+// label.mat-form-field-label.ng-tns-c8-2.ng-star-inserted.mat-empty.mat-form-field-empty {
+//   color: red;
+//   padding: 0;
+//   margin: 0;
+// }
+
+// mat-label {
+//   color: white;
+// }
+
+// .new-project-button {
+//   background-color: #009988;
+// }
+
+// .new-project-card-header {
+//   padding: 0;
+//   margin: 0;
+//   background-color: $alt-bg;
+// }
+
+//
 // Resume Content
 //
-.resume-content {
-  padding-top: 50px;
-  padding-bottom: 30px;
-}
+// .resume-content {
+//   padding-top: 50px;
+//   padding-bottom: 30px;
+// }
 
-.resume-content ul li .company-background {
-  background-color: rgba($alt-bg, 0.7);
-}
-
-.resume h3 {
-  margin-bottom: 50px;
-}
-
-.accomp-bullet {
-  list-style: none;
-  position: relative;
-}
-
-ul .accomp-bullet li:before {
-  content: "";
-  background: $accent;
-  display: inline-block;
-  position: relative;
-  border-radius: 50%;
-  border: 3px solid #000;
-  left: -20px;
-  width: 15px;
-  height: 15px;
-  z-index: 1;
-}
-
-.timeline {
-  list-style-type: none;
-  position: relative;
-}
-
-.timeline p {
-  padding: 10px;
-}
-
-/* draw a vertical dark line in front of experience list */
-.timeline:before {
-  content: "";
-  background: $accent;
-  display: inline-block;
-  position: absolute;
-  left: 29px;
-  width: 2px;
-  height: 100%;
-  z-index: 1;
-}
-
-/* back ground of experiences is light color */
-.timeline li {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 20px;
-}
-
-/* title of experience */
-.dev-title {
-  background-color: #000;
-  padding: 5px 0 5px 20px;
-  color: #fff;
-  font-size: 15px;
-}
-
-/* the date in front of experience */
-.timeline li h4 span {
-  font-weight: bold;
-  color: #ccc;
-}
+// .company-bullet {
+//   list-style: none;
+//   position: relative;
+// }
 
 /* draws a circle in vertical line */
-.timeline li.job-bullet:before {
-  content: "";
-  background: $accent;
-  display: inline-block;
-  position: absolute;
-  border-radius: 50%;
-  border: 3px solid #000;
-  left: 20px;
-  width: 20px;
-  height: 20px;
-  z-index: 1;
-}
+// .timeline li.company-bullet:before {
+//   content: "";
+//   background: $accent;
+//   display: inline-block;
+//   position: absolute;
+//   border-radius: 50%;
+//   border: 3px solid #000;
+//   left: -15px;
+//   top: 10px;
+//   width: 20px;
+//   height: 20px;
+//   z-index: 1;
+// }
+
+// .resume-content ul li .company-background {
+//   background-color: rgba($alt-bg, 0.7);
+// }
+
+// .company-background {
+//   padding-left: 20px;
+//   padding-bottom: 20px;
+// }
+
+// .resume h3 {
+//   margin-bottom: 50px;
+// }
+
+// .accomp-bullet {
+//   list-style: none;
+//   position: relative;
+// }
+
+// ul .accomp-bullet li:before {
+//   content: "";
+//   background: $accent;
+//   display: inline-block;
+//   position: relative;
+//   border-radius: 50%;
+//   border: 3px solid #000;
+//   left: -20px;
+//   width: 15px;
+//   height: 15px;
+//   z-index: 1;
+// }
+
+// .timeline {
+//   list-style-type: none;
+//   position: relative;
+// }
+
+// .timeline p {
+//   padding: 10px;
+// }
+
+/* draw a vertical dark line in front of experience list */
+// .timeline:before {
+//   content: "";
+//   background: $accent;
+//   display: inline-block;
+//   position: absolute;
+//   left: 29px;
+//   width: 2px;
+//   height: 100%;
+//   z-index: 1;
+// }
+
+/* back ground of experiences is light color */
+// .timeline li {
+//   margin-top: 20px;
+//   margin-bottom: 20px;
+//   margin-left: 20px;
+// }
+
+// /* title of experience */
+// .dev-title {
+//   background-color: #000;
+//   padding: 5px 0 5px 20px;
+//   color: #fff;
+//   font-size: 15px;
+// }
+
+// /* the date in front of experience */
+// .timeline li h4 span {
+//   font-weight: bold;
+//   color: #ccc;
+// }
 
 mat-footer-row mat-footer-cell {
   justify-content: center;
@@ -176,7 +340,12 @@ mat-footer-row mat-footer-cell {
 }
 
 .search-div {
+  display: flex;
   margin: 10px;
+}
+
+.spinner-class {
+  margin-left: 100px;
 }
 
 // Filter
@@ -216,9 +385,9 @@ mat-footer-row mat-footer-cell {
 }
 
 // Search Dialog Styles
-.mat-dialog-container {
-  background-color: $alt-bg;
-}
+// .mat-dialog-container {
+//   background-color: $alt-bg;
+// }
 
 .navbar .search-navbar-brand {
   color: $alt-color;
@@ -316,9 +485,9 @@ mat-paginator {
 // Search Dialog
 //
 
-.mat-dialog-container#mat-dialog-0 {
-  padding: 10px;
-}
+// .mat-dialog-container#mat-dialog-0 {
+//   padding: 10px;
+// }
 
 .search-card {
   border: solid 1px $accent;
@@ -337,6 +506,7 @@ mat-paginator {
 
 .search-card-body {
   background-color: #202020;
+  padding: 10px;
 }
 
 .search-card-footer {
@@ -346,10 +516,6 @@ mat-paginator {
 
 mat-label {
   color: #f2f2f2;
-}
-
-.search-card-body {
-  padding: 10px;
 }
 
 /* change arrow icon when has focus */
@@ -383,4 +549,20 @@ div.mat-select-value {
 
 .close-button {
   color: #009988;
+}
+
+//
+// Projects
+//
+.projects-content {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 20px;
+}
+
+.new-projects-button {
+  margin-top: 100px;
+  background-color: $accent;
+  display: block;
 }
