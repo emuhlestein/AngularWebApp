@@ -47,7 +47,6 @@ export class NewProjectComponent implements OnInit {
 
   getErrorMessage(formControl: string, errorName: string) {
     const x = this.newProjectForm.get(formControl);
-    console.log(x);
     if (this.hasError(formControl, errorName) && errorName === 'required') {
       return 'You must enter a value';
     }
@@ -68,7 +67,11 @@ export class NewProjectComponent implements OnInit {
   }
 
   createProject() {
-    console.log('In createProject');
+    console.log(this.newProjectForm.get('projectName').value);
+    console.log(this.newProjectForm.get('description').value);
+    console.log(this.newProjectForm.get('sprintLength').value);
+    console.log(this.newProjectForm.get('numSprints').value);
+    console.log(this.newProjectForm.get('startDate').value);
     // if (this.name.hasError('required')) {
     //   return 'You must enter a value';
     // }
