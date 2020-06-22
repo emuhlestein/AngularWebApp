@@ -16,8 +16,8 @@ import { SessionDataService, START_DATE_KEY, END_DATE_KEY, MIN_MAG_KEY, MAX_MAG_
   encapsulation: ViewEncapsulation.None
 })
 export class EarthquakeComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   dataSource: EarthquakeDataSource;
   tempPaginator: MatPaginator;
   tempSort: MatSort;
