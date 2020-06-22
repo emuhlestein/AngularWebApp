@@ -1,11 +1,13 @@
 import { AfterViewInit, Component, ViewChild, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { EarthquakeDataSource } from '../../earthquake-datasource';
 import { EarthquakeService } from '../../earthquake.service';
 import { Earthquake, EarthquakeResolved } from '../../earthquake';
 import { merge, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { MatDialog } from "@angular/material";
+import { MatDialog } from "@angular/material/dialog";
 import { EarthquakeSearchComponent } from '../earthquake-search/earthquake-search.component';
 import { SearchParams } from '../../search-params';
 import { SessionDataService, START_DATE_KEY, END_DATE_KEY, MIN_MAG_KEY, MAX_MAG_KEY } from 'src/app/session-data-service';
